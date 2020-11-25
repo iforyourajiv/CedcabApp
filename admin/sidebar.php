@@ -39,14 +39,15 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="manageUsers.php"
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage User</span>
+                                <span class="hide-menu">Manage User
+                                </span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pastRides.php"
                                 aria-expanded="false">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                                 <span class="hide-menu">Past Rides</span>
@@ -60,10 +61,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="manageLocation.php"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Loaction</span>
+                                <span class="hide-menu">Manage Location</span>
                             </a>
                         </li>
                         <li class="text-center p-20 upgrade-btn">

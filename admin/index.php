@@ -38,11 +38,6 @@ if(isset($_SESSION['username'])){
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Past Rides</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
                                 <li class="ml-auto"><span class="counter text-purple">0</span></li>
                             </ul>
                         </div>

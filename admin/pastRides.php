@@ -16,21 +16,12 @@ if(isset($_SESSION['username'])){
     }
 }
 
-if(isset($_GET['c_id'])){
-    $id=$_GET['c_id'];
-    $isDone=$rideRequest->confirmRide($id);
-    if($isDone) {
-        header("location:rideRequest.php");
-    } else {
-        echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
-    }
-}
 
 if(isset($_GET['del_id'])){
     $id=$_GET['del_id'];
-    $isDone=$rideRequest->cancelRide($id);
+    $isDone=$rideRequest->deleteRide($id);
     if($isDone) {
-        header("location:rideRequest.php");
+        header("location:pastRides.php");
     } else {
         echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
     }
@@ -41,7 +32,7 @@ if(isset($_GET['del_id'])){
 <?php include_once './sidebar.php'?>
 
         <div class="container-fluid">
-            <h2 class="text-center">Ride Requests</h2>
+            <h2 class="text-center">Past Rides</h2>
                             <div class="table-responsive">
                                 <table class="table no-wrap">
                                     <thead>
@@ -60,7 +51,7 @@ if(isset($_GET['del_id'])){
                                     </thead>
                                     <tbody>
                                        <?php
-                                       $rideRequest->rideRequestAdmin(); 
+                                       $rideRequest->pastRide(); 
                                        ?>
                                     </tbody>
                                 </table>

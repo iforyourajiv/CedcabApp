@@ -103,6 +103,78 @@ class User
         return $query;
     }
 
+    public function fetchUsersBlocked(){
+        $query=mysqli_query($this->conn,"SELECT *FROM tbl_user where isblock='1' AND is_admin='0'");
+            $result=$query->num_rows;
+            if($result>0){
+                while($data=mysqli_fetch_assoc($query)){
+                    $userID=$data['user_id'];
+                    $username=$data['username'];
+                    $fullname=$data['name'];
+                    $email=$data['email'];
+                    $mobile=$data['mobile'];
+                    // $status=$data['status'];
+                    // $currentStatus="";
+
+                    $html="<tr>";
+                    $html.="<td class='text-danger'>$userID</td>";
+                    $html.="<td class='text-danger'>$username</td>";
+                    $html.="<td class='text-danger'>$fullname</td>";
+                    $html.="<td class='text-danger'>$email</td>";
+                    $html.="<td class='text-danger'>$mobile</td>";
+                    $html.="<td><a href='manageUsers.php?unblock=$userID' class='btn btn-success'>UNBLOCK</a></td>";
+                    $html.="</tr>"; 
+                    echo $html; 
+                }
+            }
+    }
+
+    public function blockUser($user_id){
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET isblock='1' WHERE user_id='$user_id'");
+        if($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
+
+    public function fetchUsersUnblocked(){
+        $query=mysqli_query($this->conn,"SELECT *FROM tbl_user where isblock='0' AND is_admin='0'");
+            $result=$query->num_rows;
+            if($result>0){
+                while($data=mysqli_fetch_assoc($query)){
+                    $userID=$data['user_id'];
+                    $username=$data['username'];
+                    $fullname=$data['name'];
+                    $email=$data['email'];
+                    $mobile=$data['mobile'];
+                    // $status=$data['status'];
+                    // $currentStatus="";
+
+                    $html="<tr>";
+                    $html.="<td class='text-dark'>$userID</td>";
+                    $html.="<td class='text-dark'>$username</td>";
+                    $html.="<td class='text-dark'>$fullname</td>";
+                    $html.="<td class='text-dark'>$email</td>";
+                    $html.="<td class='text-dark'>$mobile</td>";
+                    $html.="<td><a href='manageUsers.php?block=$userID' class='btn btn-danger'>BLOCK</a></td>";
+                    $html.="</tr>"; 
+                    echo $html; 
+                }
+            }
+    }
+
+    public function unblockUser($user_id){
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET isblock='0' WHERE user_id='$user_id'");
+        if($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 
