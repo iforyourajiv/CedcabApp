@@ -10,8 +10,9 @@ class User
 {
 
     public $conn;
+    public $user_id;
     public function __construct()
-    {
+    {   
         $this->conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME) or die('Connection Error! ' . mysqli_error($this->conn));
         if (!$this->conn)
         {
@@ -70,10 +71,10 @@ class User
             else
             {
                 $_SESSION['usertype'] = "admin";
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $user;
-                echo "admin";
-
-            }
+                header("location:admin/index.php");
+                }
         }
         else
         {
@@ -82,6 +83,27 @@ class User
 
     }
 
+
+    public function fetchUserDetail(){
+        $this->user_id=$_SESSION['user_id'];
+        $query=mysqli_query($this->conn,"select *from tbl_user where user_id='$this->user_id'");
+        $result=$query->num_rows;
+        if($result>0){
+            while($data=mysqli_fetch_assoc($query)){
+                return $data;
+            }
+            
+        }
+    }
+
+    public function updateData($id,$fullname,$email,$mobile,$password) {
+        $this->user_id=$_SESSION['user_id'];
+        $enc_password=md5($password);
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET name='$fullname',email='$email',mobile='$mobile',password='$enc_password' WHERE user_id='$this->user_id'");
+        return $query;
+    }
+
 }
+
 
 ?>

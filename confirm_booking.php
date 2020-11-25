@@ -16,7 +16,14 @@ $status=$_POST['status'];
 $response=$ride->saveRide($fromLocation,$toLocation,$cabType,$distance,$luggage,$fare,$status,$user_id);
 
 if($response) {
+    $_SESSION['from']="";
+    $_SESSION['to']="";
+    $_SESSION['totalDistance']="";
+    $_SESSION['cabType']="";
+    $_SESSION['luggage']="";
+    $_SESSION['fare']="";
     echo "Your Booking Order is Accepted!!!Thankyou";
+  
 } else {
     echo "Oops!!! Something Went Wrong,Book Not Accepted ')";
 }

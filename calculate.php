@@ -103,6 +103,7 @@ else
 }
 $_SESSION['cabtype']=$cabType;
 $_SESSION['luggage']=$luggage;
+
 //Calculating Fare For Cedmicro
 if ($cabType == 'CedMicro')
 {

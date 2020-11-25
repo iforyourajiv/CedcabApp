@@ -6,15 +6,20 @@ if (!isset($_SESSION))
     session_start();
 }
 
+if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
+    header("location:admin/index.php");
+}
+
 if(!isset($_SESSION['username'])){
-$html="<a href='#' class='nav-item'>Home</a>";
+$html="<a href='index.php' class='nav-item'>Home</a>";
 $html.="<a href='#' class='nav-item'>About Us</a>";
 $html.="<a href='#' class='nav-item'>Services</a>";
 } else {
     $html="<h4>Welcome :".$_SESSION['username']."</h4>";
-    $html.="<a href='#' class='nav-item'>Manage Profile</a>";
-    $html.="<a href='#' class='nav-item'>Ride Records</a>";
-    $html.="<a href='#' class='nav-item'>Total Spents</a>";
+    $html.="<a href='index.php' class='nav-item'>Home</a>";
+    $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
+    $html.="<a href='rideRecords.php' class='nav-item'>Ride Records</a>";
+    $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
     $html.="<a href='./logout.php' class='btn btn-danger p-3 ml-3'>Logout</a>";
 }
 

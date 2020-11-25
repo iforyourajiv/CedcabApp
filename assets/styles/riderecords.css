@@ -1,0 +1,44 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+#tbl {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tbl td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#tbl tr {
+    background-color: black;
+}
+
+#tbl tr:hover {
+    background-color: blue;
+}
+
+#tbl th {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}

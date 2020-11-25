@@ -29,7 +29,10 @@ if(!isset($_SESSION['username'])){
                                 <tbody><tr>
                                     <td class="content-block">
                                         <h2>Thanks for Riding With Cedcabs !!! Happy Journey</h2>
-                                        <a href="#" class="btn btn-block mt-2" type="button" id="bookingbtn">Confirm Booking </a>
+                                        <form>
+                                        <input class="btn btn-block mt-2" id="bookingbtn" type="button" value="Confirm Booking" >
+                                        </form>
+                                       
                                     </td>
                                 </tr>
                                 <tr>
@@ -89,18 +92,21 @@ if(!isset($_SESSION['username'])){
 
 <?php include_once './footer.php' ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>\
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#bookingbtn").click(function(){
-            let user=$_SESSION['user_id'];
-            let from=$_SESSION['from'];
-            let to=$_SESSION['to'];
-            let distance=$_SESSION['totalDistance'];
-            let cabtype=$_SESSION['cabtype'];
-            let luggage=$_SESSION['luggage'];
-            let fare=$_SESSION['fare'];
+            let user="<?php echo $_SESSION['user_id']?>";
+            let from="<?php echo $_SESSION['from'] ?>";
+            let to="<?php echo $_SESSION['to'] ?>";
+            let distance="<?php echo $_SESSION['totalDistance'] ?>";
+            let cabtype="<?php echo $_SESSION['cabtype'] ?>";
+            let luggage="<?php echo $_SESSION['luggage']?>";
+            let fare="<?php echo $_SESSION['fare']?>";
             let status="1";
+            if(user=="" || from=="" || to=="" || distance=="" || cabtype=="" ||luggage=="" || fare=="") {
+                alert("Please Book Your Cab First");
+            } else {
                 $.ajax({
                     method: "POST",
                     url: "confirm_booking.php",
@@ -109,14 +115,19 @@ if(!isset($_SESSION['username'])){
                         from: from,
                         to: to,
                         distance:distance,
-                        cabtype=cabtype,
+                        cabtype:cabtype,
                         luggage: luggage,
-                        fare=fare,
+                        fare:fare,
                         status:status
                     },
                 }).done(function(data) {
-                    $("#display").html("Total Fare &nbsp;	&#x20B9;" + data);
+                   $("#display").html("");
+                   $("#display").html("<h2 style='color:white'><center>"+data+"</center></h2>");
                 });
+            }
+
+            
+             
         })
     })
    
