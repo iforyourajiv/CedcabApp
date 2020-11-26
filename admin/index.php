@@ -89,7 +89,39 @@ include_once './tiles.class.php';
                                     $data='0';
                                 }
                                 ?>
-                                <li class="ml-auto"><span class="counter text-purple"><?php echo $data ?></span></li>
+                                <li class="ml-auto"><span class="counter text-danger"><?php echo $data ?></span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total User Using Cedcabs</h3>
+                            <ul class="list-inline two-part d-flex mb-0">
+                            <?php
+                                $tilesUserTotal=new Tile();
+                                $data= $tilesUserTotal->tilesUserTotal();
+                                if(!$data) {
+                                    $data='0';
+                                }
+                                ?>
+                                <li class="ml-auto"><span class="counter text-success"><?php echo $data ?></span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Earned Till Today</h3>
+                            <ul class="list-inline two-part d-flex mb-0">
+                            <?php
+                                $tilesEarnedTotal=new Tile();
+                                $data=$tilesEarnedTotal->tilesearnedTotal();
+                                if(!$data) {
+                                    $data='0';
+                                }
+                                ?>
+                                <li class="ml-auto"><span class="counter text-success"><?php echo $data ?></span></li>
                             </ul>
                         </div>
                     </div>
