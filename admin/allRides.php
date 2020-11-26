@@ -16,21 +16,12 @@ if(isset($_SESSION['username'])){
     }
 }
 
-if(isset($_GET['c_id'])){
-    $id=$_GET['c_id'];
-    $isDone=$rideRequest->confirmRide($id);
-    if($isDone) {
-        header("location:rideRequest.php");
-    } else {
-        echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
-    }
-}
 
 if(isset($_GET['del_id'])){
     $id=$_GET['del_id'];
-    $isDone=$rideRequest->cancelRide($id);
+    $isDone=$rideRequest->deleteRide($id);
     if($isDone) {
-        header("location:rideRequest.php");
+        header("location:allRides.php");
     } else {
         echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
     }
@@ -39,12 +30,11 @@ if(isset($_GET['del_id'])){
 
 ?>
 <?php include_once './sidebar.php'?>
-
         <div class="container-fluid">
-            <h2 class="text-center">Ride Requests</h2>
+            <h2 class="text-center text-dark">All Rides</h2>
                             <div class="table-responsive">
                                 <table class="table no-wrap">
-                                   <label>Sort</label> <select id="sort" name="sort">
+                                <label>Sort</label> <select id="sort" name="sort">
                                         <option value="All_Data">All</option>
                                         <option value="date_asc">By Ascending Date</option>
                                         <option value="date_desc">By Descending Date</option>
@@ -67,7 +57,7 @@ if(isset($_GET['del_id'])){
                                     </thead>
                                     <tbody id="tablebody">
                                        <?php
-                                       $data=$rideRequest->rideRequestAdmin(); 
+                                       $data=$rideRequest->allRides(); 
                                        foreach($data as $element) {
                                         $rideID=$element['ride_id'];
                                         $fromLocation=$element['fromLocation'];
@@ -79,7 +69,7 @@ if(isset($_GET['del_id'])){
                                         $fare=$element['total_fare'];
                                         // $status=$data['status'];
                                         // $currentStatus="";
-
+                    
                                         $html="<tr>";
                                         $html.="<td class='text-purple'>$rideID</td>";
                                         $html.="<td class='text-purple'>$fromLocation</td>";
@@ -89,10 +79,9 @@ if(isset($_GET['del_id'])){
                                         $html.="<td class='text-purple'>$distance</td>";
                                         $html.="<td class='text-purple'>$luggage</td>";
                                         $html.="<td class='text-purple'>$fare</td>";
-                                        $html.="<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                                                    <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
+                                        $html.="<td><a href='allRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
                                         $html.="</tr>"; 
-                                        echo $html;     
+                                        echo $html; 
                                        }
                                        ?>
                                     </tbody>
@@ -108,14 +97,13 @@ if(isset($_GET['del_id'])){
     </div> 
 </body>
 </html>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){
         $("#sort").on('change',function(){
             let type = $(this).children("option:selected").val();
-            let action="pending";
+            let action="all";
             $.ajax({
                     method: "POST",
                     url: "sorting.controller.php",

@@ -25,48 +25,107 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="rideRequest.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Ride Requests</span>
+                                <span class="hide-menu font-18 text-dark">Rides</span>
+                            </a>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="rideRequest.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Pending Rides</span>
+                            </a>
+                            </li>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="pastRides.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Completed Rides</span>
+                            </a>
+                            </li>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="canceledRides.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Canceled Rides</span>
+                            </a>
+                            </li>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="allRides.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">All Rides</span>
+                            </a>
+                            </li>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="hide-menu font-18 text-dark">Manage Location</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="manageLocation.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Location List</span>
+                            </a>
+                            </li>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="addLocation.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Add New Location</span>
+                            </a>
+                            </li>
+                       
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
+                                <i class="fa fa-font" aria-hidden="true"></i>
+                                <span class="hide-menu font-18 text-dark">Manage User
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="pendingUser.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Pending User request</span>
+                            </a>
+                            </li>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="approvedUser.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Approved User Request</span>
+                            </a>
+                            </li>
+                            <li class="sidebar-item ml-3">
+                            <a class="sidebar-link" href="allUser.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">All User</span>
+                            </a>
+                            </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false">
+                                <i class="fa fa-columns" aria-hidden="true"></i>
+                                <span class="hide-menu font-18 text-dark">Total Earning</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Invoice</span>
+                                <span class="hide-menu font-18 text-dark">Invoice</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="manageUsers.php"
-                                aria-expanded="false">
-                                <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage User
-                                </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pastRides.php"
-                                aria-expanded="false">
-                                <i class="fa fa-globe" aria-hidden="true"></i>
-                                <span class="hide-menu">Past Rides</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                                aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Total Earning</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="manageLocation.php"
-                                aria-expanded="false">
-                                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Location</span>
-                            </a>
-                        </li>
+                        
                         <li class="text-center p-20 upgrade-btn">
                             <a href="../logout.php"
                                 class="btn btn-block btn-danger text-white">

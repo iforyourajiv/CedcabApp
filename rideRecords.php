@@ -20,7 +20,37 @@
             <?php 
             include_once './ride.class.php';
             $record=new Ride();
-            $record->rideRecords();
+            $data=$record->rideRecords();
+            foreach($data as $element) {
+                $fromLocation=$element['fromLocation'];
+                $toLocation=$element['toLocation'];
+                $rideDate=$element['ride_date'];
+                $cabType=$element['cabtype'];
+                $distance=$element['total_distance'];
+                $luggage=$element['luggage'];
+                $fare=$element['total_fare'];
+                $status=$element['status'];
+                $currentStatus="";
+                if($status==1){
+                    $currentStatus="Pending";
+                } else if($status==2){
+                    $currentStatus="Completed";
+                } else if($status==0) {
+                    $currentStatus="Cancelled";
+                }
+
+                $html="<tr>";
+                $html.="<td>$fromLocation</td>";
+                $html.="<td>$toLocation</td>";
+                $html.="<td>$rideDate</td>";
+                $html.="<td>$cabType</td>";
+                $html.="<td>$distance</td>";
+                $html.="<td>$luggage</td>";
+                $html.="<td>&#x20B9;&nbsp;$fare</td>";
+                $html.="<td>$currentStatus</td>";
+                $html.="</tr>";
+                echo $html;
+            }
             ?>
         </tbody>
     </table>

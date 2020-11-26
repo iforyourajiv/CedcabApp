@@ -21,7 +21,14 @@
                                         <?php
                                          include_once './location.class.php'; 
                                         $location=new Location();
-                                        $location->fetchLocation();
+                                        $data=$location->fetchLocation();
+                                        foreach($data as $element){
+                                            $location_id=$element['id'];
+                                            $location_name=$element['name'];
+                                            // $location_distance=$data['distance'];
+                                            echo "<option value='$location_id'>$location_name</option>";
+                                        }
+                                       
                                         ?>
                                         </select>
                                         <span class="select-arrow"></span>
@@ -34,11 +41,18 @@
                                         <span class="form-label">Drop</span>
                                         <select id="drop" name="drop" class="form-control" aria-placeholder="Enter Drop For Ride Estimate">
                                             <option value="">Select Drop Location</option>
-                                           <?php
-                                            include_once './location.class.php'; 
-                                            $location=new Location();
-                                            $location->fetchLocation();
-                                            ?>
+                                            <?php
+                                                include_once './location.class.php'; 
+                                                $location=new Location();
+                                                $data=$location->fetchLocation();
+                                                foreach($data as $element){
+                                                    $location_id=$element['id'];
+                                                    $location_name=$element['name'];
+                                                    // $location_distance=$data['distance'];
+                                                    echo "<option value='$location_id'>$location_name</option>";
+                                                }
+                                       
+                                        ?>
                                         </select>
                                         <span class="select-arrow"></span>
                                     </div>

@@ -17,33 +17,21 @@ if(isset($_SESSION['username'])){
     }
 }
 
-// if(isset($_GET['unblock'])) {
-//     $id=$_GET['unblock'];
-//     $isDone=$user->unblockUser($id);
-//     if($isDone) {
-//         header("location:manageUsers.php");
-//     } else {
-//         echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
-//     }
-// }
+if(isset($_GET['del_id'])){
+    $locationID=$_GET['del_id'];
+    $isdone=$location->deleteLocation($locationID);
+    if($isdone){
+        header("location:manageLocation.php");
+    } else {
+        echo "<script>alert('Something Went Wrong,Location Not Deleted')</script>";
+    }
 
-// if(isset($_GET['block'])) {
-//     $id=$_GET['block'];
-//     $isDone=$user->blockUser($id);
-//     if($isDone) {
-//         header("location:manageUsers.php");
-//     } else {
-//         echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
-//     }
-// }
-
+}
 
 ?>
 <?php include_once './sidebar.php'?>
-
         <div class="container-fluid">
             <h2 class="text-center">Manage Location</h2>
-            <a href="addLocation.php" class="btn btn-success px-4 py-3 btn-dark">Add Location</a>
                             <div class="table-responsive">
                                 <table class="table no-wrap">
                                     <thead>
@@ -56,7 +44,29 @@ if(isset($_SESSION['username'])){
                                     </thead>
                                     <tbody>
                                        <?php
-                                        $location->displayLocationAdmin();
+                                       $data=$location->displayLocationAdmin();
+                                            foreach($data as $element){
+                                                $locationID=$element['id'];
+                                                $locationName=$element['name'];
+                                                $distance=$element['distance'];
+                                                $available=$element['is_available'];
+                                                $currentStatus="";
+                                                if($available=="0"){
+                                                    $currentStatus="NOT AVAILABLE";
+                                                } else {
+                                                    $currentStatus="AVAILABLE";
+                                                }
+                                
+                                                $html="<tr>";
+                                                $html.="<td class='text-dark'>$locationName</td>";
+                                                $html.="<td class='text-dark'>$distance</td>";
+                                                $html.="<td class='text-dark'>$currentStatus</td>";
+                                                $html.="<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
+                                                            <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
+                                                $html.="</tr>"; 
+                                                echo $html; 
+                                            }
+
                                        ?>
                                     </tbody>
                                 </table>

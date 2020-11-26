@@ -18,12 +18,7 @@ class Location{
         $location=mysqli_query($this->conn, "select * from tbl_location where is_available='1'");
         $result = $location->num_rows;
         if($result>0) {
-            while ($data = mysqli_fetch_assoc($location)){
-                $location_id=$data['id'];
-                $location_name=$data['name'];
-                // $location_distance=$data['distance'];
-                echo "<option value='$location_id'>$location_name</option>";
-            }
+           return $location;
            
         }
 
@@ -33,35 +28,50 @@ class Location{
         $query=mysqli_query($this->conn,"SELECT *FROM tbl_location");
         $result=$query->num_rows;
         if($result>0){
-            while($data=mysqli_fetch_assoc($query)){
-                $locationID=$data['id'];
-                $locationName=$data['name'];
-                $distance=$data['distance'];
-                $available=$data['is_available'];
-                $currentStatus="";
-                if($available=="0"){
-                    $currentStatus="NOT AVAILABLE";
-                } else {
-                    $currentStatus="AVAILABLE";
-                }
-
-                $html="<tr>";
-                $html.="<td class='text-dark'>$locationName</td>";
-                $html.="<td class='text-dark'>$distance</td>";
-                $html.="<td class='text-dark'>$currentStatus</td>";
-                $html.="<td><a href='manageLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
-                            <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
-                $html.="</tr>"; 
-                echo $html; 
-            }
+           return $query;
         }
     }
 
     public function addLocation($locationName,$locationDistance,$isavailbale) {
-        
+        $query=mysqli_query($this->conn,"INSERT INTO tbl_location (name,distance,is_available)
+                            VALUES('$locationName','$locationDistance','$isavailbale')");
+        if($query) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    public function fetchLocationDetail($id){  
+        $query=mysqli_query($this->conn,"SELECT *FROM tbl_location WHERE id='$id'");
+        $result=$query->num_rows;
+        if($result>0){
+            while($data=mysqli_fetch_assoc($query)){
+                return $data;
+            }
+            
+        }
+    }
 
+    public function updateLocation($id,$locationName,$locationDistance,$isavailable) {
+        $query=mysqli_query($this->conn,"UPDATE tbl_location SET name='$locationName',
+                            distance='$locationDistance',is_available='$isavailable' WHERE id='$id'");
+
+        if($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }  
+
+    public function deleteLocation($locationID){
+        $query=mysqli_query($this->conn,"DELETE FROM tbl_location  WHERE id='$locationID'");
+        if($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 }

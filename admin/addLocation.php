@@ -18,37 +18,20 @@ if(isset($_SESSION['username'])){
 }
 
 if(isset($_POST['submit'])){
-
 $locationName=$_POST['locationName'];
 $locationDistance=$_POST['locationDistance'];
 $isavailable=$_POST['availiblity'];
+$isDone=$location->addLocation($locationName,$locationDistance,$isavailable);
+if($isDone){
+    header("location:manageLocation.php");
+}  else {
+    echo "<script>alert('Something Went Wrong,Location Not Added ')</script>";
+}
 
 }
 
-// if(isset($_GET['unblock'])) {
-//     $id=$_GET['unblock'];
-//     $isDone=$user->unblockUser($id);
-//     if($isDone) {
-//         header("location:manageUsers.php");
-//     } else {
-//         echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
-//     }
-// }
-
-// if(isset($_GET['block'])) {
-//     $id=$_GET['block'];
-//     $isDone=$user->blockUser($id);
-//     if($isDone) {
-//         header("location:manageUsers.php");
-//     } else {
-//         echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
-//     }
-// }
-
-
 ?>
 <?php include_once './sidebar.php'?>
-
         <div class="container-fluid">
             <h2 class="text-center">Add Location</h2>
             <div class="col-lg-8 col-xlg-9 col-md-12">
@@ -79,7 +62,7 @@ $isavailable=$_POST['availiblity'];
                                     </div>
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <input type="submit" name="submit" class="btn btn-success">Add Location</input>
+                                            <input type="submit" name="submit" class="btn btn-success" value="Add Location"></input>
                                         </div>
                                     </div>
                                 </form>

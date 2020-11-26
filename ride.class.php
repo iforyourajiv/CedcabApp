@@ -25,9 +25,8 @@ class Ride
 
         public function saveRide($fromLocation,$toLocation,$cabType,$distance,$luggage,$fare,$status,$user_id){
             $query=mysqli_query($this->conn,"INSERT INTO tbl_ride (ride_date,fromLocation,toLocation,cabtype,
-                   total_distance,luggage,total_fare,status,customer_user_id) VALUES (now(),'$fromLocation',
-                   '$toLocation','$cabType','$distance','$luggage','$fare','$status','$user_id')");
-
+                   total_distance,luggage,total_fare,status,customer_user_id,is_deleted) VALUES (now(),'$fromLocation',
+                   '$toLocation','$cabType','$distance','$luggage','$fare','$status','$user_id','0')");
                 if($query){
                     return true;
                 } else {
@@ -39,37 +38,7 @@ class Ride
             $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id'");
             $result=$query->num_rows;
             if($result>0) {
-                while($data=mysqli_fetch_assoc($query)) {
-                    $fromLocation=$data['fromLocation'];
-                    $toLocation=$data['toLocation'];
-                    $rideDate=$data['ride_date'];
-                    $cabType=$data['cabtype'];
-                    $distance=$data['total_distance'];
-                    $luggage=$data['luggage'];
-                    $fare=$data['total_fare'];
-                    $status=$data['status'];
-                    $currentStatus="";
-                    if($status==1){
-                        $currentStatus="Pending";
-                    } else if($status==2){
-                        $currentStatus="Completed";
-                    } else if($status==0) {
-                        $currentStatus="Cancelled";
-                    }
-
-                    $html="<tr>";
-                    $html.="<td>$fromLocation</td>";
-                    $html.="<td>$toLocation</td>";
-                    $html.="<td>$rideDate</td>";
-                    $html.="<td>$cabType</td>";
-                    $html.="<td>$distance</td>";
-                    $html.="<td>$luggage</td>";
-                    $html.="<td>&#x20B9;&nbsp;$fare</td>";
-                    $html.="<td>$currentStatus</td>";
-                    $html.="</tr>";
-                    echo $html;
-                }
-                
+                return $query;   
             }
         }
 
@@ -92,32 +61,7 @@ class Ride
             $query=mysqli_query($this->conn,"SELECT *FROM tbl_ride where status='1'");
             $result=$query->num_rows;
             if($result>0){
-                while($data=mysqli_fetch_assoc($query)){
-                    $rideID=$data['ride_id'];
-                    $fromLocation=$data['fromLocation'];
-                    $toLocation=$data['toLocation'];
-                    $rideDate=$data['ride_date'];
-                    $cabType=$data['cabtype'];
-                    $distance=$data['total_distance'];
-                    $luggage=$data['luggage'];
-                    $fare=$data['total_fare'];
-                    // $status=$data['status'];
-                    // $currentStatus="";
-
-                    $html="<tr>";
-                    $html.="<td class='text-purple'>$rideID</td>";
-                    $html.="<td class='text-purple'>$fromLocation</td>";
-                    $html.="<td class='text-purple'>$toLocation</td>";
-                    $html.="<td class='text-purple'>$rideDate</td>";
-                    $html.="<td class='text-purple'>$cabType</td>";
-                    $html.="<td class='text-purple'>$distance</td>";
-                    $html.="<td class='text-purple'>$luggage</td>";
-                    $html.="<td class='text-purple'>$fare</td>";
-                    $html.="<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                                <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
-                    $html.="</tr>"; 
-                    echo $html; 
-                }
+                return $query;
             }
         }
 
@@ -140,39 +84,32 @@ class Ride
         }
 
         public function pastRide(){
-            $query=mysqli_query($this->conn,"SELECT *FROM tbl_ride where status='2'");
+            $query=mysqli_query($this->conn,"SELECT *FROM tbl_ride where status='2' AND is_deleted='0'");
             $result=$query->num_rows;
             if($result>0){
-                while($data=mysqli_fetch_assoc($query)){
-                    $rideID=$data['ride_id'];
-                    $fromLocation=$data['fromLocation'];
-                    $toLocation=$data['toLocation'];
-                    $rideDate=$data['ride_date'];
-                    $cabType=$data['cabtype'];
-                    $distance=$data['total_distance'];
-                    $luggage=$data['luggage'];
-                    $fare=$data['total_fare'];
-                    // $status=$data['status'];
-                    // $currentStatus="";
+               return $query;
+            }
+        }
 
-                    $html="<tr>";
-                    $html.="<td class='text-purple'>$rideID</td>";
-                    $html.="<td class='text-purple'>$fromLocation</td>";
-                    $html.="<td class='text-purple'>$toLocation</td>";
-                    $html.="<td class='text-purple'>$rideDate</td>";
-                    $html.="<td class='text-purple'>$cabType</td>";
-                    $html.="<td class='text-purple'>$distance</td>";
-                    $html.="<td class='text-purple'>$luggage</td>";
-                    $html.="<td class='text-purple'>$fare</td>";
-                    $html.="<td><a href='pastRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
-                    $html.="</tr>"; 
-                    echo $html; 
-                }
+
+        public function canceledRide(){
+            $query=mysqli_query($this->conn,"SELECT *FROM tbl_ride where status='0' AND is_deleted='0'");
+            $result=$query->num_rows;
+            if($result>0){
+               return $query;
+            }
+        }
+
+        public function allRides(){
+            $query=mysqli_query($this->conn,"SELECT *FROM tbl_ride where is_deleted='0'");
+            $result=$query->num_rows;
+            if($result>0){
+               return $query;
             }
         }
 
         public function deleteRide($rideID){
-            $query=mysqli_query($this->conn,"DELETE FROM tbl_ride  WHERE ride_id='$rideID'");
+            $query=mysqli_query($this->conn,"UPDATE tbl_ride SET is_deleted='1' WHERE ride_id='$rideID'");
             if($query) {
                 return true;
             } else {
