@@ -207,7 +207,7 @@ class User
 
     public function filterCanceledUserRideDate($startDate,$endDate){
         $this->user_id=$_SESSION['user_id'];
-        $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id ='$this->user_id' AND ride_date BETWEEN '$startDate' AND '$endDate' AND (status='1')");
+        $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id ='$this->user_id' AND ride_date BETWEEN '$startDate' AND '$endDate' AND (status='0')");
         $result=$query->num_rows;
         if($result>0){
             return $query;
@@ -219,7 +219,7 @@ class User
     public function filterCanceledUserRideWeek($filterWeek) {
              $this->user_id=$_SESSION['user_id'];
             $weekTrimmed = (substr($filterWeek,-2)-1);
-            $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id = '$this->user_id' AND WEEK(`ride_date`) = '$weekTrimmed' AND (status='1')") ;
+            $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id = '$this->user_id' AND WEEK(`ride_date`) = '$weekTrimmed' AND (status='0')") ;
             $result=$query->num_rows;
             if($result>0){
                return $query;
