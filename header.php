@@ -12,13 +12,23 @@ if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
 
 if(!isset($_SESSION['username'])){
 $html="<a href='index.php' class='nav-item'>Home</a>";
+$html.="<a href='login.php' class='nav-item'>Login</a>";
 $html.="<a href='#' class='nav-item'>About Us</a>";
 $html.="<a href='#' class='nav-item'>Services</a>";
 } else {
     $html="<h4>Welcome :".$_SESSION['username']."</h4>";
     $html.="<a href='index.php' class='nav-item'>Home</a>";
     $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
-    $html.="<a href='rideRecords.php' class='nav-item'>Ride Records</a>";
+    $html.="<li class='nav-item dropdown'>
+                <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                Ride Records
+                 </a>
+                 <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                 <a class='nav-item dropdown-item' href='pendingRideRecords.php'>Pending Rides</a>
+                 <a class='nav-item dropdown-item' href='completedRideRecords.php'>Completed Rides</a>
+                <a class='nav-item dropdown-item' href='canceledRideRecord.php'>Canceled Rides</a>
+                </div>
+                </li>";
     $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
     $html.="<a href='./logout.php' class='btn btn-danger p-3 ml-3'>Logout</a>";
 }
@@ -50,6 +60,9 @@ $html.="<a href='#' class='nav-item'>Services</a>";
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <div class="navbar-nav">
+
+               
+     
                  <?php echo $html ?>   
                 </div>
             </div>

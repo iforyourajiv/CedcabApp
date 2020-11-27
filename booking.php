@@ -7,6 +7,16 @@ if(!isset($_SESSION['username'])){
     header('location:login.php');
 }
 
+if(isset($_POST['cancel'])){
+    $_SESSION['from']="";
+    $_SESSION['to']="";
+    $_SESSION['totalDistance']="";
+    $_SESSION['cabType']="";
+    $_SESSION['luggage']="";
+    $_SESSION['fare']="";
+    header('location:index.php');
+}
+
 ?>
 
 <?php include_once './header.php' ?>
@@ -29,8 +39,9 @@ if(!isset($_SESSION['username'])){
                                 <tbody><tr>
                                     <td class="content-block">
                                         <h2>Thanks for Riding With Cedcabs !!! Happy Journey</h2>
-                                        <form>
+                                        <form method="post" action="booking.php">
                                         <input class="btn btn-block mt-2" id="bookingbtn" type="button" value="Confirm Booking" >
+                                        <input type="submit" name="cancel" class="btn-danger p-2" id="cancelbookingbtn" value="Cancel Booking"></input> 
                                         </form>
                                        
                                     </td>
@@ -43,7 +54,7 @@ if(!isset($_SESSION['username'])){
                                                     <table class="invoice-items" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td>Username:</td>
+                                                            <td>Name:</td>
                                                              <td class="alignright"> <?php echo $_SESSION['username'] ?></td>
                                                         </tr>
                                                         <tr>

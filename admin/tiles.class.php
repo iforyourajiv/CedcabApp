@@ -57,7 +57,31 @@ class Tile
         }
     }
     
+    public function tilesUserTotal()  {
+        $query=mysqli_query($this->conn,"SELECT * FROM tbl_user");
+        $result=$query->num_rows;
+        if($result>0) {
+            return $result;
+        } else {
+            return false;
+        }
 
+    }
+
+    public function tilesearnedTotal()  {
+        $query=mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE status='2'");
+        $result=$query->num_rows;
+        if($result>0) {
+            $earnedTotal=0;
+            while($data=mysqli_fetch_assoc($query)){
+                $earnedTotal+=$data['total_fare'];
+            }
+            return $earnedTotal;
+        } else {
+            return false;
+        }
+
+    }
 
 }
 ?>

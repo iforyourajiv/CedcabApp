@@ -34,8 +34,24 @@ class Ride
                 }
         }
 
-        public function rideRecords(){
-            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id'");
+        public function ridePendingRecords(){
+            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='1'");
+            $result=$query->num_rows;
+            if($result>0) {
+                return $query;   
+            }
+        }
+
+        public function rideCompletedRecords(){
+            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='2'");
+            $result=$query->num_rows;
+            if($result>0) {
+                return $query;   
+            }
+        }
+
+        public function rideCanceledRecords(){
+            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='0'");
             $result=$query->num_rows;
             if($result>0) {
                 return $query;   
@@ -116,8 +132,28 @@ class Ride
                 return false;
             }
         }
+
+        public function invoice(){
+            $query=mysqli_query($this->conn,"select * from tbl_ride where status='1' OR status='2' AND (is_deleted='0')");
+            $result=$query->num_rows;
+            if($result>0) {
+                return $query;
+            } else {
+                return false;
+            }
+        }
+
+        public function fetchInvoiceDetail($rideid) {
+            $query=mysqli_query($this->conn,"select * from tbl_ride where ride_id='$rideid'");
+            $result=$query->num_rows;
+            if($result>0){
+                return $query;
+            } else {
+                return false;
+            }
+        }
+
+        
 }
-
-
 
 ?>

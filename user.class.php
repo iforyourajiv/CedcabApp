@@ -96,10 +96,9 @@ class User
         }
     }
 
-    public function updateData($id,$fullname,$email,$mobile,$password) {
+    public function updateData($id,$fullname,$email,$mobile) {
         $this->user_id=$_SESSION['user_id'];
-        $enc_password=md5($password);
-        $query=mysqli_query($this->conn,"UPDATE tbl_user SET name='$fullname',email='$email',mobile='$mobile',password='$enc_password' WHERE user_id='$this->user_id'");
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET name='$fullname',email='$email',mobile='$mobile' WHERE user_id='$this->user_id'");
         return $query;
     }
 
@@ -147,7 +146,88 @@ class User
         }
     }
 
+    function sortUserRides($status,$sort,$action) {
+        $this->user_id=$_SESSION['user_id'];
+        $query =mysqli_query($this->conn,"SELECT * FROM `tbl_ride` WHERE `customer_user_id` = '". $this->user_id."' AND `status`='". $status."' ORDER BY cast(`$action` AS unsigned) $sort");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function filterPendingUserRideDate($startDate,$endDate){
+        $this->user_id=$_SESSION['user_id'];
+        $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id ='$this->user_id' AND ride_date BETWEEN '$startDate' AND '$endDate' AND (status='1')");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function filterPendingUserRideWeek($filterWeek) {
+             $this->user_id=$_SESSION['user_id'];
+            $weekTrimmed = (substr($filterWeek,-2)-1);
+            $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id = '$this->user_id' AND WEEK(`ride_date`) = '$weekTrimmed' AND (status='1')") ;
+            $result=$query->num_rows;
+            if($result>0){
+               return $query;
+            } else {
+                return false;
+            }
+        
+    }
+
+    public function filterCompletedUserRideDate($startDate,$endDate){
+        $this->user_id=$_SESSION['user_id'];
+        $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id ='$this->user_id' AND ride_date BETWEEN '$startDate' AND '$endDate' AND (status='2')");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function filterCompletedUserRideWeek($filterWeek) {
+             $this->user_id=$_SESSION['user_id'];
+            $weekTrimmed = (substr($filterWeek,-2)-1);
+            $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id = '$this->user_id' AND WEEK(`ride_date`) = '$weekTrimmed' AND (status='2')") ;
+            $result=$query->num_rows;
+            if($result>0){
+               return $query;
+            } else {
+                return false;
+            }
+        
+    }
+
+    public function filterCanceledUserRideDate($startDate,$endDate){
+        $this->user_id=$_SESSION['user_id'];
+        $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id ='$this->user_id' AND ride_date BETWEEN '$startDate' AND '$endDate' AND (status='1')");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function filterCanceledUserRideWeek($filterWeek) {
+             $this->user_id=$_SESSION['user_id'];
+            $weekTrimmed = (substr($filterWeek,-2)-1);
+            $query =mysqli_query($this->conn,"SELECT * FROM tbl_ride WHERE customer_user_id = '$this->user_id' AND WEEK(`ride_date`) = '$weekTrimmed' AND (status='1')") ;
+            $result=$query->num_rows;
+            if($result>0){
+               return $query;
+            } else {
+                return false;
+            }
+        
+    }
+
 }
-
-
 ?>

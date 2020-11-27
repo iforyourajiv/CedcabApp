@@ -96,7 +96,7 @@ include_once './tiles.class.php';
 
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total User Using Cedcabs</h3>
+                            <h3 class="box-title">User's In Cedcabs</h3>
                             <ul class="list-inline two-part d-flex mb-0">
                             <?php
                                 $tilesUserTotal=new Tile();
@@ -112,8 +112,8 @@ include_once './tiles.class.php';
 
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Earned Till Today</h3>
-                            <ul class="list-inline two-part d-flex mb-0">
+                            <h1 class="text-center">Total Earned Till Today</h1>
+                            <ul class="list-inline">
                             <?php
                                 $tilesEarnedTotal=new Tile();
                                 $data=$tilesEarnedTotal->tilesearnedTotal();
@@ -121,7 +121,7 @@ include_once './tiles.class.php';
                                     $data='0';
                                 }
                                 ?>
-                                <li class="ml-auto"><span class="counter text-success"><?php echo $data ?></span></li>
+                                <li class="text-center"><h1 class="text-purple">&#8377; <?php echo $data ?></h1></li>
                             </ul>
                         </div>
                     </div>

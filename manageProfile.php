@@ -9,22 +9,17 @@ $id=$_POST['id'];
 $fullname=$_POST['fullname'];
 $email=$_POST['email'];
 $mobile=$_POST['mobile'];
-$password=$_POST['password'];
-$rePassword=$_POST['confirm_password'];
-   		 if($password == $rePassword) {
-			$signup=$userData->updateData($id,$fullname,$email,$mobile,$password);
+			$signup=$userData->updateData($id,$fullname,$email,$mobile);
 			if($signup) {
                 echo "<script>alert('Profile Updated Successfully')</script>";
                 header("loction:index.php");
 			} else {
 				echo "<script>alert('Profile Updation failed,Error')</script>";
 			}
-       	 }
-     else {
-        echo "<script>alert('Password Does not Matched')</script>";
-    }
-
 }
+    
+
+
 
 ?>
 <section id="main">
@@ -48,7 +43,7 @@ $rePassword=$_POST['confirm_password'];
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Full Name:</label>
             <div class="col-lg-8">
-            <input type="text" class="form-control" name="fullname" value="<?php echo $data['name']?>" required="required">
+            <input type="text" id="fullname" class="form-control" name="fullname" value="<?php echo $data['name']?>" required="required">
             </div>
           </div>
           <div class="form-group ml-5">
@@ -60,19 +55,7 @@ $rePassword=$_POST['confirm_password'];
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Mobile:</label>
             <div class="col-lg-8">
-            <input type="number" class="form-control" name="mobile" value="<?php echo $data['mobile']?>" required="required">
-            </div>
-          </div>
-          <div class="form-group ml-5">
-            <label class="col-md-3 control-label">Change Password:</label>
-            <div class="col-md-8">
-            <input type="password" class="form-control" name="password" value="" required="required">
-            </div>
-          </div>
-          <div class="form-group ml-5">
-            <label class="col-md-3 control-label">Confirm password:</label>
-            <div class="col-md-8">
-            <input type="password" class="form-control" name="confirm_password" value="" required="required">
+            <input type="number" id="number" class="form-control" name="mobile" value="<?php echo $data['mobile']?>" required="required">
             </div>
           </div>
           <div class="form-group ml-5">
@@ -89,3 +72,36 @@ $rePassword=$_POST['confirm_password'];
 </div>
 </section>
 <?php include_once './footer.php' ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+            $( document ).ready(function() {
+                $( "#fullname" ).keypress(function(e) {
+                    var key = e.keyCode;
+                    if (key >= 65 && key <= 90 || key>=97 && key<=122 || key==32) {
+                       
+                    } else {
+						e.preventDefault();
+					}
+				});
+				
+				$("#mobile").keydown(function(event) {
+					k = event.which;
+					if ((k >= 96 && k <= 105) || k == 8) {
+					if ($(this).val().length == 10) {
+						if (k == 8) {
+						return true;
+						} else {
+						event.preventDefault();
+						return false;
+
+						}
+					}
+					} else {
+					event.preventDefault();
+					return false;
+					}
+
+					});
+                
+            });
+        </script>

@@ -6,10 +6,13 @@ session_start();
 if(isset($_SESSION['username'])){
 	if($_SESSION['usertype']=='admin'){
 		header("location:admin/index.php");
-	} else {
-		header("loaction:index.php");
+	} 
+	else {
+		header("location:index.php");
 	}
 }
+
+
 
 include_once './user.class.php';
 

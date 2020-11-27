@@ -41,13 +41,13 @@ if($isDone){
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Location Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" name="locationName" placeholder="Enter Location Name"
+                                            <input type="text" id="locationName" name="locationName" placeholder="Enter Location Name"
                                                 class="form-control p-0 border-0" required> </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Distance</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="number" name="locationDistance" placeholder="Enter Location Distance"
+                                            <input type="text" id="distance" name="locationDistance" placeholder="Enter Location Distance"
                                                 class="form-control p-0 border-0" required> </div>
                                     </div>
                                  
@@ -79,3 +79,22 @@ if($isDone){
     </div> 
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+            $( document ).ready(function() {
+                $( "#locationName" ).keypress(function(e) {
+                    var key = e.keyCode;
+                    if (key >= 48 && key <= 57) {
+                        e.preventDefault();
+                    }
+                });
+                $( "#distance" ).keypress(function(e) {
+                    var key = e.keyCode;
+                    if (key >= 48 && key <= 57) {
+                        
+                    } else {
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>

@@ -16,11 +16,11 @@ if (isset($_POST['submit'])) {
 				echo "Registration Successful!";  
 				header('location:index.php');
 			} else {
-				echo "Entered Username already exist!"; 
+				echo "<script>alert('Entered Username already exist!')</script>";
 			}
        	 }
      else {
-        echo "Password Does not Matched";
+        echo "<script>alert('Password Does not Matched')</script>";
     }
 
 }
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 						<span class="fa fa-user"></span>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input type="text" class="form-control" name="username" placeholder="Username" required>
 			</div>
         </div>
         <div class="form-group">
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 						<i class="fa fa-user"></i>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="fullname" placeholder="Full Name" required="required">
+				<input type="text" id="fullname" class="form-control" name="fullname" placeholder="Full Name" required>
 			</div>
         </div>
         <div class="form-group">
@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
 						<i class="fa fa-mobile"></i>
 					</span>                    
 				</div>
-				<input type="number" class="form-control" name="mobile" placeholder="Mobile Number" required="required">
+				<input type="text" id="mobile" class="form-control" name="mobile" placeholder="Mobile Number" required="required">
 			</div>
         </div>
 		<div class="form-group">
@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
 						<i class="fa fa-lock"></i>
 					</span>                    
 				</div>
-				<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+				<input type="password" id="password" class="form-control" name="password" placeholder="Password" required="required">
 			</div>
         </div>
 		<div class="form-group">
@@ -115,3 +115,36 @@ if (isset($_POST['submit'])) {
 </div>
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+            $( document ).ready(function() {
+                $( "#fullname" ).keypress(function(e) {
+                    var key = e.keyCode;
+                    if (key >= 65 && key <= 90 || key>=97 && key<=122 || key==32) {
+                       
+                    } else {
+						e.preventDefault();
+					}
+				});
+				
+				$("#mobile").keydown(function(event) {
+					k = event.which;
+					if ((k >= 96 && k <= 105) || k == 8) {
+					if ($(this).val().length == 10) {
+						if (k == 8) {
+						return true;
+						} else {
+						event.preventDefault();
+						return false;
+
+						}
+					}
+					} else {
+					event.preventDefault();
+					return false;
+					}
+
+					});
+                
+            });
+        </script>
