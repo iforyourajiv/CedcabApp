@@ -38,7 +38,7 @@ class User
 
     }
 
-    public function login($username, $password)
+    public function login($username, $password,$remember)
     {
         $enc_password = md5($password);
         $query = mysqli_query($this->conn, "select * from tbl_user where username='$username' and password='$enc_password'");
@@ -61,6 +61,15 @@ class User
                     $_SESSION['usertype'] ="user";
                     $_SESSION['username'] = $user;
                     $_SESSION['user_id'] = $user_id;
+                    if($remember){
+                        setcookie("user", $user,time() + (86400 * 30),"/");
+                        setcookie("password", $password,time() + (86400 * 30),"/");
+                        setcookie("checked","remember",time() + (86400 * 30),"/");
+                    } else {
+                        setcookie("user","", time() - 3600,"/"); 
+                        setcookie("password","", time() - 3600,"/"); 
+                        setcookie("checked","", time() - 3600,"/"); 
+                    }
                     if($_SESSION['current']) {
                         header("location:booking.php");
                     } else {
