@@ -137,11 +137,17 @@ include_once './tiles.class.php';
                             </ul>
                         </div>
                     </div>
-
+                    <table class="table table-bordered table-striped table-striped">
+                            <tr>
+                            <td><canvas id="line_canvas"></canvas><br>
+                            <b>Line Chart</b>
+                            </td>
+                            </tr>
+                            </table>
                 </div>
-                        </div>
+                  </div>
                     </div>
-                </div>
+                          
             </div>
             <footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com 
             </footer>
@@ -149,4 +155,45 @@ include_once './tiles.class.php';
     </div> 
 </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){
+ $.ajax({
+  url: "getdataforchart.php",
+  method: "GET",
+  success: function(data) {
+   var data = JSON.parse(data);
+   var data_row = [];
+   var date=[];
+   for(var i in data) {
+    data_row.push(data[i].data);
+    date.push(data[i].date)
+   }
+   console.log(date);
+   var chartdata = {
+    labels:date,
+    datasets : [
+     {
+      label: 'Rides:',
+      backgroundColor: 'rgba(200, 200, 200, 0.75)',
+      borderColor: 'rgba(200, 200, 200, 0.75)',
+      hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+      hoverBorderColor: 'rgba(200, 200, 200, 1)',
+      data: data_row
+     }
+    ]
+   };
+   var line_canvas = $("#line_canvas");
+   var lineGraph = new Chart(line_canvas, {
+    type: 'line',
+    data: chartdata
+   });
+  },
+  error: function(data) {
+   console.log(data);
+  }
+ });
+});
+</script>
 

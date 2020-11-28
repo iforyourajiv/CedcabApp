@@ -159,7 +159,13 @@ class Ride
                 return false;
             }
         }
-
+        public function rideChart(){
+            $query=mysqli_query($this->conn,"SELECT ride_date, count(*) FROM tbl_ride group by ride_date");
+            $result=$query->num_rows;
+            if($result>0){
+                return $query;
+            }
+        }
         
 }
 

@@ -16,12 +16,11 @@ if(isset($_SESSION['username'])){
         header("location:../index.php");
     }
 }
-
 if(isset($_GET['unblock'])) {
     $id=$_GET['unblock'];
     $isDone=$user->unblockUser($id);
     if($isDone) {
-        header("location:pendingUser.php");
+            header("location:pendingUser.php");
     } else {
         echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
     }

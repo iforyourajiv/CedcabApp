@@ -17,6 +17,7 @@ if(isset($_SESSION['username'])){
 include_once './user.class.php';
 
 $user=new User();
+$check="";
 if (isset($_POST['submit'])) {
 $username=$_POST['username'];
 $password=$_POST['password'];
@@ -24,14 +25,11 @@ $remember=$_POST['check'];
 $user->login($username,$password,$remember);
 }
 
-if(isset($_COOKIE['user']) && isset($_COOKIE['password']) && isset($_COOKIE['checked'])){
+if(isset($_COOKIE['user']) && isset($_COOKIE['checked'])){
 $cookieUser=$_COOKIE['user'];
-$cookiePassword=$_COOKIE['password'];
 $check="checked";
 } else {
 	$cookieUser="";
-	$cookiePassword="";
-	$check="";
 }
 
 
@@ -67,7 +65,7 @@ $check="checked";
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" name="password" value="<?php echo $cookiePassword ?>" class="form-control" placeholder="password">
+						<input type="password" name="password" value="" class="form-control" placeholder="password">
 						<br>
 					</div>
 					
