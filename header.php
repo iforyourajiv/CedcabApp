@@ -10,6 +10,7 @@ if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
     header("location:admin/index.php");
 }
 
+
 if(!isset($_SESSION['username'])){
 $html="<a href='index.php' class='nav-item'>Home</a>";
 $html.="<a href='login.php' class='nav-item'>Login</a>";
@@ -19,6 +20,7 @@ $html.="<a href='#' class='nav-item'>Services</a>";
     $html="<h4>Welcome :".$_SESSION['username']."</h4>";
     $html.="<a href='index.php' class='nav-item'>Home</a>";
     $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
+    $html.="<a href='changePassword.php' class='nav-item'>Change Password</a>";
     $html.="<li class='nav-item dropdown'>
                 <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                 Ride Records

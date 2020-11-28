@@ -1,5 +1,12 @@
 <?php
 
+if (!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['username'])){
+    header('location:index.php');
+}
 include_once './ride.class.php';
 
 $ride=new Ride();

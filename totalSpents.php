@@ -1,3 +1,15 @@
+<?php
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
+if(!isset($_SESSION['username'])){
+  header('location:index.php');
+}
+
+?>
 <?php include_once './header.php' ?>
 <section id="main">
 <div class="container-fluid bg-overlay">

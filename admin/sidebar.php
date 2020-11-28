@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
     <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
 <body>
@@ -20,41 +21,40 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php"
                                 aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu font-24">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-car" aria-hidden="true"></i>
                                 <span class="hide-menu font-18 text-dark">Rides</span>
                             </a>
                             <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="rideRequest.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-list-ul" aria-hidden="true"></i>
                                 <span class="hide-menu">Pending Rides</span>
                             </a>
                             </li>
                             <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="pastRides.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-check" aria-hidden="true"></i>
                                 <span class="hide-menu">Completed Rides</span>
                             </a>
                             </li>
                             <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="canceledRides.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-window-close" aria-hidden="true"></i>
                                 <span class="hide-menu">Canceled Rides</span>
                             </a>
                             </li>
                             <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="allRides.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-globe" aria-hidden="true"></i>
                                 <span class="hide-menu">All Rides</span>
                             </a>
                             </li>
@@ -63,21 +63,21 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
-                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
                                 <span class="hide-menu font-18 text-dark">Manage Location</span>
                             </a>
                         </li>
                         <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="manageLocation.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-compass" aria-hidden="true"></i>
                                 <span class="hide-menu">Location List</span>
                             </a>
                             </li>
                             <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="addLocation.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">Add New Location</span>
                             </a>
                             </li>
@@ -85,7 +85,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
-                                <i class="fa fa-font" aria-hidden="true"></i>
+                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu font-18 text-dark">Manage User
                                 </span>
                             </a>
@@ -93,7 +93,7 @@
                         <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="pendingUser.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-user-times" aria-hidden="true"></i>
                                 <span class="hide-menu">Pending User request</span>
                             </a>
                             </li>
@@ -107,7 +107,7 @@
                             <li class="sidebar-item ml-3">
                             <a class="sidebar-link" href="allUser.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">All User</span>
                             </a>
                             </li>

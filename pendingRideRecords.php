@@ -1,3 +1,17 @@
+<?php
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['username'])){
+    header('location:index.php');
+  }
+
+
+?>
+
+
 <?php include_once './header.php' ?>
 <section id="main">
 <div class="container-fluid bg-overlay">
@@ -19,8 +33,11 @@
     <table id="tbl">
         <th>From </th>
         <th>To </th>
-        <th>Ride Date <a href="pendingRideRecords.php?status=1&sort=ASC&for=ride_date"><i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
-        <a href="pendingRideRecords.php?status=1&sort=DESC&for=ride_date"><i class="fa fa-caret-up" aria-hidden="true"></i>  </a>
+        <th>Ride Date
+         <a href="pendingRideRecords.php?status=1&sort=ASC&for=ride_date">
+        <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+        <a href="pendingRideRecords.php?status=1&sort=DESC&for=ride_date">
+        <i class="fa fa-caret-up" aria-hidden="true"></i>  </a>
         </th>
         <th>Cab Type</th>
         <th>Total Distance</th>
@@ -155,36 +172,41 @@
             
             else {
                 $data=$record->ridePendingRecords();
-                foreach($data as $element) {
-                    $fromLocation=$element['fromLocation'];
-                    $toLocation=$element['toLocation'];
-                    $rideDate=$element['ride_date'];
-                    $cabType=$element['cabtype'];
-                    $distance=$element['total_distance'];
-                    $luggage=$element['luggage'];
-                    $fare=$element['total_fare'];
-                    $status=$element['status'];
-                    $currentStatus="";
-                    if($status==1){
-                        $currentStatus="Pending";
-                    } else if($status==2){
-                        $currentStatus="Completed";
-                    } else if($status==0) {
-                        $currentStatus="Cancelled";
+                if($data) {
+                    foreach($data as $element) {
+                        $fromLocation=$element['fromLocation'];
+                        $toLocation=$element['toLocation'];
+                        $rideDate=$element['ride_date'];
+                        $cabType=$element['cabtype'];
+                        $distance=$element['total_distance'];
+                        $luggage=$element['luggage'];
+                        $fare=$element['total_fare'];
+                        $status=$element['status'];
+                        $currentStatus="";
+                        if($status==1){
+                            $currentStatus="Pending";
+                        } else if($status==2){
+                            $currentStatus="Completed";
+                        } else if($status==0) {
+                            $currentStatus="Cancelled";
+                        }
+        
+                        $html="<tr>";
+                        $html.="<td>$fromLocation</td>";
+                        $html.="<td>$toLocation</td>";
+                        $html.="<td>$rideDate</td>";
+                        $html.="<td>$cabType</td>";
+                        $html.="<td>$distance</td>";
+                        $html.="<td>$luggage</td>";
+                        $html.="<td>&#x20B9;&nbsp;$fare</td>";
+                        $html.="<td>$currentStatus</td>";
+                        $html.="</tr>";
+                        echo $html;
                     }
-    
-                    $html="<tr>";
-                    $html.="<td>$fromLocation</td>";
-                    $html.="<td>$toLocation</td>";
-                    $html.="<td>$rideDate</td>";
-                    $html.="<td>$cabType</td>";
-                    $html.="<td>$distance</td>";
-                    $html.="<td>$luggage</td>";
-                    $html.="<td>&#x20B9;&nbsp;$fare</td>";
-                    $html.="<td>$currentStatus</td>";
-                    $html.="</tr>";
-                    echo $html;
+                } else {
+                    echo "<h3>No Record Found</h3>";
                 }
+                
             }
 
             

@@ -20,6 +20,7 @@ include_once './tiles.class.php';
 <?php include_once './sidebar.php'?>
         <div class="container-fluid">
         <div class="row justify-content-center">
+          <a href="rideRequest.php" class="text-purple">
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Ride Requests</h3>
@@ -40,8 +41,11 @@ include_once './tiles.class.php';
                                 <span class="counter text-success"><?php echo $data ?></span></li>
                             </ul>
                         </div>
+                      </a>
                     </div>
+                  
                     <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <a href="pastRides.php" class="text-success">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Completed Rides</h3>
                             <ul class="list-inline two-part d-flex mb-0">
@@ -55,8 +59,11 @@ include_once './tiles.class.php';
                                 <li class="ml-auto"><span class="counter text-purple"><?php echo $data ?></span></li>
                             </ul>
                         </div>
+                        </a>
                     </div>
+                 
                     <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <a href="canceledRides.php" class="text-danger">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Cancelled Rides</h3>
                             <ul class="list-inline two-part d-flex mb-0">
@@ -76,9 +83,11 @@ include_once './tiles.class.php';
                                 </li>
                             </ul>
                         </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <a href="pendingUser.php" class="text-info">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Pending User For Approval</h3>
                             <ul class="list-inline two-part d-flex mb-0">
@@ -92,9 +101,11 @@ include_once './tiles.class.php';
                                 <li class="ml-auto"><span class="counter text-danger"><?php echo $data ?></span></li>
                             </ul>
                         </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <a href="allUser.php" class="text-secondary">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">User's In Cedcabs</h3>
                             <ul class="list-inline two-part d-flex mb-0">
@@ -108,6 +119,7 @@ include_once './tiles.class.php';
                                 <li class="ml-auto"><span class="counter text-success"><?php echo $data ?></span></li>
                             </ul>
                         </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-12 col-sm-12 col-xs-12">

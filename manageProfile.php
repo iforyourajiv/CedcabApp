@@ -1,9 +1,19 @@
 <?php include_once './header.php' ?>
 <?php 
 include_once './user.class.php';
+
+if (!isset($_SESSION))
+{
+    session_start();
+}
+
+if(!isset($_SESSION['username'])){
+  header('location:index.php');
+}
+
+
 $userData = new User();
 $data=$userData->fetchUserDetail();
-
 if(isset($_POST['submit'])){
 $id=$_POST['id'];
 $fullname=$_POST['fullname'];

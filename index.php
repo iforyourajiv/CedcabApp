@@ -1,5 +1,4 @@
 <?php include_once './header.php' ?>
-
 <section id="main">
             <div class="container-fluid bg-overlay">
                 <h1>Book a City Texi to Your Destination in town</h1>

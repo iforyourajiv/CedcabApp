@@ -39,6 +39,8 @@ class Ride
             $result=$query->num_rows;
             if($result>0) {
                 return $query;   
+            } else {
+                return false;
             }
         }
 
@@ -47,7 +49,10 @@ class Ride
             $result=$query->num_rows;
             if($result>0) {
                 return $query;   
+            } else{
+                return false;
             }
+           
         }
 
         public function rideCanceledRecords(){
@@ -55,6 +60,8 @@ class Ride
             $result=$query->num_rows;
             if($result>0) {
                 return $query;   
+            } else {
+                return false;
             }
         }
 

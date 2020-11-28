@@ -59,7 +59,9 @@ $user->login($username,$password);
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input type="password" name="password" class="form-control" placeholder="password">
+						<br>
 					</div>
+					
 					<div class="form-group">
 						<input type="submit" name="submit" value="Login" class="btn float-right login_btn">
 					</div>

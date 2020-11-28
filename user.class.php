@@ -4,6 +4,7 @@ if (!isset($_SESSION))
     session_start();
 }
 
+
 include_once './define.php';
 
 class User
@@ -101,6 +102,22 @@ class User
         $query=mysqli_query($this->conn,"UPDATE tbl_user SET name='$fullname',email='$email',mobile='$mobile' WHERE user_id='$this->user_id'");
         return $query;
     }
+
+    public function updatePassword($newPassword) {
+        $enc_password=md5($newPassword);
+        $this->user_id=$_SESSION['user_id'];
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET password='$enc_password' WHERE user_id='$this->user_id'");
+        if($query){
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
+  
+
+
 
     public function fetchUsersBlocked(){
         $query=mysqli_query($this->conn,"SELECT *FROM tbl_user where isblock='1' AND is_admin='0'");
@@ -227,6 +244,36 @@ class User
                 return false;
             }
         
+    }
+
+    function sortBlockedUser($status,$sort,$action) {
+        $query =mysqli_query($this->conn,"SELECT * FROM `tbl_user` WHERE `isblock`='". $status."' AND `is_admin`='0' ORDER BY `$action` $sort");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    function sortApprovedUser($status,$sort,$action) {
+        $query =mysqli_query($this->conn,"SELECT * FROM `tbl_user` WHERE `isblock`='". $status."' AND `is_admin`='0' ORDER BY `$action` $sort");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    function sortAllUser($sort,$action) {
+        $query =mysqli_query($this->conn,"SELECT * FROM `tbl_user` WHERE `is_admin`='0' ORDER BY `$action` $sort");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return false;
+        }
     }
 
 }

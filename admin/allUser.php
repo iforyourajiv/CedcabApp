@@ -35,17 +35,53 @@ if(isset($_GET['block'])) {
                             <div class="table-responsive">
                                 <table class="table no-wrap">
                                     <thead>
-                                        <tr>
-                                            <th class="border-top-0">User ID</th>
-                                            <th class="border-top-0">User Name</th>
-                                            <th class="border-top-0">Full Name</th>
-                                            <th class="border-top-0">Email</th>
+                                    <tr>
+                                        <th class="border-top-0">User ID</th>
+                                            <th class="border-top-0">User Name
+                                            <a href="allUser.php?sort=ASC&for=username">
+                                             <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+                                             <a href="allUser.php?sort=DESC&for=username">
+                                             <i class="fa fa-caret-up" aria-hidden="true"></i>  </a></th>
+                                            <th class="border-top-0">Full Name
+                                             <a href="allUser.php?sort=ASC&for=name">
+                                             <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+                                             <a href="allUser.php?sort=DESC&for=name">
+                                             <i class="fa fa-caret-up" aria-hidden="true"></i>  </a></th>
+                                            <th class="border-top-0">Email
+                                            <a href="allUser.php?sort=ASC&for=email">
+                                             <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+                                             <a href="allUser.php?sort=DESC&for=email">
+                                             <i class="fa fa-caret-up" aria-hidden="true"></i>  </a></th>
                                             <th class="border-top-0">Mobile</th>
-                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
+                                        include_once '../user.class.php';
+                                        $recordSort=new User();
+                                          if(isset($_GET['sort'])) {
+                                            $sort=$_GET['sort'];
+                                            $action=$_GET['for'];
+                                            $data=$recordSort->sortAllUser($sort,$action);
+                                         foreach($data as $element) {
+                                             $userID= $element['user_id'];
+                                             $username= $element['username'];
+                                             $fullname= $element['name'];
+                                             $email= $element['email'];
+                                             $mobile= $element['mobile'];
+                                             // $status=$data['status'];
+                                             // $currentStatus="";
+                                             $html="<tr>";
+                                             $html.="<td class='text-dark'>$userID</td>";
+                                             $html.="<td class='text-dark'>$username</td>";
+                                             $html.="<td class='text-dark'>$fullname</td>";
+                                             $html.="<td class='text-dark'>$email</td>";
+                                             $html.="<td class='text-dark'>$mobile</td>";
+                                             $html.="</tr>"; 
+                                             echo $html; 
+                                         } 
+ 
+                                          }else {
                                         $data=$user->allUsers();
                                         foreach($data as $element) {
                                             $userID= $element['user_id'];
@@ -64,6 +100,7 @@ if(isset($_GET['block'])) {
                                             $html.="</tr>"; 
                                             echo $html; 
                                         }
+                                    }
                                         
                                        ?>
                                     
