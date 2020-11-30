@@ -17,7 +17,7 @@ if(!isset($_SESSION['username'])){
                 <h1>
         Canceled Rides
     </h1>
-    <form method="post" action="">
+    <form method="post" action="canceledRideRecord.php">
     <lable>Start Date:</lable><input type="date" name="startDate">
     <lable>End Date :</lable><input type="date" name="endDate">
     <input type="submit" name="filterdate" value="Filter By Date">
@@ -124,7 +124,7 @@ if(!isset($_SESSION['username'])){
                 } else if(isset($_POST['filterweek'])){
                     $filterWeek=new User();
                     $weekSelected=$_POST['weekSelected'];
-                    $data=$filterWeek->filterCanceledUserRideWeek($weekSelected);
+                    $data=$filterWeek->filterCanceledUcanceledRideRecordserRideWeek($weekSelected);
                     if($data){
                         foreach($data as $element) {
                             $fromLocation=$element['fromLocation'];

@@ -17,8 +17,8 @@ $html.="<a href='login.php' class='nav-item'>Login</a>";
 $html.="<a href='#' class='nav-item'>About Us</a>";
 $html.="<a href='#' class='nav-item'>Services</a>";
 } else {
-    $html="<h4>Welcome :".$_SESSION['username']."</h4>";
-    $html.="<a href='index.php' class='nav-item'>Home</a>";
+   
+    $html="<a href='index.php' class='nav-item'>Home</a>";
     $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
     $html.="<a href='changePassword.php' class='nav-item'>Change Password</a>";
     $html.="<li class='nav-item dropdown'>
@@ -32,7 +32,8 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 </div>
                 </li>";
     $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
-    $html.="<a href='./logout.php' class='btn btn-danger p-3 ml-3'>Logout</a>";
+    $html.="<p class='m-2'>Welcome :".$_SESSION['username']."</p>";
+    $html.="<a href='./logout.php' class='btn btn-danger mt-1'>Logout</a>";
 }
 
 ?>

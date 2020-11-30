@@ -1,6 +1,7 @@
 <?php
 include_once '../ride.class.php';
 include_once '../user.class.php';
+require_once "Mail.php";
 $user=new User();
 if (!isset($_SESSION))
 {
@@ -18,9 +19,30 @@ if(isset($_SESSION['username'])){
 }
 if(isset($_GET['unblock'])) {
     $id=$_GET['unblock'];
+    $email=$_GET['email'];
     $isDone=$user->unblockUser($id);
     if($isDone) {
-            header("location:pendingUser.php");
+        error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_STRICT);
+        $host = "ssl://smtp.gmail.com";
+        $username = "sddrajiv@gmail.com";
+        $password = "9931392583";
+        $port = "465";
+        $to =$email;
+        $email_from =$username;
+        $email_subject = "Registration Request Approved:" ;
+        $email_body = "Congratulations !! Your Registration has been Approved By CedCab. Now you can Login" ;
+        $email_address = "sddrajiv@gmail.com";
+        
+        $headers = array ('From' => $email_from, 'To' => $to, 'Subject' => $email_subject, 'Reply-To' => $email_address);
+        $smtp = Mail::factory('smtp', array ('host' => $host, 'port' => $port, 'auth' => true, 'username' => $username, 'password' => $password));
+        $mail = $smtp->send($to, $headers, $email_body);
+        if (PEAR::isError($mail)) {
+        echo("<p>" . $mail->getMessage() . "</p>");
+        } else {
+        header("location:pendingUser.php");
+        echo("<h3>Email Sent successfully sent!</h3>");
+        }
+            
     } else {
         echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
     }
@@ -78,7 +100,7 @@ if(isset($_GET['unblock'])) {
                                             $html.="<td class='text-danger'>$fullname</td>";
                                             $html.="<td class='text-danger'>$email</td>";
                                             $html.="<td class='text-danger'>$mobile</td>";
-                                            $html.="<td><a href='pendingUser.php?unblock=$userID' class='btn btn-success'>UNBLOCK</a></td>";
+                                            $html.="<td><a href='pendingUser.php?unblock=$userID&email=$email' class='btn btn-success'>UNBLOCK</a></td>";
                                             $html.="</tr>"; 
                                             echo $html; 
                                         } 
@@ -86,25 +108,30 @@ if(isset($_GET['unblock'])) {
                                          }
                                          else {
                                             $data=$user->fetchUsersBlocked();
-                                            foreach($data as $element) {
-                                                $userID= $element['user_id'];
-                                                $username= $element['username'];
-                                                $fullname= $element['name'];
-                                                $email= $element['email'];
-                                                $mobile= $element['mobile'];
-                                                // $status=$data['status'];
-                                                // $currentStatus="";
-                                                $html="<tr>";
-                                                $html.="<td class='text-danger'>$userID</td>";
-                                                $html.="<td class='text-danger'>$username</td>";
-                                                $html.="<td class='text-danger'>$fullname</td>";
-                                                $html.="<td class='text-danger'>$email</td>";
-                                                $html.="<td class='text-danger'>$mobile</td>";
-                                                $html.="<td><a href='pendingUser.php?unblock=$userID' class='btn btn-success'>UNBLOCK</a></td>";
-                                                $html.="</tr>"; 
-                                                echo $html; 
-                                            } 
-                                         }
+                                            if($data){
+                                                foreach($data as $element) {
+                                                    $userID= $element['user_id'];
+                                                    $username= $element['username'];
+                                                    $fullname= $element['name'];
+                                                    $email= $element['email'];
+                                                    $mobile= $element['mobile'];
+                                                    // $status=$data['status'];
+                                                    // $currentStatus="";
+                                                    $html="<tr>";
+                                                    $html.="<td class='text-danger'>$userID</td>";
+                                                    $html.="<td class='text-danger'>$username</td>";
+                                                    $html.="<td class='text-danger'>$fullname</td>";
+                                                    $html.="<td class='text-danger'>$email</td>";
+                                                    $html.="<td class='text-danger'>$mobile</td>";
+                                                    $html.="<td><a href='pendingUser.php?unblock=$userID&email=$email' class='btn btn-success'>UNBLOCK</a></td>";
+                                                    $html.="</tr>"; 
+                                                    echo $html; 
+                                                } 
+                                            } else {
+                                                echo "<h3>No Record Found</h3>";
+                                            }
+                                            
+                                         } 
                                        
                                        ?>
                                     </tbody>

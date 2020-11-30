@@ -105,8 +105,6 @@
             let cabType = $("#cab option:selected").val();
             let luggage = $("#luggage").val();
             let action  ="calculate";
-
-
             if (pickup == "" || drop == "" || cabType == "") {
                 alert("Plz fill All the Fields");
             } else {

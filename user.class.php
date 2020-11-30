@@ -164,7 +164,7 @@ class User
     public function unblockUser($user_id){
         $query=mysqli_query($this->conn,"UPDATE tbl_user SET isblock='0' WHERE user_id='$user_id'");
         if($query) {
-            return true;
+            return $query;
         } else {
             return false;
         }

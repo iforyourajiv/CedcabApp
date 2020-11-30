@@ -170,14 +170,13 @@ include_once './tiles.class.php';
     data_row.push(data[i].data);
     date.push(data[i].date)
    }
-   console.log(date);
    var chartdata = {
     labels:date,
     datasets : [
      {
       label: 'Rides:',
-      backgroundColor: 'rgba(200, 200, 200, 0.75)',
-      borderColor: 'rgba(200, 200, 200, 0.75)',
+      backgroundColor: 'rgba(0,128,0, 0.75)',
+      borderColor: 'rgba(0,0,205, 0.75)',
       hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
       hoverBorderColor: 'rgba(200, 200, 200, 1)',
       data: data_row

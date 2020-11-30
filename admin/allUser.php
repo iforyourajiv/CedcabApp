@@ -83,23 +83,28 @@ if(isset($_GET['block'])) {
  
                                           }else {
                                         $data=$user->allUsers();
-                                        foreach($data as $element) {
-                                            $userID= $element['user_id'];
-                                            $username= $element['username'];
-                                            $fullname= $element['name'];
-                                            $email= $element['email'];
-                                            $mobile= $element['mobile'];
-                                            // $status=$data['status'];
-                                            // $currentStatus="";
-                                            $html="<tr>";
-                                            $html.="<td class='text-dark'>$userID</td>";
-                                            $html.="<td class='text-dark'>$username</td>";
-                                            $html.="<td class='text-dark'>$fullname</td>";
-                                            $html.="<td class='text-dark'>$email</td>";
-                                            $html.="<td class='text-dark'>$mobile</td>";
-                                            $html.="</tr>"; 
-                                            echo $html; 
+                                        if($data){
+                                            foreach($data as $element) {
+                                                $userID= $element['user_id'];
+                                                $username= $element['username'];
+                                                $fullname= $element['name'];
+                                                $email= $element['email'];
+                                                $mobile= $element['mobile'];
+                                                // $status=$data['status'];
+                                                // $currentStatus="";
+                                                $html="<tr>";
+                                                $html.="<td class='text-dark'>$userID</td>";
+                                                $html.="<td class='text-dark'>$username</td>";
+                                                $html.="<td class='text-dark'>$fullname</td>";
+                                                $html.="<td class='text-dark'>$email</td>";
+                                                $html.="<td class='text-dark'>$mobile</td>";
+                                                $html.="</tr>"; 
+                                                echo $html; 
+                                            }
+                                        } else {
+                                            echo "<h3>No Record Found</h3>";
                                         }
+                                        
                                     }
                                         
                                        ?>

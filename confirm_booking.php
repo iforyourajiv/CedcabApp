@@ -29,10 +29,11 @@ if($response) {
     $_SESSION['cabType']="";
     $_SESSION['luggage']="";
     $_SESSION['fare']="";
+    unset($_SESSION['current']);
     echo "Your Booking Order is Accepted!!!Thankyou";
   
 } else {
-    echo "Oops!!! Something Went Wrong,Book Not Accepted ')";
+    echo "Oops!!! Something Went Wrong,Booking Not Accepted ')";
 }
 
 ?>

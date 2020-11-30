@@ -57,32 +57,37 @@ if(isset($_GET['del_id'])){
                                     </thead>
                                     <tbody id="tablebody">
                                        <?php
-                                       $data=$rideRequest->allRides(); 
-                                       foreach($data as $element) {
-                                        $rideID=$element['ride_id'];
-                                        $fromLocation=$element['fromLocation'];
-                                        $toLocation=$element['toLocation'];
-                                        $rideDate=$element['ride_date'];
-                                        $cabType=$element['cabtype'];
-                                        $distance=$element['total_distance'];
-                                        $luggage=$element['luggage'];
-                                        $fare=$element['total_fare'];
-                                        // $status=$data['status'];
-                                        // $currentStatus="";
-                    
-                                        $html="<tr>";
-                                        $html.="<td class='text-purple'>$rideID</td>";
-                                        $html.="<td class='text-purple'>$fromLocation</td>";
-                                        $html.="<td class='text-purple'>$toLocation</td>";
-                                        $html.="<td class='text-purple'>$rideDate</td>";
-                                        $html.="<td class='text-purple'>$cabType</td>";
-                                        $html.="<td class='text-purple'>$distance</td>";
-                                        $html.="<td class='text-purple'>$luggage</td>";
-                                        $html.="<td class='text-purple'>$fare</td>";
-                                        $html.="<td><a href='allRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
-                                        $html.="</tr>"; 
-                                        echo $html; 
-                                       }
+                                       $data=$rideRequest->allRides();
+                                       if($data){
+                                        foreach($data as $element) {
+                                            $rideID=$element['ride_id'];
+                                            $fromLocation=$element['fromLocation'];
+                                            $toLocation=$element['toLocation'];
+                                            $rideDate=$element['ride_date'];
+                                            $cabType=$element['cabtype'];
+                                            $distance=$element['total_distance'];
+                                            $luggage=$element['luggage'];
+                                            $fare=$element['total_fare'];
+                                            // $status=$data['status'];
+                                            // $currentStatus="";
+                        
+                                            $html="<tr>";
+                                            $html.="<td class='text-purple'>$rideID</td>";
+                                            $html.="<td class='text-purple'>$fromLocation</td>";
+                                            $html.="<td class='text-purple'>$toLocation</td>";
+                                            $html.="<td class='text-purple'>$rideDate</td>";
+                                            $html.="<td class='text-purple'>$cabType</td>";
+                                            $html.="<td class='text-purple'>$distance</td>";
+                                            $html.="<td class='text-purple'>$luggage</td>";
+                                            $html.="<td class='text-purple'>$fare</td>";
+                                            $html.="<td><a href='allRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
+                                            $html.="</tr>"; 
+                                            echo $html; 
+                                           }
+                                       } else {
+                                        echo "<h3>No Record Found</h3>";
+                                    }
+                                      
                                        ?>
                                     </tbody>
                                 </table>

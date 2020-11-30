@@ -4,9 +4,9 @@ if (!isset($_SESSION))
 {
     session_start();
 }
-if(!isset($_SESSION['username'])){
-    header('location:index.php');
-  }
+// if(!isset($_SESSION['username'])){
+//     header('location:index.php');
+//   }
 
 include_once './define.php';
 
@@ -17,9 +17,8 @@ if(isset($_POST['action'])){
     $_SESSION['cabType']="";
     $_SESSION['luggage']="";
     $_SESSION['fare']="";
-    unset($_SESSION["current"]);
 }
-
+$_SESSION['current']="booking";
 // Getting Data With Post
 $cabType = $_POST['cabType'];
 $luggage = $_POST['luggage'];
@@ -86,7 +85,7 @@ $dropDistance=$dropData->dropdistance();
 //Calaculating Total Distance
 $totalDistance = abs($dropDistance - $pickupDistance);
 $_SESSION['totalDistance']=$totalDistance;
-$_SESSION['current']="booking";
+
 
 
 //Calculating Luggage

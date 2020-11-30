@@ -1,11 +1,18 @@
 body {
-    background-color: cornflowerblue;
+    background: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    height: 100%;
+    width: 100%;
     color: black;
     font-family: 'Roboto', sans-serif;
 }
 
 .logo {
-    margin-left: 45%;
+    margin-left: 5%;
 }
 
 .form-control {
@@ -42,6 +49,13 @@ body {
     color: #333;
     font-weight: bold;
     margin-top: 0;
+    text-align: center;
+}
+
+.signup-form p {
+    color: #333;
+    margin-top: 0;
+    text-align: center;
 }
 
 .signup-form hr {
@@ -71,14 +85,14 @@ body {
 .signup-form .btn:active {
     font-size: 16px;
     font-weight: bold;
-    background: #19aa8d !important;
+    background: #2294E1 !important;
     border: none;
-    min-width: 140px;
+    min-width: 100px;
 }
 
 .signup-form .btn:hover,
 .signup-form .btn:focus {
-    background: #179b81 !important;
+    background: #2294E1 !important;
 }
 
 .signup-form a {
@@ -91,7 +105,7 @@ body {
 }
 
 .signup-form form a {
-    color: #19aa8d;
+    color: #2294E1;
     text-decoration: none;
 }
 

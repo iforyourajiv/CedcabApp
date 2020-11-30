@@ -14,14 +14,17 @@ if(isset($_SESSION['username'])){
 
 
 
-include_once './user.class.php';
-
+include_once './user.class.php';  
 $user=new User();
-$check="";
 if (isset($_POST['submit'])) {
 $username=$_POST['username'];
 $password=$_POST['password'];
+if(isset($_POST['check'])){
 $remember=$_POST['check'];
+} else {
+	$remember=false;
+}
+
 $user->login($username,$password,$remember);
 }
 
@@ -58,19 +61,19 @@ $check="checked";
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" name="username" value="<?php echo $cookieUser ?>" class="form-control" placeholder="username">
+						<input type="text" name="username" value="<?php echo $cookieUser ?>" class="form-control" placeholder="username" required>
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" name="password" value="" class="form-control" placeholder="password">
+						<input type="password" name="password" value="" class="form-control" placeholder="password" required>
 						<br>
 					</div>
 					
 					<div class="form-group">
-						<input type="checkbox" name="check" <?php echo $check;?>> <h5 class="text-light text-inline">Remember Me</h5>
+						<input type="checkbox" name="check" <?php if(isset($_COOKIE['checked'])){echo $check;}?> > <h5 class="text-light text-inline">Remember Me</h5>
 						<input type="submit" name="submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>

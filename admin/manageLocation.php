@@ -45,26 +45,30 @@ if(isset($_GET['del_id'])){
                                     <tbody>
                                        <?php
                                        $data=$location->displayLocationAdmin();
-                                            foreach($data as $element){
-                                                $locationID=$element['id'];
-                                                $locationName=$element['name'];
-                                                $distance=$element['distance'];
-                                                $available=$element['is_available'];
-                                                $currentStatus="";
-                                                if($available=="0"){
-                                                    $currentStatus="NOT AVAILABLE";
-                                                } else {
-                                                    $currentStatus="AVAILABLE";
-                                                }
-                                
-                                                $html="<tr>";
-                                                $html.="<td class='text-dark'>$locationName</td>";
-                                                $html.="<td class='text-dark'>$distance</td>";
-                                                $html.="<td class='text-dark'>$currentStatus</td>";
-                                                $html.="<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
-                                                            <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
-                                                $html.="</tr>"; 
-                                                echo $html; 
+                                       if($data){
+                                        foreach($data as $element){
+                                            $locationID=$element['id'];
+                                            $locationName=$element['name'];
+                                            $distance=$element['distance'];
+                                            $available=$element['is_available'];
+                                            $currentStatus="";
+                                            if($available=="0"){
+                                                $currentStatus="NOT AVAILABLE";
+                                            } else {
+                                                $currentStatus="AVAILABLE";
+                                            }
+                            
+                                            $html="<tr>";
+                                            $html.="<td class='text-dark'>$locationName</td>";
+                                            $html.="<td class='text-dark'>$distance</td>";
+                                            $html.="<td class='text-dark'>$currentStatus</td>";
+                                            $html.="<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
+                                                        <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
+                                            $html.="</tr>"; 
+                                            echo $html; 
+                                        } 
+                                       }else {
+                                                echo "<h3>No Record Found</h3>";
                                             }
 
                                        ?>

@@ -160,7 +160,7 @@ class Ride
             }
         }
         public function rideChart(){
-            $query=mysqli_query($this->conn,"SELECT ride_date, count(*) FROM tbl_ride group by ride_date");
+            $query=mysqli_query($this->conn,"SELECT ride_date, count(*) FROM tbl_ride WHERE status='2' group by ride_date");
             $result=$query->num_rows;
             if($result>0){
                 return $query;
