@@ -25,7 +25,7 @@ $isDone=$location->addLocation($locationName,$locationDistance,$isavailable);
 if($isDone){
     header("location:manageLocation.php");
 }  else {
-    echo "<script>alert('Something Went Wrong,Location Not Added ')</script>";
+    echo "<script>alert('Location Already Exist ')</script>";
 }
 
 }

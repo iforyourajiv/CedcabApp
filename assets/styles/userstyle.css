@@ -3,9 +3,10 @@ body {
     bottom: 0;
 }
 
-.navbar-light .navbar-nav {
+
+/* .navbar-light .navbar-nav {
     top: -28px;
-}
+} */
 
 .navbar-light .navbar-nav .nav-item {
     text-decoration: none;
@@ -24,7 +25,20 @@ body {
 }
 
 .navbar-light .navbar-nav .dropdown-menu {
-    background: transparent;
+    background: white;
+    border: none;
+}
+
+.navbar-light .navbar-nav .dropdown-menu .dropdown-item {
+    color: black;
+    background-color: white;
+    border: none;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.navbar-light .navbar-nav .dropdown-menu .dropdown-item:hover {
+    color: black;
     border: none;
 }
 

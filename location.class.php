@@ -37,13 +37,19 @@ class Location{
     }
 
     public function addLocation($locationName,$locationDistance,$isavailbale) {
-        $query=mysqli_query($this->conn,"INSERT INTO tbl_location (name,distance,is_available)
-                            VALUES('$locationName','$locationDistance','$isavailbale')");
-        if($query) {
-            return true;
-        } else {
+        $find=mysqli_query($this->conn,"SELECT name FROM tbl_location WHERE name='$locationName'");
+        $result=$find->num_rows;
+        if($result>0){
             return false;
+        }  else {
+            $query=mysqli_query($this->conn,"INSERT INTO tbl_location (name,distance,is_available)
+            VALUES('$locationName','$locationDistance','$isavailbale')");
+                if($query) {
+                    return true;
+                } 
         }
+
+       
     }
 
     public function fetchLocationDetail($id){  

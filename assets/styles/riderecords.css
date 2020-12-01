@@ -18,11 +18,12 @@ h1 {
 }
 
 #tbl tr {
-    background-color: black;
+    background-color: white;
+    color: black;
 }
 
 #tbl tr:hover {
-    background-color: blue;
+    background-color: #2195E2;
 }
 
 #tbl th {
@@ -30,8 +31,8 @@ h1 {
     text-align: center;
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #2195E2;
+    color: black;
 }
 
 #btn {

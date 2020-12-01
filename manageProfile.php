@@ -94,7 +94,7 @@ $mobile=$_POST['mobile'];
 					}
 				});
 				
-				$("#mobile").keydown(function(event) {
+				$("#number").keydown(function(event) {
 					k = event.which;
 					if ((k >= 96 && k <= 105) || k == 8) {
 					if ($(this).val().length == 10) {
