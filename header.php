@@ -12,13 +12,14 @@ if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
 
 
 if(!isset($_SESSION['username'])){
-$html="<a href='index.php' class='nav-item'>Home</a>";
+$html="<a href='./index.php' class='btn btn-primary '>Book cab</a>";
 $html.="<a href='login.php' class='nav-item'>Login</a>";
 $html.="<a href='#' class='nav-item'>About Us</a>";
 $html.="<a href='#' class='nav-item'>Services</a>";
 } else {
    
-    $html="<a href='index.php' class='nav-item'>Home</a>";
+    $html="<a href='./index.php' class='btn btn-danger'>Book cab</a>";
+    $html.="<a href='userdashboard.php' class='nav-item'>Dashboard</a>";
     $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
     $html.="<a href='changePassword.php' class='nav-item'>Change Password</a>";
     $html.="<li class='nav-item dropdown'>
@@ -33,7 +34,7 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 </li>";
     $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
     $html.="<p class='m-2'>Welcome :".$_SESSION['username']."</p>";
-    $html.="<a href='./logout.php' class='btn btn-danger mt-1'>Logout</a>";
+    $html.="<a href='./logout.php' class='btn btn-primary mt-1'>Logout</a>";
 }
 
 ?>
@@ -57,15 +58,12 @@ $html.="<a href='#' class='nav-item'>Services</a>";
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
-            <a href="#" class="navbar-brand"><img class="img-responsive" src="./assets/images/logo.png" height="65%" width="78%" /></a>
+            <a href="index.php" class="navbar-brand"><img class="img-responsive" src="./assets/images/logo.png" height="65%" width="78%" /></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <div class="navbar-nav">
-
-               
-     
                  <?php echo $html ?>   
                 </div>
             </div>

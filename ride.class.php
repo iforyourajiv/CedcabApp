@@ -4,7 +4,7 @@ if (!isset($_SESSION))
     session_start();
 }
 
-include_once './define.php';
+include_once './dbcon.php';
 
 class Ride
 {
@@ -43,6 +43,36 @@ class Ride
                 return false;
             }
         }
+
+        public function ridePendingRecordscount(){
+            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='1'");
+            $result=$query->num_rows;
+            if($result>0) {
+                return $result;   
+            } else {
+                return false;
+            }
+        }
+
+        public function rideCompletedRecordscount(){
+            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='2'");
+            $result=$query->num_rows;
+            if($result>0) {
+                return $result;   
+            } else {
+                return false;
+            }
+        }
+        public function rideCancelledRecordscount(){
+            $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='0'");
+            $result=$query->num_rows;
+            if($result>0) {
+                return $result;   
+            } else {
+                return false;
+            }
+        }
+
 
         public function rideCompletedRecords(){
             $query=mysqli_query($this->conn,"select *from tbl_ride where customer_user_id='$this->user_id' AND status='2'");

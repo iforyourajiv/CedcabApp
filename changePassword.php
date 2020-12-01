@@ -40,7 +40,7 @@ if($newPassword==$re_password) {
 ?>
 <section id="main">
 <div class="container-fluid bg-overlay">
-<h1>Book a City Texi to Your Destination in town</h1>
+<h1>Book a City Taxi to Your Destination in town</h1>
                 <h3>Choose from A Range of categories and prices</h3>
                 <h1>
         Manage Profile

@@ -13,7 +13,6 @@ if(isset($_SESSION['username'])){
 }
 
 
-
 include_once './user.class.php';  
 $user=new User();
 if (isset($_POST['submit'])) {
@@ -46,10 +45,24 @@ $check="checked";
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./assets/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/userstyle.css">
 </head>
 <body>
+
 <div class="container">
-    <img class="img-responsive justify-content-left mt-4"  src="./assets/images/logo.png">
+<nav class="navbar navbar-expand-md navbar-light bg-white">
+            <a href="index.php" class="navbar-brand"><img class="img-responsive" src="./assets/images/logo.png" height="65%" width="78%" /></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <div class="navbar-nav">  
+				<a href='./index.php' class='btn btn-primary '>Book cab</a>
+				<a href='#' class='nav-item'>About Us</a>
+				<a href='#' class='nav-item'>Services</a>
+                </div>
+            </div>
+        </nav>
 	<div class="d-flex justify-content-center h-90">
 		<div class="card">
 			<div class="card-header">
@@ -81,9 +94,6 @@ $check="checked";
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="signup.php">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center links">
-					<a href="#">Forgot your password?</a>
 				</div>
 			</div>
 		</div>

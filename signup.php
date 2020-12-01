@@ -128,22 +128,18 @@ if (isset($_POST['submit'])) {
 				});
 				
 				$("#mobile").keydown(function(event) {
-					k = event.which;
-					if ((k >= 96 && k <= 105) || k == 8) {
-					if ($(this).val().length == 10) {
-						if (k == 8) {
-						return true;
-						} else {
-						event.preventDefault();
-						return false;
-						}
-					} 
-					} else {
-						event.preventDefault();
-						return false;
-						}
-
-					});
+				var num = event.keyCode;
+				if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {
+						return;
+				}
+				if (event.shiftKey || event.ctrlKey || event.altKey) {
+					event.preventDefault();
+				} else if (num != 46 && num != 8) {
+					if (isNaN(parseInt(String.fromCharCode(event.which)))) {
+					event.preventDefault();
+				}
+				}
+				});
                 
             });
         </script>

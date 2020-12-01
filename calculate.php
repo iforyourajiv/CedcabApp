@@ -8,7 +8,7 @@ if (!isset($_SESSION))
 //     header('location:index.php');
 //   }
 
-include_once './define.php';
+include_once './dbcon.php';
 
 if(isset($_POST['action'])){
     $_SESSION['from']="";

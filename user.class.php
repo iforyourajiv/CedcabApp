@@ -5,7 +5,9 @@ if (!isset($_SESSION))
 }
 
 
-include_once './define.php';
+// Class For All User Activities
+
+include_once './dbcon.php';
 
 class User
 {
@@ -71,7 +73,7 @@ class User
                     if($_SESSION['current']) {
                         header("location:booking.php");
                     } else {
-                        header("location:index.php");
+                        header("location:userdashboard.php");
                     }
                     
                 }

@@ -22,7 +22,7 @@ if(isset($_POST['cancel'])){
 <?php include_once './header.php' ?>
 <section id="main">
 <div class="container-fluid bg-overlay">
-<h1>Book a City Texi to Your Destination in town</h1>
+<h1>Book a City Taxi to Your Destination in town</h1>
                 <h3>Choose from A Range of categories and prices</h3>
 <link rel="stylesheet" href="./assets/styles/invoice.css">
 <!-- Invoice -->
@@ -39,10 +39,7 @@ if(isset($_POST['cancel'])){
                                 <tbody><tr>
                                     <td class="content-block">
                                         <h2>Thanks for Riding With Cedcabs !!! Happy Journey</h2>
-                                        <form method="post" action="booking.php">
-                                        <input class="btn btn-block mt-2" id="bookingbtn" type="button" value="Confirm Booking" >
-                                        <input type="submit" name="cancel" class="btn-danger p-2" id="cancelbookingbtn" value="Cancel Booking"></input> 
-                                        </form>
+                                       
                                        
                                     </td>
                                 </tr>
@@ -79,18 +76,30 @@ if(isset($_POST['cancel'])){
                                                         </tr>
                                                         <tr class="total">
                                                             <td class="alignright" width="80%">Total Fare</td>
-                                                            <td class="alignright"><?php echo $_SESSION['fare'] ?></td>
+                                                            <td class="alignright">&#x20B9;<?php echo $_SESSION['fare'] ?></td>
+                                                            
                                                         </tr>
+                                                     
                                                     </tbody></table>
+                                                    <form method="post" action="booking.php">
+                                        <input class="btn btn-block mt-2" id="bookingbtn" type="button" value="Confirm Booking" >
+                                        <input type="submit" name="cancel" class="btn-danger btn-block p-2" id="cancelbookingbtn" value="Cancel Booking"></input> 
+                                        </form>
                                                 </td>
                                             </tr>
+                                           
                                         </tbody></table>
                                     </td>
+                                   
                                 </tr>
+                               
                             </tbody></table>
                         </td>
+                       
                     </tr>
+                    
                 </tbody></table>
+             
                </div>
         </td>
         <td></td>

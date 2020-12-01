@@ -1,7 +1,7 @@
 <?php include_once './header.php' ?>
 <section id="main">
             <div class="container-fluid bg-overlay">
-                <h1>Book a City Texi to Your Destination in town</h1>
+                <h1>Book a City Taxi to Your Destination in town</h1>
                 <h3>Choose from A Range of categories and prices</h3>
                 <div class="col-md-4 col-md-pull-7">
                     <div class="booking-form">

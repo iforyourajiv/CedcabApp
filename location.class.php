@@ -4,7 +4,7 @@ if (!isset($_SESSION))
     session_start();
 }
 
-include_once './define.php';
+include_once './dbcon.php';
 class Location{
 
     public $conn;

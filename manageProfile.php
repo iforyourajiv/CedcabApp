@@ -34,7 +34,7 @@ $mobile=$_POST['mobile'];
 ?>
 <section id="main">
 <div class="container-fluid bg-overlay">
-<h1>Book a City Texi to Your Destination in town</h1>
+<h1>Book a City Taxi to Your Destination in town</h1>
                 <h3>Choose from A Range of categories and prices</h3>
                 <h1>
         Manage Profile
@@ -94,24 +94,19 @@ $mobile=$_POST['mobile'];
 					}
 				});
 				
-				$("#number").keydown(function(event) {
-					k = event.which;
-					if ((k >= 96 && k <= 105) || k == 8) {
-					if ($(this).val().length == 10) {
-						if (k == 8) {
-						return true;
-						} else {
-						event.preventDefault();
-						return false;
-
-						}
-					}
-					} else {
-					event.preventDefault();
-					return false;
-					}
-
-					});
+        $("#number").keydown(function(event) {
+        var num = event.keyCode;
+        if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {
+            return;
+        }
+        if (event.shiftKey || event.ctrlKey || event.altKey) {
+            event.preventDefault();
+        } else if (num != 46 && num != 8) {
+            if (isNaN(parseInt(String.fromCharCode(event.which)))) {
+                event.preventDefault();
+            }
+        }
+    });
                 
             });
         </script>

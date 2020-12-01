@@ -31,7 +31,7 @@ if(isset($_GET['del_id'])){
 ?>
 <?php include_once './sidebar.php'?>
         <div class="container-fluid">
-            <h2 class="text-center">Canceled Rides</h2>
+            <h2 class="text-center">Cancelled Rides</h2>
                             <div class="table-responsive">
                                 <table class="table no-wrap">
                                 <label>Sort</label> <select id="sort" name="sort">
