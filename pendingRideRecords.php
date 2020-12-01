@@ -21,7 +21,7 @@ if(!isset($_SESSION['username'])){
                 <h1>
         Pending Rides
     </h1>
-    <form method="post" action="">
+    <form method="post" action="pendingRideRecords.php">
     <lable>Start Date:</lable><input type="date" name="startDate">
     <lable>End Date :</lable><input type="date" name="endDate">
     <input type="submit" name="filterdate" value="Filter By Date">

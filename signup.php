@@ -136,13 +136,12 @@ if (isset($_POST['submit'])) {
 						} else {
 						event.preventDefault();
 						return false;
-
 						}
-					}
+					} 
 					} else {
-					event.preventDefault();
-					return false;
-					}
+						event.preventDefault();
+						return false;
+						}
 
 					});
                 

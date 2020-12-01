@@ -141,7 +141,7 @@ class Ride
         }
 
         public function invoice(){
-            $query=mysqli_query($this->conn,"select * from tbl_ride where status='1' OR status='2' AND (is_deleted='0')");
+            $query=mysqli_query($this->conn,"select * from tbl_ride where status='2' AND (is_deleted='0')");
             $result=$query->num_rows;
             if($result>0) {
                 return $query;
@@ -159,6 +159,18 @@ class Ride
                 return false;
             }
         }
+
+        public function sortInvoice($status,$sort,$action){ 
+            $query =mysqli_query($this->conn,"SELECT * FROM `tbl_ride` WHERE `status`='". $status."' AND is_deleted='0'  ORDER BY CAST(`$action` AS SIGNED)  $sort");
+            $result=$query->num_rows;
+            if($result>0){
+                return $query;
+            } else {
+                return false;
+            }
+        }
+
+
         public function rideChart(){
             $query=mysqli_query($this->conn,"SELECT ride_date, count(*) FROM tbl_ride WHERE status='2' group by ride_date");
             $result=$query->num_rows;

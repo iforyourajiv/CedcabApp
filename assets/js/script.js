@@ -27,7 +27,23 @@ $(document).ready(function() {
             .removeAttr("disabled");
     });
 
-    $("#luggage").keyup(function(e) {
-        this.value = this.value.replace(/[^0-9\.]/, "");
+    $("#luggage").keydown(function(event) {
+        k = event.which;
+        if ((k >= 96 && k <= 105) || k == 8) {
+            if ($(this).val().length == 10) {
+                if (k == 8) {
+                    return true;
+                } else {
+                    event.preventDefault();
+                    return false;
+                }
+            }
+        } else {
+            event.preventDefault();
+            return false;
+        }
+
     });
+
+
 });

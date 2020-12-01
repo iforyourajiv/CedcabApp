@@ -44,7 +44,7 @@ if(isset($_GET['rideid'])){
                            
         <link rel="stylesheet" href="../assets/styles/invoice.css">
 <!-- Invoice -->
-<div id="display">
+<div >
 <table class="body-wrap">
     <tbody><tr>
         <td></td>
@@ -64,7 +64,7 @@ if(isset($_GET['rideid'])){
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="content-block">
+                                    <td class="content-block" id="display">
                                         <table class="invoice">
                                             <tr>
                                                 <td>
@@ -133,6 +133,8 @@ if(isset($_GET['rideid'])){
 <script>
 function printPageArea(display){
     var printContent = document.getElementById(display);
+   
+
     var WinPrint = window.open('', '', 'width=100,height=650');
     WinPrint.document.write(printContent.innerHTML);
     WinPrint.document.close();

@@ -39,48 +39,107 @@ if(isset($_GET['del_id'])){
                                             <th class="border-top-0">Ride ID</th>
                                             <th class="border-top-0">From</th>
                                             <th class="border-top-0">To</th>
-                                            <th class="border-top-0">Ride Date</th>
+                                            <th class="border-top-0">Ride Date 
+                                            <a href="invoiceTable.php?status=2&sort=ASC&for=ride_date">
+                                             <i class="fa fa-caret-down" aria-hidden="true"></i>  
+                                             </a>
+                                             <a href="invoiceTable.php?status=2&sort=DESC&for=ride_date">
+                                             <i class="fa fa-caret-up" aria-hidden="true"></i>  
+                                             </a>
+                                             </th>
                                             <th class="border-top-0">CabType</th>
-                                            <th class="border-top-0">Distance</th>
+                                            <th class="border-top-0">Distance
+                                            <a href="invoiceTable.php?status=2&sort=ASC&for=total_distance">
+                                             <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                            </a>
+                                             <a href="invoiceTable.php?status=2&sort=DESC&for=total_distance">
+                                             <i class="fa fa-caret-up" aria-hidden="true"></i></a>  </th>
                                             <th class="border-top-0">Luggage</th>
-                                            <th class="border-top-0">Fare</th>
+                                            <th class="border-top-0">Fare
+                                            <a href="invoiceTable.php?status=2&sort=ASC&for=total_fare">
+                                             <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                            </a>
+                                             <a href="invoiceTable.php?status=2&sort=DESC&for=total_fare">
+                                             <i class="fa fa-caret-up" aria-hidden="true"></i>
+                                             </a></th>
                                             <th class="border-top-0">Action</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody id="tablebody">
                                        <?php
-                                       $data=$rideRequest->invoice(); 
-                                       if($data){
-                                        foreach($data as $element) {
-                                            $rideID=$element['ride_id'];
-                                            $fromLocation=$element['fromLocation'];
-                                            $toLocation=$element['toLocation'];
-                                            $rideDate=$element['ride_date'];
-                                            $cabType=$element['cabtype'];
-                                            $distance=$element['total_distance'];
-                                            $luggage=$element['luggage'];
-                                            $fare=$element['total_fare'];
-                                            // $status=$data['status'];
-                                            // $currentStatus="";
-                        
-                                            $html="<tr>";
-                                            $html.="<td class='text-purple'>$rideID</td>";
-                                            $html.="<td class='text-purple'>$fromLocation</td>";
-                                            $html.="<td class='text-purple'>$toLocation</td>";
-                                            $html.="<td class='text-purple'>$rideDate</td>";
-                                            $html.="<td class='text-purple'>$cabType</td>";
-                                            $html.="<td class='text-purple'>$distance</td>";
-                                            $html.="<td class='text-purple'>$luggage</td>";
-                                            $html.="<td class='text-purple'>$fare</td>";
-                                            $html.="<td><a href='printInvoice.php?rideid=$rideID' class='btn btn-danger'>Print INVOICE</a></td>";
-                                            $html.="</tr>"; 
-                                            echo $html; 
-                                           }
-                                       } else {
-                                           echo "<h3>No Record Found</h3>";
-                                       }
-                                       
+                                        include_once '../ride.class.php';
+                                        $rideRequest=new Ride();
+                                        if(isset($_GET['status'])) {
+                                            $status=$_GET['status'];
+                                            $sort=$_GET['sort'];
+                                            $action=$_GET['for'];
+                                            $data=$rideRequest->sortInvoice($status,$sort,$action);
+                                            if($data){
+                                                foreach($data as $element) {
+                                                    $rideID=$element['ride_id'];
+                                                    $fromLocation=$element['fromLocation'];
+                                                    $toLocation=$element['toLocation'];
+                                                    $rideDate=$element['ride_date'];
+                                                    $cabType=$element['cabtype'];
+                                                    $distance=$element['total_distance'];
+                                                    $luggage=$element['luggage'];
+                                                    $fare=$element['total_fare'];
+                                                    // $status=$data['status'];
+                                                    // $currentStatus="";
+                                
+                                                    $html="<tr>";
+                                                    $html.="<td class='text-purple'>$rideID</td>";
+                                                    $html.="<td class='text-purple'>$fromLocation</td>";
+                                                    $html.="<td class='text-purple'>$toLocation</td>";
+                                                    $html.="<td class='text-purple'>$rideDate</td>";
+                                                    $html.="<td class='text-purple'>$cabType</td>";
+                                                    $html.="<td class='text-purple'>$distance</td>";
+                                                    $html.="<td class='text-purple'>$luggage</td>";
+                                                    $html.="<td class='text-purple'>$fare</td>";
+                                                    $html.="<td><a href='printInvoice.php?rideid=$rideID' class='btn btn-danger'>Print INVOICE</a></td>";
+                                                    $html.="</tr>"; 
+                                                    echo $html; 
+                                                   }
+                                               } else {
+                                                   echo "<h3>No Record Found</h3>";
+                                               }
+
+                                        } else{
+                                            $data=$rideRequest->invoice(); 
+                                            if($data){
+                                             foreach($data as $element) {
+                                                 $rideID=$element['ride_id'];
+                                                 $fromLocation=$element['fromLocation'];
+                                                 $toLocation=$element['toLocation'];
+                                                 $rideDate=$element['ride_date'];
+                                                 $cabType=$element['cabtype'];
+                                                 $distance=$element['total_distance'];
+                                                 $luggage=$element['luggage'];
+                                                 $fare=$element['total_fare'];
+                                                 // $status=$data['status'];
+                                                 // $currentStatus="";
+                             
+                                                 $html="<tr>";
+                                                 $html.="<td class='text-purple'>$rideID</td>";
+                                                 $html.="<td class='text-purple'>$fromLocation</td>";
+                                                 $html.="<td class='text-purple'>$toLocation</td>";
+                                                 $html.="<td class='text-purple'>$rideDate</td>";
+                                                 $html.="<td class='text-purple'>$cabType</td>";
+                                                 $html.="<td class='text-purple'>$distance</td>";
+                                                 $html.="<td class='text-purple'>$luggage</td>";
+                                                 $html.="<td class='text-purple'>$fare</td>";
+                                                 $html.="<td><a href='printInvoice.php?rideid=$rideID' class='btn btn-danger'>Print INVOICE</a></td>";
+                                                 $html.="</tr>"; 
+                                                 echo $html; 
+                                                }
+                                            } else {
+                                                echo "<h3>No Record Found</h3>";
+                                            }
+                                            
+                                        }
+
+                                      
                                        ?>
                                     </tbody>
                                 </table>
