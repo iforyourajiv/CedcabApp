@@ -91,14 +91,21 @@ class User
  }
  public function updatePassword($newPassword)
  {
-  $enc_password  = md5($newPassword);
   $this->user_id = $_SESSION['user_id'];
-  $query         = mysqli_query($this->conn, "UPDATE tbl_user SET password='$enc_password' WHERE user_id='$this->user_id'");
-  if ($query) {
-   return true;
+  $enc_password  = md5($newPassword);
+  $check         = mysqli_query($this->conn, "SELECT password FROM tbl_user WHERE user_id='$this->user_id' AND password='$enc_password'");
+  $result        = $check->num_rows;
+  if ($result>0) {
+   echo "<script>alert('New Password is Similar to Old Password')</script>";
   } else {
-   return false;
+   $query = mysqli_query($this->conn, "UPDATE tbl_user SET password='$enc_password' WHERE user_id='$this->user_id'");
+   if ($query) {
+    return true;
+   } else {
+    return false;
+   }
   }
+
  }
  public function fetchUsersBlocked()
  {
