@@ -18,13 +18,18 @@ if(!isset($_SESSION['username'])){
         Completed Rides
     </h1>
     <form method="post" action="completedRideRecords.php">
-    <lable>Start Date:</lable><input type="date" name="startDate">
-    <lable>End Date :</lable><input type="date" name="endDate">
-    <input type="submit" name="filterdate" value="Filter By Date">
-    <br>
-    <br>
-    <lable>Week :</lable><input type="week" name="weekSelected">
-    <input type="submit" name="filterweek" value="Filter By Week">
+    <div class="row mb-1">
+       <div class="col-md-6 col-lg-6 col-sm-6">
+            <lable>Start Date:</lable><input type="date" name="startDate">
+            <lable>End Date :</lable><input type="date" name="endDate">
+            <input type="submit" name="filterdate" value="Filter By Date">
+         </div>
+
+         <div class="col-md-6 col-lg-6 col-sm-6">
+         <lable>Week :</lable><input type="week" name="weekSelected">
+         <input type="submit" name="filterweek" value="Filter By Week">
+         </div>
+    </div>
     </form>
     <table id="tbl">
         <th>From </th>

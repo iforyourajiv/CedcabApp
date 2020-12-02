@@ -15,16 +15,21 @@ if(!isset($_SESSION['username'])){
                 <h3>Choose from A Range of categories and prices</h3>
                 <link rel="stylesheet" href="./assets/styles/riderecords.css">
                 <h1>
-        Canceled Rides
+        Cancelled Rides
     </h1>
     <form method="post" action="canceledRideRecord.php">
-    <lable>Start Date:</lable><input type="date" name="startDate">
-    <lable>End Date :</lable><input type="date" name="endDate">
-    <input type="submit" name="filterdate" value="Filter By Date">
-    <br>
-    <br>
-    <lable>Week :</lable><input type="week" name="weekSelected">
-    <input type="submit" name="filterweek" value="Filter By Week">
+    <div class="row mb-1">
+       <div class="col-md-6 col-lg-6 col-sm-6">
+            <lable>Start Date:</lable><input type="date" name="startDate">
+            <lable>End Date :</lable><input type="date" name="endDate">
+            <input type="submit" name="filterdate" value="Filter By Date">
+         </div>
+
+         <div class="col-md-6 col-lg-6 col-sm-6">
+         <lable>Week :</lable><input type="week" name="weekSelected">
+         <input type="submit" name="filterweek" value="Filter By Week">
+         </div>
+    </div>
     </form>
     <table id="tbl">
         <th>From </th>
@@ -163,6 +168,7 @@ if(!isset($_SESSION['username'])){
                 }  else {
                 $data=$record->rideCanceledRecords();
                 if($data){
+                    $total=0;
                     foreach($data as $element) {
                         $fromLocation=$element['fromLocation'];
                         $toLocation=$element['toLocation'];
@@ -172,6 +178,7 @@ if(!isset($_SESSION['username'])){
                         $luggage=$element['luggage'];
                         $fare=$element['total_fare'];
                         $status=$element['status'];
+                        $total+=$fare;
                         $currentStatus="";
                         if($status==1){
                             $currentStatus="Pending";
@@ -192,7 +199,8 @@ if(!isset($_SESSION['username'])){
                         $html.="<td>$currentStatus</td>";
                         $html.="</tr>";
                         echo $html;
-                    } }else {
+                    }   
+                 }else {
                         echo "<h3>No Record Found</h3>";
                     }
                 }

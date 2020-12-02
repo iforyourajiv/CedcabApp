@@ -17,8 +17,9 @@ if(!isset($_SESSION['username'])){
                 <h3>Choose from A Range of categories and prices</h3>
                 <div class="row ml-2 mt-3">
                 <div class="col-md-4">
-                <a href="pendingRideRecords.php">
+                
                 <div class="card" style="width: 18rem;">
+                <a href="pendingRideRecords.php">
                 <div class="card-body">
                 <h5 class="card-title text-center text-dark">Pending Rides</h5>
                 <p class="card-text text-center text-danger">
@@ -32,13 +33,15 @@ if(!isset($_SESSION['username'])){
                 ?>
                 </p>
                 </div>
-                </div>
-                </div>
                 </a>
+                </div>
+                </div>
+                
 
                 <div class="col-md-4">
-                <a href="completedRideRecords.php">
+                
                 <div class="card" style="width: 18rem;">
+                <a href="completedRideRecords.php">
                 <div class="card-body">
                 <h5 class="card-title text-center text-dark">Completed Rides</h5>
                 <p class="card-text text-center text-danger">
@@ -51,13 +54,15 @@ if(!isset($_SESSION['username'])){
                 ?>
                 </p>
                 </div>
-                </div>
-                </div>
                 </a>
+                </div>
+                </div>
+                
 
-                <a href="canceledRideRecord.php">
+               
                 <div class="col-md-4">
                 <div class="card" style="width: 18rem;">
+                <a href="canceledRideRecord.php">
                 <div class="card-body">
                 <h5 class="card-title text-center text-dark">Cancelled Rides</h5>
                 <p class="card-text text-center text-danger">
@@ -70,9 +75,10 @@ if(!isset($_SESSION['username'])){
                 ?>
                 </p>
                 </div>
-                </div>
-                </div>
                 </a>
+                </div>
+                </div>
+                
                 </div>
                 <div class="col-lg-11 col-sm-12 col-xs-12 ml-2 mt-4">
                         <div class="white-box analytics-info bg-white">

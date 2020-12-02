@@ -154,7 +154,7 @@ if ($cabType == 'CedMini')
     {
         $fare = $totalDistance * 14.50 + $fixedfare;
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else if ($totalDistance > 10 && $totalDistance <= 60)
@@ -164,7 +164,7 @@ if ($cabType == 'CedMini')
         $temp = $first10 + ($next50 * 13);
         $fare = $temp + $fixedfare;
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else if ($totalDistance > 60 && $totalDistance <= 160)
@@ -173,7 +173,7 @@ if ($cabType == 'CedMini')
         $next50 = $first10 - 50;
         $fare = $fixedfare + (10 * 14.50) + (50 * 13) + ($next50 * 11.20);
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else
@@ -183,7 +183,7 @@ if ($cabType == 'CedMini')
         $next100 = $next50 - 100;
         $fare = $fixedfare + (10 * 14.50) + (50 * 13) + (100 * 11.20) + ($next100 * 9.50);
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
 
@@ -197,7 +197,7 @@ if ($cabType == 'CedRoyal')
     {
         $fare = ($totalDistance * 15.50) + $fixedfare;
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else if ($totalDistance > 10 && $totalDistance <= 60)
@@ -207,7 +207,7 @@ if ($cabType == 'CedRoyal')
         $temp = $first10 + ($next50 * 14);
         $fare = $temp + $fixedfare;
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else if ($totalDistance > 60 && $totalDistance <= 160)
@@ -216,7 +216,7 @@ if ($cabType == 'CedRoyal')
         $next50 = $first10 - 50;
         $fare = $fixedfare + (10 * 15.50) + (50 * 14) + ($next50 * 12.20);
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else
@@ -226,7 +226,7 @@ if ($cabType == 'CedRoyal')
         $next100 = $next50 - 100;
         $fare = $fixedfare + (10 * 15.50) + (50 * 14) + (100 * 12.20) + ($next100 * 10.50);
         $fareWithLuggage = $fare + $luggageTotal;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
 
@@ -241,7 +241,7 @@ if ($cabType == 'CedSUV')
     {
         $fare = ($totalDistance * 16.50) + $fixedfare;
         $fareWithLuggage = $fare + $luggageTotal * 2;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else if ($totalDistance > 10 && $totalDistance <= 60)
@@ -251,7 +251,7 @@ if ($cabType == 'CedSUV')
         $temp = $first10 + ($next50 * 15);
         $fare = $temp + $fixedfare;
         $fareWithLuggage = $fare + $luggageTotal * 2;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else if ($totalDistance > 60 && $totalDistance <= 160)
@@ -260,7 +260,7 @@ if ($cabType == 'CedSUV')
         $next50 = $first10 - 50;
         $fare = $fixedfare + (10 * 16.50) + (50 * 15) + ($next50 * 13.20);
         $fareWithLuggage = $fare + $luggageTotal * 2;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
     else
@@ -270,7 +270,7 @@ if ($cabType == 'CedSUV')
         $next100 = $next50 - 100;
         $fare = $fixedfare + (10 * 16.50) + (50 * 15) + (100 * 13.20) + ($next100 * 11.50);
         $fareWithLuggage = $fare + $luggageTotal * 2;
-        $_SESSION['fare']=$fare;
+        $_SESSION['fare']=$fareWithLuggage;
         echo $fareWithLuggage;
     }
 

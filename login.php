@@ -57,7 +57,7 @@ $check="checked";
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <div class="navbar-nav">  
-				<a href='./index.php' class='btn btn-primary '>Book cab</a>
+				<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>
 				<a href='#' class='nav-item'>About Us</a>
 				<a href='#' class='nav-item'>Services</a>
                 </div>

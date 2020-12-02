@@ -40,6 +40,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 <img class="img-responsive logo justify-content-left mt-4"  src="./assets/images/logo.png">
+
 <div class="signup-form">
     <form action="signup.php" method="post">
 		<h2>Sign Up</h2>

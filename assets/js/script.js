@@ -27,6 +27,14 @@ $(document).ready(function() {
             .removeAttr("disabled");
     });
 
+    $("select#cab").change(function() {
+        $("#calculatedPrice").html("");
+    });
+
+    $("#luggage").keyup(function() {
+        $("#calculatedPrice").html("");
+    });
+
     $("#luggage").keydown(function(event) {
         var num = event.keyCode;
         if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {

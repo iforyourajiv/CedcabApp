@@ -12,13 +12,13 @@ if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
 
 
 if(!isset($_SESSION['username'])){
-$html="<a href='./index.php' class='btn btn-primary '>Book cab</a>";
+$html="<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
 $html.="<a href='login.php' class='nav-item'>Login</a>";
 $html.="<a href='#' class='nav-item'>About Us</a>";
 $html.="<a href='#' class='nav-item'>Services</a>";
 } else {
    
-    $html="<a href='./index.php' class='btn btn-danger'>Book cab</a>";
+    $html="<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
     $html.="<a href='userdashboard.php' class='nav-item'>Dashboard</a>";
     $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
     $html.="<a href='changePassword.php' class='nav-item'>Change Password</a>";
@@ -34,7 +34,7 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 </li>";
     $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
     $html.="<p class='m-2'>Welcome :".$_SESSION['username']."</p>";
-    $html.="<a href='./logout.php' class='btn btn-primary mt-1'>Logout</a>";
+    $html.="<a href='./logout.php' class='btn nav-item btn-danger mt-1'>Logout</a>";
 }
 
 ?>
