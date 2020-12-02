@@ -1,27 +1,23 @@
 <?php
 
-
-if (!isset($_SESSION))
-{   
-    session_start();
+if (!isset($_SESSION)) {
+ session_start();
 }
 
-
-if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
-    header("location:admin/index.php");
+if (isset($_SESSION['username']) && $_SESSION['usertype'] == "admin") {
+ header("location:admin/index.php");
 }
 
-
-if(!isset($_SESSION['username'])){
-$html="<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
-$html.="<a href='login.php' class='nav-item'>Login</a>";
-$html.="<a href='#' class='nav-item'>About Us</a>";
-$html.="<a href='#' class='nav-item'>Services</a>";
+if (!isset($_SESSION['username'])) {
+ $html = "<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
+ $html .= "<a href='login.php' class='nav-item'>Login</a>";
+ $html .= "<a href='#' class='nav-item'>About Us</a>";
+ $html .= "<a href='#' class='nav-item'>Services</a>";
 } else {
-   
-    $html="<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
-    $html.="<a href='userdashboard.php' class='nav-item'>Dashboard</a>";
-    $html.="<li class='nav-item dropdown'>
+
+ $html = "<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
+ $html .= "<a href='userdashboard.php' class='nav-item'>Dashboard</a>";
+ $html .= "<li class='nav-item dropdown'>
                 <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                 Ride Records
                  </a>
@@ -31,7 +27,7 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 <a class='nav-item dropdown-item' href='canceledRideRecord.php'>Canceled Rides</a>
                 </div>
                 </li>";
-    $html.="<li class='nav-item dropdown'>
+ $html .= "<li class='nav-item dropdown'>
             <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
             Profile
                 </a>
@@ -40,8 +36,8 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 <a class='nav-item dropdown-item' href='changePassword.php'>Change Password</a>
             </div>
             </li>";
-    $html.="<p class='m-2'>Welcome :".$_SESSION['username']."</p>";
-    $html.="<a href='./logout.php' class='btn nav-item btn-danger '>Logout</a>";
+ $html .= "<p class='m-2'>Welcome :" . $_SESSION['username'] . "</p>";
+ $html .= "<a href='./logout.php' class='btn nav-item btn-danger '>Logout</a>";
 }
 
 ?>
@@ -71,7 +67,7 @@ $html.="<a href='#' class='nav-item'>Services</a>";
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                 <div class="navbar-nav">
-                 <?php echo $html ?>   
+                 <?php echo $html ?>
                 </div>
             </div>
         </nav>

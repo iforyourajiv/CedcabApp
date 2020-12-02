@@ -1,49 +1,47 @@
 <?php
-   include_once '../ride.class.php';
-   $rideRequest=new Ride();
-   if (!isset($_SESSION))
-   {
-       session_start();
-   }
-   
-   if(!isset($_SESSION['username'])){
-       header("location:../login.php");
-   }
-   
-   if(isset($_SESSION['username'])){
-       if($_SESSION['usertype']=="user"){
-           header("location:../index.php");
-       }
-   }
-   
-   if(isset($_GET['c_id'])){
-       $id=$_GET['c_id'];
-       $isDone=$rideRequest->confirmRide($id);
-       if($isDone) {
-           header("location:rideRequest.php");
-       } else {
-           echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
-       }
-   }
-   
-   if(isset($_GET['del_id'])){
-       $id=$_GET['del_id'];
-       $isDone=$rideRequest->cancelRide($id);
-       if($isDone) {
-           header("location:rideRequest.php");
-       } else {
-           echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
-       }
-   }
-   
-   
-   ?>
-<?php include_once './sidebar.php'?>
+include_once '../ride.class.php';
+$rideRequest = new Ride();
+if (!isset($_SESSION)) {
+ session_start();
+}
+
+if (!isset($_SESSION['username'])) {
+ header("location:../login.php");
+}
+
+if (isset($_SESSION['username'])) {
+ if ($_SESSION['usertype'] == "user") {
+  header("location:../index.php");
+ }
+}
+
+if (isset($_GET['c_id'])) {
+ $id     = $_GET['c_id'];
+ $isDone = $rideRequest->confirmRide($id);
+ if ($isDone) {
+  header("location:rideRequest.php");
+ } else {
+  echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
+ }
+}
+
+if (isset($_GET['del_id'])) {
+ $id     = $_GET['del_id'];
+ $isDone = $rideRequest->cancelRide($id);
+ if ($isDone) {
+  header("location:rideRequest.php");
+ } else {
+  echo "<script>alert('Something Went Wrong,Ride Not Confirmed')</script>";
+ }
+}
+
+?>
+<?php include_once './sidebar.php' ?>
 <div class="container-fluid">
    <h2 class="text-center">Ride Requests</h2>
    <div class="table-responsive">
       <table class="table no-wrap">
-         <label>Sort</label> 
+         <label>Sort</label>
          <select id="sort" name="sort">
             <option value="All_Data">All</option>
             <option value="date_asc">By Ascending Date</option>
@@ -66,39 +64,39 @@
          </thead>
          <tbody id="tablebody">
             <?php
-               $data=$rideRequest->rideRequestAdmin(); 
-               if($data){
-                foreach($data as $element) {
-                    $rideID=$element['ride_id'];
-                    $fromLocation=$element['fromLocation'];
-                    $toLocation=$element['toLocation'];
-                    $rideDate=$element['ride_date'];
-                    $cabType=$element['cabtype'];
-                    $distance=$element['total_distance'];
-                    $luggage=$element['luggage'];
-                    $fare=$element['total_fare'];
-                    // $status=$data['status'];
-                    // $currentStatus="";
-               
-                    $html="<tr>";
-                    $html.="<td class='text-purple'>$rideID</td>";
-                    $html.="<td class='text-purple'>$fromLocation</td>";
-                    $html.="<td class='text-purple'>$toLocation</td>";
-                    $html.="<td class='text-purple'>$rideDate</td>";
-                    $html.="<td class='text-purple'>$cabType</td>";
-                    $html.="<td class='text-purple'>$distance</td>";
-                    $html.="<td class='text-purple'>$luggage</td>";
-                    $html.="<td class='text-purple'>$fare</td>";
-                    $html.="<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
+$data = $rideRequest->rideRequestAdmin();
+if ($data) {
+ foreach ($data as $element) {
+  $rideID       = $element['ride_id'];
+  $fromLocation = $element['fromLocation'];
+  $toLocation   = $element['toLocation'];
+  $rideDate     = $element['ride_date'];
+  $cabType      = $element['cabtype'];
+  $distance     = $element['total_distance'];
+  $luggage      = $element['luggage'];
+  $fare         = $element['total_fare'];
+  // $status=$data['status'];
+  // $currentStatus="";
+
+  $html = "<tr>";
+  $html .= "<td class='text-purple'>$rideID</td>";
+  $html .= "<td class='text-purple'>$fromLocation</td>";
+  $html .= "<td class='text-purple'>$toLocation</td>";
+  $html .= "<td class='text-purple'>$rideDate</td>";
+  $html .= "<td class='text-purple'>$cabType</td>";
+  $html .= "<td class='text-purple'>$distance</td>";
+  $html .= "<td class='text-purple'>$luggage</td>";
+  $html .= "<td class='text-purple'>$fare</td>";
+  $html .= "<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
                                 <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
-                    $html.="</tr>"; 
-                    echo $html;     
-                   }
-               } else {
-                   echo "<h3>No Record Found</h3>";
-               }
-               
-               ?>
+  $html .= "</tr>";
+  echo $html;
+ }
+} else {
+ echo "<h3>No Record Found</h3>";
+}
+
+?>
          </tbody>
       </table>
    </div>
@@ -106,10 +104,10 @@
 </div>
 </div>
 </div>
-<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com 
+<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com
 </footer>
 </div>
-</div> 
+</div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -122,7 +120,7 @@
                    method: "POST",
                    url: "sorting.controller.php",
                    data: {type:type,action:action},
-                   
+
                }).done(function(data) {
                   $("#tablebody").html("");
                   $("#tablebody").html(data);

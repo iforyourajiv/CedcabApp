@@ -1,39 +1,36 @@
 <?php
-if(!isset($_SESSION)){
-session_start();
+if (!isset($_SESSION)) {
+ session_start();
 }
 
-if(isset($_SESSION['username'])){
-	if($_SESSION['usertype']=='admin'){
-		header("location:admin/index.php");
-	} 
-	else {
-		header("location:index.php");
-	}
+if (isset($_SESSION['username'])) {
+ if ($_SESSION['usertype'] == 'admin') {
+  header("location:admin/index.php");
+ } else {
+  header("location:index.php");
+ }
 }
 
-
-include_once './user.class.php';  
-$user=new User();
+include_once './user.class.php';
+$user = new User();
 if (isset($_POST['submit'])) {
-$username=$_POST['username'];
-$password=$_POST['password'];
-if(isset($_POST['check'])){
-$remember=$_POST['check'];
+ $username = $_POST['username'];
+ $password = $_POST['password'];
+ if (isset($_POST['check'])) {
+  $remember = $_POST['check'];
+ } else {
+  $remember = false;
+ }
+
+ $user->login($username, $password, $remember);
+}
+
+if (isset($_COOKIE['user']) && isset($_COOKIE['checked'])) {
+ $cookieUser = $_COOKIE['user'];
+ $check      = "checked";
 } else {
-	$remember=false;
+ $cookieUser = "";
 }
-
-$user->login($username,$password,$remember);
-}
-
-if(isset($_COOKIE['user']) && isset($_COOKIE['checked'])){
-$cookieUser=$_COOKIE['user'];
-$check="checked";
-} else {
-	$cookieUser="";
-}
-
 
 ?>
 
@@ -56,7 +53,7 @@ $check="checked";
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                <div class="navbar-nav">  
+                <div class="navbar-nav">
 				<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>
 				<a href='#' class='nav-item'>About Us</a>
 				<a href='#' class='nav-item'>Services</a>
@@ -75,7 +72,7 @@ $check="checked";
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input type="text" name="username" value="<?php echo $cookieUser ?>" class="form-control" placeholder="username" required>
-						
+
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -84,9 +81,9 @@ $check="checked";
 						<input type="password" name="password" value="" class="form-control" placeholder="password" required>
 						<br>
 					</div>
-					
+
 					<div class="form-group">
-						<input type="checkbox" name="check" <?php if(isset($_COOKIE['checked'])){echo $check;}?> > <h5 class="text-light text-inline">Remember Me</h5>
+						<input type="checkbox" name="check" <?php if (isset($_COOKIE['checked'])) {echo $check;} ?> > <h5 class="text-light text-inline">Remember Me</h5>
 						<input type="submit" name="submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>

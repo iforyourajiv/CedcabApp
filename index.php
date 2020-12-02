@@ -15,20 +15,20 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <span class="form-label">Pickup</span>
-                                        <select id="pickup" name="pickup" class="form-control" aria-placeholder="Current Location">  
+                                        <select id="pickup" name="pickup" class="form-control" aria-placeholder="Current Location">
                                         <option value="">Select Pick-up Location</option>
                                         <?php
-                                         include_once './location.class.php'; 
-                                        $location=new Location();
-                                        $data=$location->fetchLocation();
-                                        foreach($data as $element){
-                                            $location_id=$element['id'];
-                                            $location_name=$element['name'];
-                                            // $location_distance=$data['distance'];
-                                            echo "<option value='$location_id'>$location_name</option>";
-                                        }
-                                       
-                                        ?>
+include_once './location.class.php';
+$location = new Location();
+$data     = $location->fetchLocation();
+foreach ($data as $element) {
+ $location_id   = $element['id'];
+ $location_name = $element['name'];
+ // $location_distance=$data['distance'];
+ echo "<option value='$location_id'>$location_name</option>";
+}
+
+?>
                                         </select>
                                         <span class="select-arrow"></span>
                                     </div>
@@ -41,17 +41,17 @@
                                         <select id="drop" name="drop" class="form-control" aria-placeholder="Enter Drop For Ride Estimate">
                                             <option value="">Select Drop Location</option>
                                             <?php
-                                                include_once './location.class.php'; 
-                                                $location=new Location();
-                                                $data=$location->fetchLocation();
-                                                foreach($data as $element){
-                                                    $location_id=$element['id'];
-                                                    $location_name=$element['name'];
-                                                    // $location_distance=$data['distance'];
-                                                    echo "<option value='$location_id'>$location_name</option>";
-                                                }
-                                       
-                                        ?>
+include_once './location.class.php';
+$location = new Location();
+$data     = $location->fetchLocation();
+foreach ($data as $element) {
+ $location_id   = $element['id'];
+ $location_name = $element['name'];
+ // $location_distance=$data['distance'];
+ echo "<option value='$location_id'>$location_name</option>";
+}
+
+?>
                                         </select>
                                         <span class="select-arrow"></span>
                                     </div>
@@ -99,7 +99,7 @@
 <script>
     $(document).ready(function() {
         $("#submitbtn").click(function() {
-          
+
             let pickup = $("#pickup option:selected").val();
             let drop = $("#drop option:selected").val();
             let cabType = $("#cab option:selected").val();

@@ -1,44 +1,39 @@
 <?php include_once './header.php' ?>
-<?php 
-   include_once './user.class.php';
-   
-   if (!isset($_SESSION))
-   {
-       session_start();
-   }
+<?php
+include_once './user.class.php';
 
-   
-   if(!isset($_SESSION['username'])){
-     header('location:index.php');
+if (!isset($_SESSION)) {
+ session_start();
+}
+
+if (!isset($_SESSION['username'])) {
+ header('location:index.php');
+}
+$userData = new User();
+if (isset($_POST['submit'])) {
+ $oldPassword = md5($_POST['old_password']);
+ $newPassword = $_POST['new_password'];
+ $re_password = $_POST['re_password'];
+
+ if ($newPassword == $re_password) {
+  $data = $userData->fetchUserDetail();
+  if ($data['password'] == $oldPassword) {
+   $change = $userData->updatePassword($newPassword);
+   if ($change) {
+    echo "<h3 class='text-center text-success'>Password Changed Successfully</h3>";
+   } else {
+    echo "<script>alert('Something Went Wrong ,Password not Changed')</script>";
    }
-   $userData = new User();
-   if(isset($_POST['submit'])){
-   $oldPassword=md5($_POST['old_password']);
-   $newPassword=$_POST['new_password'];
-   $re_password=$_POST['re_password'];
-   
-   if($newPassword==$re_password) {
-       $data=$userData->fetchUserDetail();
-       if($data['password']==$oldPassword){
-           $change=$userData->updatePassword($newPassword);
-           if($change){
-               echo "<h3 class='text-center text-success'>Password Changed Successfully</h3>";
-           } else {
-               echo "<script>alert('Something Went Wrong ,Password not Changed')</script>";
-           }
-       } else{
-           echo "<script>alert('Old Password Is Incorrect')</script>";
-       }
-   
-   } else{
-       echo "<script>alert('Password Not Matched With Confirm Password')</script>";
-   }
-   }
-       
-   
-   
-   
-   ?>
+  } else {
+   echo "<script>alert('Old Password Is Incorrect')</script>";
+  }
+
+ } else {
+  echo "<script>alert('Password Not Matched With Confirm Password')</script>";
+ }
+}
+
+?>
 <section id="main">
    <div class="container-fluid bg-overlay">
       <h1>Book a City Taxi to Your Destination in town</h1>

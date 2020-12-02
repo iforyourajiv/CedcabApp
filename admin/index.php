@@ -1,22 +1,21 @@
 <?php
-   if (!isset($_SESSION))
-   {
-       session_start();
-   }
-   
-   if(!isset($_SESSION['username'])){
-       header("location:../login.php");
-   }
-   
-   if(isset($_SESSION['username'])){
-       if($_SESSION['usertype']=="user"){
-           header("location:../index.php");
-       }
-   }
-   
-   include_once './tiles.class.php';
-   ?>
-<?php include_once './sidebar.php'?>
+if (!isset($_SESSION)) {
+ session_start();
+}
+
+if (!isset($_SESSION['username'])) {
+ header("location:../login.php");
+}
+
+if (isset($_SESSION['username'])) {
+ if ($_SESSION['usertype'] == "user") {
+  header("location:../index.php");
+ }
+}
+
+include_once './tiles.class.php';
+?>
+<?php include_once './sidebar.php' ?>
 <div class="container-fluid">
    <div class="row justify-content-center">
       <a href="rideRequest.php" class="text-purple">
@@ -32,12 +31,12 @@
                   </li>
                   <li class="ml-auto">
                      <?php
-                        $tilesRideRequest=new Tile();
-                        $data=$tilesRideRequest->tilesrideRequest();
-                        if(!$data) {
-                            $data='0';
-                        }
-                        ?>
+$tilesRideRequest = new Tile();
+$data             = $tilesRideRequest->tilesrideRequest();
+if (!$data) {
+ $data = '0';
+}
+?>
                      <span class="counter text-success"><?php echo $data ?></span>
                   </li>
                </ul>
@@ -50,12 +49,12 @@
                <h3 class="box-title">Completed Rides</h3>
                <ul class="list-inline two-part d-flex mb-0">
                   <?php
-                     $tilesRideRequest=new Tile();
-                     $data=$tilesRideRequest->tilesrideCompleted();
-                     if(!$data) {
-                         $data='0';
-                     }
-                     ?>
+$tilesRideRequest = new Tile();
+$data             = $tilesRideRequest->tilesrideCompleted();
+if (!$data) {
+ $data = '0';
+}
+?>
                   <li class="ml-auto"><span class="counter text-purple"><?php echo $data ?></span></li>
                </ul>
             </div>
@@ -73,12 +72,12 @@
                      </div>
                   </li>
                   <?php
-                     $tilesRideRequest=new Tile();
-                     $data=$tilesRideRequest->tilesrideCanceled();
-                     if(!$data) {
-                         $data='0';
-                     }
-                     ?>
+$tilesRideRequest = new Tile();
+$data             = $tilesRideRequest->tilesrideCanceled();
+if (!$data) {
+ $data = '0';
+}
+?>
                   <li class="ml-auto"><span class="counter text-info"><?php echo $data ?></span>
                   </li>
                </ul>
@@ -91,12 +90,12 @@
                <h3 class="box-title">Pending User For Approval</h3>
                <ul class="list-inline two-part d-flex mb-0">
                   <?php
-                     $tilesUserrequest=new Tile();
-                     $data= $tilesUserrequest->tilesUserrequest();
-                     if(!$data) {
-                         $data='0';
-                     }
-                     ?>
+$tilesUserrequest = new Tile();
+$data             = $tilesUserrequest->tilesUserrequest();
+if (!$data) {
+ $data = '0';
+}
+?>
                   <li class="ml-auto"><span class="counter text-danger"><?php echo $data ?></span></li>
                </ul>
             </div>
@@ -108,12 +107,12 @@
                <h3 class="box-title">User's In Cedcabs</h3>
                <ul class="list-inline two-part d-flex mb-0">
                   <?php
-                     $tilesUserTotal=new Tile();
-                     $data= $tilesUserTotal->tilesUserTotal();
-                     if(!$data) {
-                         $data='0';
-                     }
-                     ?>
+$tilesUserTotal = new Tile();
+$data           = $tilesUserTotal->tilesUserTotal();
+if (!$data) {
+ $data = '0';
+}
+?>
                   <li class="ml-auto"><span class="counter text-success"><?php echo $data ?></span></li>
                </ul>
             </div>
@@ -124,12 +123,12 @@
             <h1 class="text-center">Total Earned Till Today</h1>
             <ul class="list-inline">
                <?php
-                  $tilesEarnedTotal=new Tile();
-                  $data=$tilesEarnedTotal->tilesearnedTotal();
-                  if(!$data) {
-                      $data='0';
-                  }
-                  ?>
+$tilesEarnedTotal = new Tile();
+$data             = $tilesEarnedTotal->tilesearnedTotal();
+if (!$data) {
+ $data = '0';
+}
+?>
                <li class="text-center">
                   <h1 class="text-purple">&#8377; <?php echo $data ?></h1>
                </li>
@@ -149,10 +148,10 @@
 </div>
 </div>
 </div>
-<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com 
+<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com
 </footer>
 </div>
-</div> 
+</div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

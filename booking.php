@@ -1,33 +1,32 @@
 <?php
-   if (!isset($_SESSION))
-   {
-       session_start();
-   }
-   if(!isset($_SESSION['username'])){
-       header('location:login.php');
-   }
-   
-   if(isset($_POST['cancel'])){
-       $_SESSION['from']="";
-       $_SESSION['to']="";
-       $_SESSION['totalDistance']="";
-       $_SESSION['cabType']="";
-       $_SESSION['luggage']="";
-       $_SESSION['fare']="";
-       header('location:index.php');
-   }
+if (!isset($_SESSION)) {
+ session_start();
+}
+if (!isset($_SESSION['username'])) {
+ header('location:login.php');
+}
 
-   if (time() - $_SESSION['user_start'] > 60) { 
-      $_SESSION['from']="";
-       $_SESSION['to']="";
-       $_SESSION['totalDistance']="";
-       $_SESSION['cabType']="";
-       $_SESSION['luggage']="";
-       $_SESSION['fare']="";
-       header('location:index.php');
-  } 
-   
-   ?>
+if (isset($_POST['cancel'])) {
+ $_SESSION['from']          = "";
+ $_SESSION['to']            = "";
+ $_SESSION['totalDistance'] = "";
+ $_SESSION['cabType']       = "";
+ $_SESSION['luggage']       = "";
+ $_SESSION['fare']          = "";
+ header('location:index.php');
+}
+
+if (time() - $_SESSION['user_start'] > 60) {
+ $_SESSION['from']          = "";
+ $_SESSION['to']            = "";
+ $_SESSION['totalDistance'] = "";
+ $_SESSION['cabType']       = "";
+ $_SESSION['luggage']       = "";
+ $_SESSION['fare']          = "";
+ header('location:userdashboard.php');
+}
+
+?>
 <?php include_once './header.php' ?>
 <section id="main">
    <div class="container-fluid bg-overlay">
@@ -92,7 +91,7 @@
                                                          </table>
                                                          <form method="post" action="booking.php">
                                                             <input class="btn btn-block mt-2" id="bookingbtn" type="button" value="Confirm Booking" >
-                                                            <input type="submit" name="cancel" class="btn-danger btn-block p-2" id="cancelbookingbtn" value="Cancel Booking"></input> 
+                                                            <input type="submit" name="cancel" class="btn-danger btn-block p-2" id="cancelbookingbtn" value="Cancel Booking"></input>
                                                          </form>
                                                       </td>
                                                    </tr>
@@ -120,13 +119,13 @@
 <script>
    $(document).ready(function(){
        $("#bookingbtn").click(function(){
-           let user="<?php echo $_SESSION['user_id']?>";
+           let user="<?php echo $_SESSION['user_id'] ?>";
            let from="<?php echo $_SESSION['from'] ?>";
            let to="<?php echo $_SESSION['to'] ?>";
            let distance="<?php echo $_SESSION['totalDistance'] ?>";
            let cabtype="<?php echo $_SESSION['cabtype'] ?>";
-           let luggage="<?php echo $_SESSION['luggage']?>";
-           let fare="<?php echo $_SESSION['fare']?>";
+           let luggage="<?php echo $_SESSION['luggage'] ?>";
+           let fare="<?php echo $_SESSION['fare'] ?>";
            let status="1";
            if(user=="" || from=="" || to=="" || distance=="" || cabtype=="" ||luggage=="" || fare=="") {
                alert("Please Book Your Cab First");
@@ -149,10 +148,10 @@
                   $("#display").html("<h2 style='color:white'><center>"+data+"</center></h2>");
                });
            }
-   
-           
-            
+
+
+
        })
    })
-   
+
 </script>

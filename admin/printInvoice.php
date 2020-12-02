@@ -1,45 +1,42 @@
 <?php
-   include_once '../ride.class.php';
-   $rideRequest=new Ride();
-   if (!isset($_SESSION))
-   {
-       session_start();
-   }
-   
-   if(!isset($_SESSION['username'])){
-       header("location:../login.php");
-   }
-   
-   if(isset($_SESSION['username'])){
-       if($_SESSION['usertype']=="user"){
-           header("location:../index.php");
-       }
-   }
-   
-   
-   if(isset($_GET['rideid'])){
-       $rideid=$_GET['rideid'];
-       $isDone=$rideRequest->fetchInvoiceDetail($rideid);
-           foreach($isDone as $element){
-               $rideID=$element['ride_id'];
-               $fromLocation=$element['fromLocation'];
-               $toLocation=$element['toLocation'];
-               $rideDate=$element['ride_date'];
-               $cabType=$element['cabtype'];
-               $distance=$element['total_distance'];
-               $luggage=$element['luggage'];
-               $fare=$element['total_fare'];
-          
-           }
-               
-       if(!$isDone) {
-           echo "<script>alert('Something Went Wrong,Cant Generate Invoice')</script>";
-       }
-   }
-   
-   
-   ?>
-<?php include_once './sidebar.php'?>
+include_once '../ride.class.php';
+$rideRequest = new Ride();
+if (!isset($_SESSION)) {
+ session_start();
+}
+
+if (!isset($_SESSION['username'])) {
+ header("location:../login.php");
+}
+
+if (isset($_SESSION['username'])) {
+ if ($_SESSION['usertype'] == "user") {
+  header("location:../index.php");
+ }
+}
+
+if (isset($_GET['rideid'])) {
+ $rideid = $_GET['rideid'];
+ $isDone = $rideRequest->fetchInvoiceDetail($rideid);
+ foreach ($isDone as $element) {
+  $rideID       = $element['ride_id'];
+  $fromLocation = $element['fromLocation'];
+  $toLocation   = $element['toLocation'];
+  $rideDate     = $element['ride_date'];
+  $cabType      = $element['cabtype'];
+  $distance     = $element['total_distance'];
+  $luggage      = $element['luggage'];
+  $fare         = $element['total_fare'];
+
+ }
+
+ if (!$isDone) {
+  echo "<script>alert('Something Went Wrong,Cant Generate Invoice')</script>";
+ }
+}
+
+?>
+<?php include_once './sidebar.php' ?>
 <div class="container-fluid">
    <link rel="stylesheet" href="../assets/styles/invoice.css">
    <!-- Invoice -->
@@ -69,7 +66,7 @@
                                                       <table class="invoice-items"  cellpadding="0" cellspacing="0" >
                                                          <tbody>
                                                             <h3>
-                                                               Date : 
+                                                               Date :
                                                                <p style="display:inline;"><?php echo $rideDate ?></p>
                                                             </h3>
                                                             <tr>
@@ -78,7 +75,7 @@
                                                             </tr>
                                                             <tr>
                                                                <td>From</td>
-                                                               <td class="alignright"><?php echo  $fromLocation ?></td>
+                                                               <td class="alignright"><?php echo $fromLocation ?></td>
                                                             </tr>
                                                             <tr>
                                                                <td>To</td>
@@ -126,10 +123,10 @@
 </div>
 </div>
 </div>
-<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com 
+<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com
 </footer>
 </div>
-</div> 
+</div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

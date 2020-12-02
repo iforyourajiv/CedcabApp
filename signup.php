@@ -1,27 +1,26 @@
 <?php
 include_once './user.class.php';
-$user=new User();
+$user = new User();
 if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-	$fullname = $_POST['fullname'];
-	$email = $_POST['email'];
-	$mobile = $_POST['mobile'];
-	$password =$_POST['password'];
-	$password2 =$_POST['confirm_password'];
-	$isBlock=1;
-	$isAdmin=0;
-   		 if($password == $password2) {
-			$signup=$user->signup($username,$fullname,$email,$mobile,$password,$isBlock,$isAdmin);
-			if($signup) {
-				echo "Registration Successful!";  
-				header('location:index.php');
-			} else {
-				echo "<script>alert('Entered Username already exist!')</script>";
-			}
-       	 }
-     else {
-        echo "<script>alert('Password Does not Matched')</script>";
-    }
+ $username  = $_POST['username'];
+ $fullname  = $_POST['fullname'];
+ $email     = $_POST['email'];
+ $mobile    = $_POST['mobile'];
+ $password  = $_POST['password'];
+ $password2 = $_POST['confirm_password'];
+ $isBlock   = 1;
+ $isAdmin   = 0;
+ if ($password == $password2) {
+  $signup = $user->signup($username, $fullname, $email, $mobile, $password, $isBlock, $isAdmin);
+  if ($signup) {
+   echo "Registration Successful!";
+   header('location:index.php');
+  } else {
+   echo "<script>alert('Entered Username already exist!')</script>";
+  }
+ } else {
+  echo "<script>alert('Password Does not Matched')</script>";
+ }
 
 }
 
@@ -47,7 +46,7 @@ if (isset($_POST['submit'])) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                <div class="navbar-nav">  
+                <div class="navbar-nav">
 				<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>
 				<a href='#' class='nav-item text-dark'>About Us</a>
 				<a href='#' class='nav-item text-dark'>Services</a>
@@ -64,7 +63,7 @@ if (isset($_POST['submit'])) {
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<span class="fa fa-user"></span>
-					</span>                    
+					</span>
 				</div>
 				<input type="text" class="form-control" name="username" placeholder="Username" required>
 			</div>
@@ -74,7 +73,7 @@ if (isset($_POST['submit'])) {
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<i class="fa fa-user"></i>
-					</span>                    
+					</span>
 				</div>
 				<input type="text" id="fullname" class="form-control" name="fullname" placeholder="Full Name" required>
 			</div>
@@ -84,7 +83,7 @@ if (isset($_POST['submit'])) {
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<i class="fa fa-paper-plane"></i>
-					</span>                    
+					</span>
 				</div>
 				<input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
 			</div>
@@ -94,7 +93,7 @@ if (isset($_POST['submit'])) {
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<i class="fa fa-mobile"></i>
-					</span>                    
+					</span>
 				</div>
 				<input type="text" id="mobile" class="form-control" name="mobile" placeholder="Mobile Number" required="required">
 			</div>
@@ -104,7 +103,7 @@ if (isset($_POST['submit'])) {
 				<div class="input-group-prepend">
 					<span class="input-group-text">
 						<i class="fa fa-lock"></i>
-					</span>                    
+					</span>
 				</div>
 				<input type="password" id="password" class="form-control" name="password" placeholder="Password" required="required">
 			</div>
@@ -115,7 +114,7 @@ if (isset($_POST['submit'])) {
 					<span class="input-group-text">
 						<i class="fa fa-lock"></i>
 						<i class="fa fa-check"></i>
-					</span>                    
+					</span>
 				</div>
 				<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
 			</div>
@@ -125,7 +124,7 @@ if (isset($_POST['submit'])) {
 			<div class="text-center">Already have an account? <a href="login.php">Login here</a></div>
         </div>
     </form>
-	
+
 </div>
 </div>
 </body>
@@ -136,12 +135,12 @@ if (isset($_POST['submit'])) {
                 $( "#fullname" ).keypress(function(e) {
                     var key = e.keyCode;
                     if (key >= 65 && key <= 90 || key>=97 && key<=122 || key==32) {
-                       
+
                     } else {
 						e.preventDefault();
 					}
 				});
-				
+
 				$("#mobile").keydown(function(event) {
 				var num = event.keyCode;
 				if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {
@@ -155,6 +154,6 @@ if (isset($_POST['submit'])) {
 				}
 				}
 				});
-                
+
             });
         </script>

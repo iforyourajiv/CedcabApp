@@ -1,35 +1,30 @@
 <?php include_once './header.php' ?>
-<?php 
+<?php
 include_once './user.class.php';
 
-if (!isset($_SESSION))
-{
-    session_start();
+if (!isset($_SESSION)) {
+ session_start();
 }
 
-if(!isset($_SESSION['username'])){
-  header('location:index.php');
+if (!isset($_SESSION['username'])) {
+ header('location:index.php');
 }
-
 
 $userData = new User();
-$data=$userData->fetchUserDetail();
-if(isset($_POST['submit'])){
-$id=$_POST['id'];
-$fullname=$_POST['fullname'];
-$email=$_POST['email'];
-$mobile=$_POST['mobile'];
-			$signup=$userData->updateData($id,$fullname,$email,$mobile);
-			if($signup) {
-                echo "<script>alert('Profile Updated Successfully')</script>";
-                header("loction:index.php");
-			} else {
-				echo "<script>alert('Profile Updation failed,Error')</script>";
-			}
+$data     = $userData->fetchUserDetail();
+if (isset($_POST['submit'])) {
+ $id       = $_POST['id'];
+ $fullname = $_POST['fullname'];
+ $email    = $_POST['email'];
+ $mobile   = $_POST['mobile'];
+ $signup   = $userData->updateData($id, $fullname, $email, $mobile);
+ if ($signup) {
+  echo "<script>alert('Profile Updated Successfully')</script>";
+  header("loction:index.php");
+ } else {
+  echo "<script>alert('Profile Updation failed,Error')</script>";
+ }
 }
-    
-
-
 
 ?>
 <section id="main">
@@ -46,26 +41,26 @@ $mobile=$_POST['mobile'];
         <div class="form-group  ml-5">
             <div class="col-lg-8">
             <label class="control-label">Username: </label>
-             <input type="text" class="form-control" name="id" value="<?php echo $data['user_id']?>" hidden>
-              <input type="text" class="form-control form-inline" name="username"  value="<?php echo $data['username']?>" disabled>
+             <input type="text" class="form-control" name="id" value="<?php echo $data['user_id'] ?>" hidden>
+              <input type="text" class="form-control form-inline" name="username"  value="<?php echo $data['username'] ?>" disabled>
             </div>
           </div>
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Full Name:</label>
             <div class="col-lg-8">
-            <input type="text" id="fullname" class="form-control" name="fullname" value="<?php echo $data['name']?>" required="required">
+            <input type="text" id="fullname" class="form-control" name="fullname" value="<?php echo $data['name'] ?>" required="required">
             </div>
           </div>
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-            <input type="email" class="form-control" name="email" value="<?php echo $data['email']?>" required="required">
+            <input type="email" class="form-control" name="email" value="<?php echo $data['email'] ?>" required="required">
             </div>
           </div>
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Mobile:</label>
             <div class="col-lg-8">
-            <input type="number" id="number" class="form-control" name="mobile" value="<?php echo $data['mobile']?>" required="required">
+            <input type="number" id="number" class="form-control" name="mobile" value="<?php echo $data['mobile'] ?>" required="required">
             </div>
           </div>
           <div class="form-group ml-5">
@@ -88,12 +83,12 @@ $mobile=$_POST['mobile'];
                 $( "#fullname" ).keypress(function(e) {
                     var key = e.keyCode;
                     if (key >= 65 && key <= 90 || key>=97 && key<=122 || key==32) {
-                       
+
                     } else {
 						e.preventDefault();
 					}
 				});
-				
+
         $("#number").keydown(function(event) {
         var num = event.keyCode;
         if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {
@@ -107,6 +102,6 @@ $mobile=$_POST['mobile'];
             }
         }
     });
-                
+
             });
         </script>
