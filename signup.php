@@ -37,10 +37,23 @@ if (isset($_POST['submit'])) {
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="./assets/styles/signupstyle.css">
+<link rel="stylesheet" type="text/css" href="./assets/styles/userstyle.css">
 </head>
 <body>
-<img class="img-responsive logo justify-content-left mt-4"  src="./assets/images/logo.png">
-
+<div class="container">
+<nav class="navbar navbar-expand-md navbar-light">
+            <a href="index.php" class="navbar-brand"><img class="img-responsive" src="./assets/images/logo.png" height="65%" width="78%" /></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <div class="navbar-nav">  
+				<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>
+				<a href='#' class='nav-item text-dark'>About Us</a>
+				<a href='#' class='nav-item text-dark'>Services</a>
+                </div>
+            </div>
+        </nav>
 <div class="signup-form">
     <form action="signup.php" method="post">
 		<h2>Sign Up</h2>
@@ -113,6 +126,7 @@ if (isset($_POST['submit'])) {
         </div>
     </form>
 	
+</div>
 </div>
 </body>
 </html>

@@ -20,8 +20,6 @@ $html.="<a href='#' class='nav-item'>Services</a>";
    
     $html="<a href='./index.php' class='btn nav-item btn-warning' style='border-radius: 50px;'>Book cab</a>";
     $html.="<a href='userdashboard.php' class='nav-item'>Dashboard</a>";
-    $html.="<a href='manageProfile.php' class='nav-item'>Manage Profile</a>";
-    $html.="<a href='changePassword.php' class='nav-item'>Change Password</a>";
     $html.="<li class='nav-item dropdown'>
                 <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                 Ride Records
@@ -33,6 +31,15 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 </div>
                 </li>";
     $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
+    $html.="<li class='nav-item dropdown'>
+            <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            Profile
+                </a>
+                <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                <a class='nav-item dropdown-item' href='manageProfile.php'>Edit Profile</a>
+                <a class='nav-item dropdown-item' href='changePassword.php'>Change Password</a>
+            </div>
+            </li>";
     $html.="<p class='m-2'>Welcome :".$_SESSION['username']."</p>";
     $html.="<a href='./logout.php' class='btn nav-item btn-danger mt-1'>Logout</a>";
 }
