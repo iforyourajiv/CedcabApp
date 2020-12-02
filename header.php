@@ -6,6 +6,7 @@ if (!isset($_SESSION))
     session_start();
 }
 
+
 if(isset($_SESSION['username']) && $_SESSION['usertype']=="admin"){
     header("location:admin/index.php");
 }
@@ -30,7 +31,6 @@ $html.="<a href='#' class='nav-item'>Services</a>";
                 <a class='nav-item dropdown-item' href='canceledRideRecord.php'>Canceled Rides</a>
                 </div>
                 </li>";
-    $html.="<a href='totalSpents.php' class='nav-item'>Total Spents</a>";
     $html.="<li class='nav-item dropdown'>
             <a class='nav-item dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
             Profile
@@ -41,7 +41,7 @@ $html.="<a href='#' class='nav-item'>Services</a>";
             </div>
             </li>";
     $html.="<p class='m-2'>Welcome :".$_SESSION['username']."</p>";
-    $html.="<a href='./logout.php' class='btn nav-item btn-danger mt-1'>Logout</a>";
+    $html.="<a href='./logout.php' class='btn nav-item btn-danger '>Logout</a>";
 }
 
 ?>

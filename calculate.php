@@ -19,6 +19,7 @@ if(isset($_POST['action'])){
     $_SESSION['fare']="";
 }
 $_SESSION['current']="booking";
+$_SESSION['user_start'] = time();
 // Getting Data With Post
 $cabType = $_POST['cabType'];
 $luggage = $_POST['luggage'];

@@ -7,6 +7,9 @@ if (!isset($_SESSION))
 if(!isset($_SESSION['username'])){
     header('location:index.php');
 }
+
+
+
 include_once './ride.class.php';
 
 $ride=new Ride();

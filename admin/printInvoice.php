@@ -43,7 +43,7 @@
 <div class="container-fluid">
    <link rel="stylesheet" href="../assets/styles/invoice.css">
    <!-- Invoice -->
-   <div id="printarea">
+   <div class="container">
       <table class="body-wrap">
          <tbody>
             <tr>
@@ -86,7 +86,7 @@
                                                             </tr>
                                                             <tr>
                                                                <td>Total Distance</td>
-                                                               <td class="alignright"><?php echo $distance ?></td>
+                                                               <td class="alignright"><?php echo $distance ?> KM</td>
                                                             </tr>
                                                             <tr>
                                                                <td>Cab Type</td>
@@ -106,7 +106,7 @@
                                                 </tr>
                                                 </tbody>
                                              </table>
-                                             <a href="javascript:void(0);" class="btn  btn-info mt-2" onclick="printPageArea()" type="button">PRINT</a>
+                                             <a href="javascript:void(0);" id="btnprint" class="btn  btn-info mt-2" onclick="printPageArea()" type="button">PRINT</a>
                                           </td>
                                        </tr>
                                     </tbody>
@@ -135,12 +135,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
    function printPageArea(){
-    
-      var divToPrint=document.getElementById("printarea");
-      newWin= window.open("");
-      newWin.document.write(divToPrint.innerHTML);
-      newWin.print();
-      newWin.close();
-   
+      $(".left-sidebar").hide();
+      $("#seconddiv").hide();
+      $("#btnprint").hide();
+      window.print();
    }
 </script>

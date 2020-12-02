@@ -11,7 +11,7 @@
    <body>
       <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
          data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-      <aside class="left-sidebar" data-sidebarbg="skin6">
+      <aside class="left-sidebar" id="leftSidebar" data-sidebarbg="skin6">
          <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                <ul id="sidebarnav">
@@ -123,8 +123,8 @@
          </div>
       </aside>
       <div class="page-wrapper">
-      <div class="page-breadcrumb bg-white">
-         <div class="row align-items-center">
+      <div id="seconddiv"  class="page-breadcrumb bg-white">
+         <div  class="row align-items-center">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                <img class="img-responsive" src="../assets/images/logo.png" height="5%" width="50%" />
                <h3 class="page-title text-uppercase font-medium font-25">Welcome Admin</h3>

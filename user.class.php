@@ -42,6 +42,7 @@ class User {
                     $_SESSION['usertype'] = "user";
                     $_SESSION['username'] = $user;
                     $_SESSION['user_id'] = $user_id;
+                    
                     if ($remember) {
                         setcookie("user", $user, time() + (86400 * 30), "/");
                         setcookie("checked", "remember", time() + (86400 * 30), "/");
@@ -50,8 +51,10 @@ class User {
                         setcookie("checked", "", time() - 3600, "/");
                     }
                     if ($_SESSION['current']) {
+                       
                         header("location:booking.php");
                     } else {
+                       
                         header("location:userdashboard.php");
                     }
                 }

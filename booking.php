@@ -16,6 +16,16 @@
        $_SESSION['fare']="";
        header('location:index.php');
    }
+
+   if (time() - $_SESSION['user_start'] > 60) { 
+      $_SESSION['from']="";
+       $_SESSION['to']="";
+       $_SESSION['totalDistance']="";
+       $_SESSION['cabType']="";
+       $_SESSION['luggage']="";
+       $_SESSION['fare']="";
+       header('location:index.php');
+  } 
    
    ?>
 <?php include_once './header.php' ?>
@@ -64,7 +74,7 @@
                                                                </tr>
                                                                <tr>
                                                                   <td>Total Distance</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['totalDistance'] ?></td>
+                                                                  <td class="alignright"><?php echo $_SESSION['totalDistance'] ?>KM</td>
                                                                </tr>
                                                                <tr>
                                                                   <td>Cab Type</td>
@@ -72,7 +82,7 @@
                                                                </tr>
                                                                <tr>
                                                                   <td>Luggage</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['luggage'] ?></td>
+                                                                  <td class="alignright"><?php echo $_SESSION['luggage'] ?>Kg</td>
                                                                </tr>
                                                                <tr class="total">
                                                                   <td class="alignright" width="80%">Total Fare</td>

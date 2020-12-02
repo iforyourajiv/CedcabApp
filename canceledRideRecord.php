@@ -3,6 +3,7 @@ if (!isset($_SESSION))
 {
     session_start();
 }
+
 if(!isset($_SESSION['username'])){
     header('location:index.php');
   }
@@ -129,7 +130,7 @@ if(!isset($_SESSION['username'])){
                 } else if(isset($_POST['filterweek'])){
                     $filterWeek=new User();
                     $weekSelected=$_POST['weekSelected'];
-                    $data=$filterWeek->filterCanceledUcanceledRideRecordserRideWeek($weekSelected);
+                    $data=$filterWeek->filterCanceledUserRideWeek($weekSelected);
                     if($data){
                         foreach($data as $element) {
                             $fromLocation=$element['fromLocation'];
