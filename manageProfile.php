@@ -35,6 +35,14 @@ if (isset($_POST['submit'])) {
         Manage Profile
     </h1>
     <div class="container" style="margin-left:150px;">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-4">
+       Is Email Verified : 
+      </div> 
+      <div class="col-lg-4">
+       Is Mobile Verified :
+      </div> 
+    </div>
 	<div class="row justify-content-center ">
       <div class="col-md-9">
         <form action="" method="POST">

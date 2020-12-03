@@ -22,6 +22,7 @@ if (!isset($_SESSION['username'])) {
                 Ride Records
                  </a>
                  <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                 <a class='nav-item dropdown-item' href='booking.php'>Recent Booking</a>
                  <a class='nav-item dropdown-item' href='pendingRideRecords.php'>Pending Rides</a>
                  <a class='nav-item dropdown-item' href='completedRideRecords.php'>Completed Rides</a>
                 <a class='nav-item dropdown-item' href='canceledRideRecord.php'>Canceled Rides</a>

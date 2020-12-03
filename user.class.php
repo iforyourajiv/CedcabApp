@@ -8,6 +8,8 @@ class User
 {
  public $conn;
  public $user_id;
+
+
  public function __construct()
  {
   $this->conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME) or die('Connection Error! ' . mysqli_error($this->conn));
@@ -15,6 +17,8 @@ class User
    echo 'Database Connection Error' . mysqli_connect_error($this->conn);
   }
  }
+
+
  public function signup($username, $fullname, $email, $mobile, $password, $isBlock, $isAdmin)
  {
   $enc_password = md5($password);
@@ -28,6 +32,9 @@ class User
    return false;
   }
  }
+
+
+
  public function login($username, $password, $remember)
  {
   $enc_password = md5($password);
@@ -83,6 +90,9 @@ class User
    }
   }
  }
+
+
+
  public function updateData($id, $fullname, $email, $mobile)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -95,7 +105,7 @@ class User
   $enc_password  = md5($newPassword);
   $check         = mysqli_query($this->conn, "SELECT password FROM tbl_user WHERE user_id='$this->user_id' AND password='$enc_password'");
   $result        = $check->num_rows;
-  if ($result>0) {
+  if ($result > 0) {
    echo "<script>alert('New Password is Similar to Old Password')</script>";
   } else {
    $query = mysqli_query($this->conn, "UPDATE tbl_user SET password='$enc_password' WHERE user_id='$this->user_id'");
@@ -107,6 +117,9 @@ class User
   }
 
  }
+
+
+
  public function fetchUsersBlocked()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_user where isblock='1' AND is_admin='0'");
@@ -124,6 +137,9 @@ class User
    return false;
   }
  }
+
+
+
  public function fetchUsersUnblocked()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_user where isblock='0' AND is_admin='0'");
@@ -132,6 +148,9 @@ class User
    return $query;
   }
  }
+
+
+
  public function allUsers()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_user where is_admin='0'");
@@ -140,6 +159,10 @@ class User
    return $query;
   }
  }
+
+
+
+
  public function unblockUser($user_id)
  {
   $query = mysqli_query($this->conn, "UPDATE tbl_user SET isblock='0' WHERE user_id='$user_id'");
@@ -149,6 +172,9 @@ class User
    return false;
   }
  }
+
+
+
  public function sortUserRides($status, $sort, $action)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -160,6 +186,10 @@ class User
    return false;
   }
  }
+
+
+
+
  public function filterPendingUserRideDate($startDate, $endDate)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -171,6 +201,10 @@ class User
    return false;
   }
  }
+
+
+
+
  public function filterPendingUserRideWeek($filterWeek)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -183,6 +217,9 @@ class User
    return false;
   }
  }
+
+
+
  public function filterCompletedUserRideDate($startDate, $endDate)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -194,6 +231,9 @@ class User
    return false;
   }
  }
+
+
+
  public function filterCompletedUserRideWeek($filterWeek)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -206,6 +246,9 @@ class User
    return false;
   }
  }
+
+
+
  public function filterCanceledUserRideDate($startDate, $endDate)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -217,6 +260,9 @@ class User
    return false;
   }
  }
+
+
+
  public function filterCanceledUserRideWeek($filterWeek)
  {
   $this->user_id = $_SESSION['user_id'];
@@ -229,6 +275,9 @@ class User
    return false;
   }
  }
+
+
+
  public function sortBlockedUser($status, $sort, $action)
  {
   $query  = mysqli_query($this->conn, "SELECT * FROM `tbl_user` WHERE `isblock`='" . $status . "' AND `is_admin`='0' ORDER BY `$action` $sort");
@@ -239,6 +288,9 @@ class User
    return false;
   }
  }
+
+
+
  public function sortApprovedUser($status, $sort, $action)
  {
   $query  = mysqli_query($this->conn, "SELECT * FROM `tbl_user` WHERE `isblock`='" . $status . "' AND `is_admin`='0' ORDER BY `$action` $sort");
@@ -249,6 +301,9 @@ class User
    return false;
   }
  }
+
+
+ 
  public function sortAllUser($sort, $action)
  {
   $query  = mysqli_query($this->conn, "SELECT * FROM `tbl_user` WHERE `is_admin`='0' ORDER BY `$action` $sort");

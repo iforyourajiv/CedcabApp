@@ -13,6 +13,9 @@ class Location
    echo 'Database Connection Error' . mysqli_connect_error($this->conn);
   }
  }
+
+
+
  public function fetchLocation()
  {
   $location = mysqli_query($this->conn, "select * from tbl_location where is_available='1'");
@@ -21,6 +24,9 @@ class Location
    return $location;
   }
  }
+
+
+
  public function displayLocationAdmin()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_location");
@@ -29,6 +35,9 @@ class Location
    return $query;
   }
  }
+
+
+
  public function addLocation($locationName, $locationDistance, $isavailbale)
  {
   $find   = mysqli_query($this->conn, "SELECT name FROM tbl_location WHERE name='$locationName'");
@@ -43,6 +52,9 @@ class Location
    }
   }
  }
+
+
+
  public function fetchLocationDetail($id)
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_location WHERE id='$id'");
@@ -53,6 +65,9 @@ class Location
    }
   }
  }
+
+
+
  public function updateLocation($id, $locationName, $locationDistance, $isavailable)
  {
   $query = mysqli_query($this->conn, "UPDATE tbl_location SET name='$locationName',
@@ -63,6 +78,9 @@ class Location
    return false;
   }
  }
+
+
+ 
  public function deleteLocation($locationID)
  {
   $query = mysqli_query($this->conn, "DELETE FROM tbl_location  WHERE id='$locationID'");
