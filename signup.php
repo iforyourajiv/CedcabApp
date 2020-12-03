@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
 						<i class="fa fa-mobile"></i>
 					</span>
 				</div>
-				<input type="text" id="mobile" class="form-control" name="mobile" placeholder="Mobile Number" required="required">
+				<input type="text" id="mobile" class="form-control" name="mobile" placeholder="Mobile Number" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
 			</div>
         </div>
 		<div class="form-group">

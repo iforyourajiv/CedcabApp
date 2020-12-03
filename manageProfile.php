@@ -35,12 +35,26 @@ if (isset($_POST['submit'])) {
         Manage Profile
     </h1>
     <div class="container" style="margin-left:150px;">
-    <div class="row justify-content-center mb-5">
+    <div class="row justify-content-center mb-4">
       <div class="col-md-4">
-       Is Email Verified : 
+        Email Verified : <?php 
+       $get=$userData->emailVarificationDisplay();
+       if($get){
+         echo "<i class='fa fa-check text-success' aria-hidden='true'></i>";
+       } else {
+        echo "<i class='fa fa-times text-danger' aria-hidden='true'></i>";
+       }
+        ?>
       </div> 
       <div class="col-lg-4">
-       Is Mobile Verified :
+        Mobile Verified :<?php 
+       $get=$userData->mobileVarificationDisplay();
+       if($get){
+         echo "<i class='fa fa-check text-success' aria-hidden='true'></i>";
+       } else {
+        echo "<i class='fa fa-times text-danger' aria-hidden='true'></i> <a href='verify.php' class='btn-xs p-1 btn-primary'>Verify Now</a>";
+       }
+        ?>
       </div> 
     </div>
 	<div class="row justify-content-center ">
@@ -68,7 +82,7 @@ if (isset($_POST['submit'])) {
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Mobile:</label>
             <div class="col-lg-8">
-            <input type="number" id="number" class="form-control" name="mobile" value="<?php echo $data['mobile'] ?>" required="required">
+            <input type="number" id="number" class="form-control" name="mobile" value="<?php echo $data['mobile'] ?>" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
             </div>
           </div>
           <div class="form-group ml-5">

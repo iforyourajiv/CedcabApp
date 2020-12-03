@@ -26,7 +26,10 @@ class User
   $result       = mysqli_num_rows($checkuser);
   if ($result == 0) {
    $sql = mysqli_query($this->conn, "INSERT INTO tbl_user (username,name,email,dateofsignup,mobile,isblock,password,is_admin)
-            VALUES('$username','$fullname','$email',now(),'$mobile','$isBlock','$enc_password','$isAdmin')");
+                       VALUES('$username','$fullname','$email',now(),'$mobile','$isBlock','$enc_password','$isAdmin')");
+    $userid=mysqli_insert_id($this->conn);
+   $savevarification=mysqli_query($this->conn, "INSERT INTO verification (user_id,isEmailverified,isMobileverified)
+                                  VALUES('$userid','1','0')");         
    return $sql;
   } else {
    return false;
@@ -79,6 +82,8 @@ class User
    echo "<script>alert('Username Or Password Is Incorrect')</script>";
   }
  }
+
+
  public function fetchUserDetail()
  {
   $this->user_id = $_SESSION['user_id'];
@@ -90,6 +95,48 @@ class User
    }
   }
  }
+
+
+ public function emailVarificationDisplay(){
+    $this->user_id = $_SESSION['user_id'];
+    $query         = mysqli_query($this->conn, "SELECT *FROM verification WHERE user_id='$this->user_id'");
+    $result=$query->num_rows;
+    if($result>0){
+        $data=mysqli_fetch_assoc($query);
+        if($data['isEmailverified']=='1'){
+            return true;
+        } else {
+            return false;
+        }
+    }
+   
+ }
+
+ public function mobileVarificationDisplay(){
+    $this->user_id = $_SESSION['user_id'];
+    $query         = mysqli_query($this->conn, "SELECT *FROM verification WHERE user_id='$this->user_id'");
+    $result=$query->num_rows;
+    if($result>0){
+        $data=mysqli_fetch_assoc($query);
+        if($data['isMobileverified']=='1'){
+            return true;
+        } else {
+            return false;
+        }
+    }  
+ }
+
+ public function mobileVarificationSave(){
+    $this->user_id = $_SESSION['user_id'];
+    $query         = mysqli_query($this->conn, "UPDATE verification SET isMobileverified='1' WHERE user_id='$this->user_id'");
+    if($query){
+        return true;
+    } else{
+        return false;
+    }
+ }
+
+
 
 
 
@@ -314,4 +361,20 @@ class User
    return false;
   }
  }
+
+
+ public function spentChart()
+ {
+    $this->user_id = $_SESSION['user_id'];
+     $query  = mysqli_query($this->conn, "SELECT sum(total_fare) AS total,ride_date FROM `tbl_ride` WHERE (`customer_user_id` = '".$this->user_id."' AND (`status` = '2' OR `status`='1')) GROUP BY DATE(`ride_date`)");
+     $result = $query->num_rows;
+     if ($result > 0) {
+    return $query;
+    }
 }
+
+
+
+}
+
+
