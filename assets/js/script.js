@@ -39,7 +39,7 @@ $(document).ready(function() {
         $("#calculatedPrice").html("");
     });
 
-    $("#luggage").keydown(function(event) {
+    $("#luggage").keyup(function(event) {
         let check = $("#luggage").val();
         if (isNaN(check) == true) {
         alert("Interger Value Needed");

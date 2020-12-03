@@ -41,6 +41,7 @@ if (isset($_COOKIE['user']) && isset($_COOKIE['checked'])) {
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="./assets/styles/style.css">
 	<link rel="stylesheet" type="text/css" href="./assets/styles/userstyle.css">
 </head>
@@ -95,7 +96,23 @@ if (isset($_COOKIE['user']) && isset($_COOKIE['checked'])) {
 			</div>
 		</div>
 	</div>
+	
 </div>
+<footer class="page-footer  font-small bg-white">
+            <div class="row">
+                <div class="col-sm-4 text-center py-3">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="footer-copyright text-center py-3">
+                        © 2020 Copyright:
+                        <a href="#">CedCabs</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

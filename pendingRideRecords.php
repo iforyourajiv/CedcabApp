@@ -1,11 +1,25 @@
 <?php
-
+include_once './ride.class.php';
+include_once './user.class.php';
 if (!isset($_SESSION)) {
  session_start();
 }
 if (!isset($_SESSION['username'])) {
  header('location:index.php');
 }
+
+if(isset($_GET['cancel'])){
+    $id=$_GET['cancel'];
+    $delete_ride=new Ride();
+    $check=$delete_ride->ridedelete($id);
+    if($check){
+        header('location:pendingRideRecords.php');
+    } else {
+        echo "<script>alert('Something Went Wrong ,Ride Not cancelled, Please Contact To Admin')</script>";
+    }
+
+}
+
 
 ?>
 
@@ -50,10 +64,10 @@ if (!isset($_SESSION['username'])) {
         <th>Fare<a href="pendingRideRecords.php?status=1&sort=ASC&for=total_fare"><i class="fa fa-caret-down" style="color:black" aria-hidden="true"></i>  </a>
         <a href="pendingRideRecords.php?status=1&sort=DESC&for=total_fare"><i class="fa fa-caret-up" style="color:black" aria-hidden="true"></i>  </a></th>
         <th>Status</th>
+        <th>Action</th>
         <tbody>
             <?php
-include_once './ride.class.php';
-include_once './user.class.php';
+
 $record     = new Ride();
 $recordSort = new User();
 
@@ -64,6 +78,7 @@ if (isset($_GET['status'])) {
 
  $data = $recordSort->sortUserRides($status, $sort, $action);
  foreach ($data as $element) {
+  $ride_id       = $element['ride_id'];
   $fromLocation  = $element['fromLocation'];
   $toLocation    = $element['toLocation'];
   $rideDate      = $element['ride_date'];
@@ -90,6 +105,7 @@ if (isset($_GET['status'])) {
   $html .= "<td>$luggage</td>";
   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
   $html .= "<td>$currentStatus</td>";
+  $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -101,6 +117,7 @@ if (isset($_GET['status'])) {
  $data       = $filterDate->filterPendingUserRideDate($startDate, $endDate);
  if ($data) {
   foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
    $fromLocation  = $element['fromLocation'];
    $toLocation    = $element['toLocation'];
    $rideDate      = $element['ride_date'];
@@ -127,6 +144,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
+   $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -139,6 +157,7 @@ if (isset($_GET['status'])) {
  $data = $filterWeek->filterPendingUserRideWeek($weekSelected);
  if ($data) {
   foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
    $fromLocation  = $element['fromLocation'];
    $toLocation    = $element['toLocation'];
    $rideDate      = $element['ride_date'];
@@ -165,6 +184,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
+   $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -175,6 +195,7 @@ if (isset($_GET['status'])) {
  $data = $record->ridePendingRecords();
  if ($data) {
   foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
    $fromLocation  = $element['fromLocation'];
    $toLocation    = $element['toLocation'];
    $rideDate      = $element['ride_date'];
@@ -201,6 +222,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
+   $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }

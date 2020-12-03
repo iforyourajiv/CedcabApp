@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
                   <label class="col-md-12 p-0">Location Name</label>
                   <div class="col-md-12 border-bottom p-0">
                      <input type="text" id="locationName" name="locationName" placeholder="Enter Location Name"
-                        class="form-control p-0 border-0" required>
+                        class="form-control p-0 border-0" pattern="[a-zA-Z]+[a-zA-Z0-9\s]*" required>
                   </div>
                </div>
                <div class="form-group mb-4">
@@ -82,12 +82,7 @@ if (isset($_POST['submit'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
    $( document ).ready(function() {
-       $( "#locationName" ).keypress(function(e) {
-           var key = e.keyCode;
-           if (key >= 48 && key <= 57) {
-               e.preventDefault();
-           }
-       });
+
        $( "#distance" ).keypress(function(e) {
            var key = e.keyCode;
            if (key >= 48 && key <= 57) {

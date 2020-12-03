@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
 						<span class="fa fa-user"></span>
 					</span>
 				</div>
-				<input type="text" class="form-control" name="username" placeholder="Username" required>
+				<input type="text" id="user" class="form-control" name="username" title="Space Not Allowed" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" placeholder="Username" required>
 			</div>
         </div>
         <div class="form-group">
@@ -126,7 +126,24 @@ if (isset($_POST['submit'])) {
     </form>
 
 </div>
+
+
 </div>
+<footer class="page-footer font-small bg-white">
+            <div class="row">
+                <div class="col-sm-4 text-center py-3">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="footer-copyright text-center py-3">
+                        © 2020 Copyright:
+                        <a href="#">CedCabs</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -141,6 +158,7 @@ if (isset($_POST['submit'])) {
 					}
 				});
 
+			
 				$("#mobile").keydown(function(event) {
 				var num = event.keyCode;
 				if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {
@@ -154,6 +172,8 @@ if (isset($_POST['submit'])) {
 				}
 				}
 				});
+
+
 
             });
         </script>
