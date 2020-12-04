@@ -1,5 +1,4 @@
 <?php
-include_once '../ride.class.php';
 include_once '../user.class.php';
 $user = new User();
 if (!isset($_SESSION)) {
@@ -25,6 +24,19 @@ if (isset($_GET['block'])) {
   echo "<script>alert('Something Went Wrong,Cant Perform Action')</script>";
  }
 }
+
+
+if (isset($_GET['del'])) {
+    $id          = $_GET['del'];
+    $delete_user = new User();
+    $check       = $delete_user->userdelete($id);
+    if ($check) {
+     header('location:allUser.php');
+    } else {
+     echo "<script>alert('Something Went Wrong ,User Not Deleted, Please try Again')</script>";
+    }
+   
+   }
 
 ?>
 <?php include_once './sidebar.php' ?>
@@ -52,6 +64,7 @@ if (isset($_GET['block'])) {
                                              <a href="allUser.php?sort=DESC&for=email">
                                              <i class="fa fa-caret-up" aria-hidden="true"></i>  </a></th>
                                             <th class="border-top-0">Mobile</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -76,6 +89,7 @@ if (isset($_GET['sort'])) {
   $html .= "<td class='text-dark'>$fullname</td>";
   $html .= "<td class='text-dark'>$email</td>";
   $html .= "<td class='text-dark'>$mobile</td>";
+  $html .= "<td><a class='btn btn-danger' href='allUser.php?del=$userID'>Delete Permanently</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -97,6 +111,7 @@ if (isset($_GET['sort'])) {
    $html .= "<td class='text-dark'>$fullname</td>";
    $html .= "<td class='text-dark'>$email</td>";
    $html .= "<td class='text-dark'>$mobile</td>";
+   $html .= "<td><a class='btn btn-danger' href='allUser.php?del=$userID'>Delete Permanently</a></td>";
    $html .= "</tr>";
    echo $html;
   }

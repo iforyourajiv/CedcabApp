@@ -358,6 +358,17 @@ class User
   }
  }
 
+ public function userdelete($id)
+ {
+  $query  = mysqli_query($this->conn, "DELETE  FROM `tbl_user` WHERE user_id='$id'");
+  if($query){
+      return true;
+
+  } else {
+      return false;
+  }
+ }
+
  public function sortAllUser($sort, $action)
  {
   $query  = mysqli_query($this->conn, "SELECT * FROM `tbl_user` WHERE `is_admin`='0' ORDER BY `$action` $sort");
