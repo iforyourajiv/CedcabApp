@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
  session_start();
 }
-include_once './define.php';
+include_once './dbcon.php';
 include_once '../ride.class.php';
 class sortrequestRide
 {

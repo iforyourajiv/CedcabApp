@@ -35,39 +35,82 @@ if (isset($_GET['del_id'])) {
       <table class="table no-wrap">
          <thead>
             <tr>
-               <th class="border-top-0">Location Name</th>
-               <th class="border-top-0">Distance</th>
+               <th class="border-top-0">Location Name
+                  <a href="manageLocation.php?sort=ASC&for=name">
+                   <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+                   <a href="manageLocation.php?sort=DESC&for=name">
+                   <i class="fa fa-caret-up" aria-hidden="true"></i>  </a></th>
+               <th class="border-top-0">Distance
+                  <a href="manageLocation.php?sort=ASC&for=distance">
+                   <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+                   <a href="manageLocation.php?sort=DESC&for=distance">
+                   <i class="fa fa-caret-up" aria-hidden="true"></i>  </a>
+                   </th>
                <th class="border-top-0">Is Available</th>
                <th class="border-top-0">Action</th>
             </tr>
          </thead>
          <tbody>
             <?php
-$data = $location->displayLocationAdmin();
-if ($data) {
- foreach ($data as $element) {
-  $locationID    = $element['id'];
-  $locationName  = $element['name'];
-  $distance      = $element['distance'];
-  $available     = $element['is_available'];
-  $currentStatus = "";
-  if ($available == "0") {
-   $currentStatus = "NOT AVAILABLE";
-  } else {
-   $currentStatus = "AVAILABLE";
-  }
+$recordSort = new Location();
+if (isset($_GET['sort'])) {
+ $sort   = $_GET['sort'];
+ $action = $_GET['for'];
+ $data   = $recordSort->sortLocation($sort, $action);
+ if ($data) {
+  foreach ($data as $element) {
+   $locationID    = $element['id'];
+   $locationName  = $element['name'];
+   $distance      = $element['distance'];
+   $available     = $element['is_available'];
+   $currentStatus = "";
+   if ($available == "0") {
+    $currentStatus = "NOT AVAILABLE";
+   } else {
+    $currentStatus = "AVAILABLE";
+   }
 
-  $html = "<tr>";
-  $html .= "<td class='text-dark'>$locationName</td>";
-  $html .= "<td class='text-dark'>$distance</td>";
-  $html .= "<td class='text-dark'>$currentStatus</td>";
-  $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
-                                <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
-  $html .= "</tr>";
-  echo $html;
+   $html = "<tr>";
+   $html .= "<td class='text-dark'>$locationName</td>";
+   $html .= "<td class='text-dark'>$distance</td>";
+   $html .= "<td class='text-dark'>$currentStatus</td>";
+   $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
+               <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
+   $html .= "</tr>";
+   echo $html;
+  }
+ } else {
+  echo "<h3>No Record Found</h3>";
  }
+
 } else {
- echo "<h3>No Record Found</h3>";
+ $data = $location->displayLocationAdmin();
+ if ($data) {
+  foreach ($data as $element) {
+   $locationID    = $element['id'];
+   $locationName  = $element['name'];
+   $distance      = $element['distance'];
+   $available     = $element['is_available'];
+   $currentStatus = "";
+   if ($available == "0") {
+    $currentStatus = "NOT AVAILABLE";
+   } else {
+    $currentStatus = "AVAILABLE";
+   }
+
+   $html = "<tr>";
+   $html .= "<td class='text-dark'>$locationName</td>";
+   $html .= "<td class='text-dark'>$distance</td>";
+   $html .= "<td class='text-dark'>$currentStatus</td>";
+   $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
+                                   <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
+   $html .= "</tr>";
+   echo $html;
+  }
+ } else {
+  echo "<h3>No Record Found</h3>";
+ }
+
 }
 
 ?>

@@ -96,7 +96,7 @@ if (isset($_COOKIE['user']) && isset($_COOKIE['checked'])) {
 			</div>
 		</div>
 	</div>
-	
+
 </div>
 <footer class="page-footer  font-small bg-white">
             <div class="row">
@@ -108,7 +108,7 @@ if (isset($_COOKIE['user']) && isset($_COOKIE['checked'])) {
                 <div class="col-sm-4">
                     <div class="footer-copyright text-center py-3">
                         © 2020 Copyright:
-                        <a href="#">CedCabs</a>
+                        <a href="index.php">CedCabs</a>
                     </div>
                 </div>
             </div>

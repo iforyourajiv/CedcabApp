@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
   echo "<script>alert('Profile Updated Successfully')</script>";
   header("loction:index.php");
  } else {
-  echo "<script>alert('Profile Updation failed,Error')</script>";
+  echo "<script>alert('Profile Not Updated')</script>";
  }
 }
 
@@ -37,25 +37,25 @@ if (isset($_POST['submit'])) {
     <div class="container" style="margin-left:150px;">
     <div class="row justify-content-center mb-4">
       <div class="col-md-4">
-        Email Verified : <?php 
-       $get=$userData->emailVarificationDisplay();
-       if($get){
-         echo "<i class='fa fa-check text-success' aria-hidden='true'></i>";
-       } else {
-        echo "<i class='fa fa-times text-danger' aria-hidden='true'></i>";
-       }
-        ?>
-      </div> 
+        Email Verified : <?php
+$get = $userData->emailVarificationDisplay();
+if ($get) {
+ echo "<i class='fa fa-check text-success' aria-hidden='true'></i>";
+} else {
+ echo "<i class='fa fa-times text-danger' aria-hidden='true'></i>";
+}
+?>
+      </div>
       <div class="col-lg-4">
-        Mobile Verified :<?php 
-       $get=$userData->mobileVarificationDisplay();
-       if($get){
-         echo "<i class='fa fa-check text-success' aria-hidden='true'></i>";
-       } else {
-        echo "<i class='fa fa-times text-danger' aria-hidden='true'></i> <a href='verify.php' class='btn-xs p-1 btn-primary'>Verify Now</a>";
-       }
-        ?>
-      </div> 
+        Mobile Verified :<?php
+$get = $userData->mobileVarificationDisplay();
+if ($get) {
+ echo "<i class='fa fa-check text-success' aria-hidden='true'></i>";
+} else {
+ echo "<i class='fa fa-times text-danger' aria-hidden='true'></i> <a href='verify.php' class='btn-xs p-1 btn-primary'>Verify Now</a>";
+}
+?>
+      </div>
     </div>
 	<div class="row justify-content-center ">
       <div class="col-md-9">
@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
           <div class="form-group ml-5">
             <label class="col-lg-3 control-label">Mobile:</label>
             <div class="col-lg-8">
-            <input type="number" id="number" class="form-control" name="mobile" value="<?php echo $data['mobile'] ?>" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
+            <input type="text" id="number" class="form-control" maxlength="10" name="mobile" value="<?php echo $data['mobile'] ?>" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
             </div>
           </div>
           <div class="form-group ml-5">
@@ -111,19 +111,6 @@ if (isset($_POST['submit'])) {
 					}
 				});
 
-        $("#number").keydown(function(event) {
-        var num = event.keyCode;
-        if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {
-            return;
-        }
-        if (event.shiftKey || event.ctrlKey || event.altKey) {
-            event.preventDefault();
-        } else if (num != 46 && num != 8) {
-            if (isNaN(parseInt(String.fromCharCode(event.which)))) {
-                event.preventDefault();
-            }
-        }
-    });
 
             });
         </script>

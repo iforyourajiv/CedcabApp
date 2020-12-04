@@ -1,21 +1,19 @@
 <?php include_once './header.php' ?>
 <?php
-   include_once './user.class.php';
-   
-   if (!isset($_SESSION)) {
-    session_start();
-   }
-   
-   if (!isset($_SESSION['username'])) {
-    header('location:index.php');
-   }
-   
-   $userData = new User();
-   $data     = $userData->fetchUserDetail();
+include_once './user.class.php';
 
+if (!isset($_SESSION)) {
+ session_start();
+}
 
+if (!isset($_SESSION['username'])) {
+ header('location:index.php');
+}
 
-   ?>
+$userData = new User();
+$data     = $userData->fetchUserDetail();
+
+?>
 
 <section id="main">
    <div class="container-fluid bg-overlay">
@@ -47,7 +45,7 @@
                   <button id="verifyOTP" class="btn btn-sm btn-primary">Verify OTP </button>
                </div>
             </div>
-          
+
             <p id="message"></p>
          </div>
       </div>

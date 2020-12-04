@@ -40,7 +40,7 @@ if (isset($_GET['rideid'])) {
 <div class="container-fluid">
    <link rel="stylesheet" href="../assets/styles/invoice.css">
    <!-- Invoice -->
-   <div class="container">
+   <div id="display" class="container">
       <table class="body-wrap">
          <tbody>
             <tr>
@@ -135,6 +135,10 @@ if (isset($_GET['rideid'])) {
       $(".left-sidebar").hide();
       $("#seconddiv").hide();
       $("#btnprint").hide();
+      $("#display").css('displaye','none');
       window.print();
+      $(".left-sidebar").show();
+      $("#seconddiv").show();
+      $("#btnprint").show();
    }
 </script>

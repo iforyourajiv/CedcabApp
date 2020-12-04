@@ -1,71 +1,70 @@
 html,
 body {
-    background-image: url('../images/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    font-family: 'Numans', sans-serif;
+  background-image: url("../images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
 }
 
 .container {
-    height: 100%;
-    align-content: center;
+  height: 100%;
+  align-content: center;
 }
 
 .card {
-    height: 370px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+  height: 370px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .card-header h3 {
-    color: white;
+  color: white;
 }
 
 .input-group-prepend span {
-    width: 50px;
-    background-color: #2A94DD;
-    color: white;
-    border: 0 !important;
+  width: 50px;
+  background-color: #2a94dd;
+  color: white;
+  border: 0 !important;
 }
 
 input:focus {
-    outline: 0 0 0 0 !important;
-    box-shadow: 0 0 0 0 !important;
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
 }
 
 .remember {
-    color: white;
+  color: white;
 }
 
 .remember input {
-    width: 20px;
-    height: 20px;
-    margin-left: 15px;
-    margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
 }
 
 .login_btn {
-    color: white;
-    background-color: #2A94DD;
-    ;
-    width: 100px;
+  color: white;
+  background-color: #2a94dd;
+  width: 100px;
 }
 
 .login_btn:hover {
-    color: black;
-    background-color: white;
+  color: black;
+  background-color: white;
 }
 
 .links {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 .links a {
-    color: white;
-    font-weight: bold;
-    margin-left: 4px;
+  color: white;
+  font-weight: bold;
+  margin-left: 4px;
 }

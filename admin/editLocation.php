@@ -52,14 +52,14 @@ if (isset($_POST['submit'])) {
                      <input type="text" name="id"  value="<?php echo $data['id'] ?>"
                         class="form-control p-0 border-0" hidden>
                      <input type="text" name="locationName"  value="<?php echo $data['name'] ?>"
-                        class="form-control p-0 border-0" required>
+                        class="form-control p-0 border-0" title="First Letter can't Be Number" pattern="[a-zA-Z]+[a-zA-Z0-9\s]*" required>
                   </div>
                </div>
                <div class="form-group mb-4">
                   <label class="col-md-12 p-0">Distance</label>
                   <div class="col-md-12 border-bottom p-0">
-                     <input type="number" name="locationDistance" value="<?php echo $data['distance'] ?>"
-                        class="form-control p-0 border-0" required>
+                     <input type="text" name="locationDistance" value="<?php echo $data['distance'] ?>"
+                     maxlength="5" class="form-control p-0 border-0" title="Please Enter Only Number" pattern="[0-9]*[.]{0,1}[0-9]*" required>
                   </div>
                </div>
                <div class="form-group mb-4">

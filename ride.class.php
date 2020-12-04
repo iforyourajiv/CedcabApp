@@ -20,8 +20,6 @@ class Ride
   }
  }
 
-
-
  public function saveRide($fromLocation, $toLocation, $cabType, $distance, $luggage, $fare, $status, $user_id)
  {
   $query = mysqli_query($this->conn, "INSERT INTO tbl_ride (ride_date,fromLocation,toLocation,cabtype,
@@ -34,8 +32,6 @@ class Ride
   }
  }
 
-
-
  public function ridePendingRecords()
  {
   $query  = mysqli_query($this->conn, "select *from tbl_ride where customer_user_id='$this->user_id' AND status='1'");
@@ -46,8 +42,6 @@ class Ride
    return false;
   }
  }
-
-
 
  public function ridePendingRecordscount()
  {
@@ -60,8 +54,6 @@ class Ride
   }
  }
 
-
-
  public function rideCompletedRecordscount()
  {
   $query  = mysqli_query($this->conn, "select *from tbl_ride where customer_user_id='$this->user_id' AND status='2'");
@@ -72,7 +64,6 @@ class Ride
    return false;
   }
  }
-
 
  public function rideCancelledRecordscount()
  {
@@ -85,8 +76,6 @@ class Ride
   }
  }
 
-
-
  public function rideCompletedRecords()
  {
   $query  = mysqli_query($this->conn, "select *from tbl_ride where customer_user_id='$this->user_id' AND status='2'");
@@ -98,8 +87,6 @@ class Ride
   }
 
  }
-
-
 
  public function rideCanceledRecords()
  {
@@ -114,16 +101,13 @@ class Ride
 
  public function ridedelete($id)
  {
-  $query  = mysqli_query($this->conn, "DELETE from tbl_ride where customer_user_id='$this->user_id' AND ride_id='$id'");
-  if($query){
-      return true;
-  } else{
-      return false;
+  $query = mysqli_query($this->conn, "DELETE from tbl_ride where customer_user_id='$this->user_id' AND ride_id='$id'");
+  if ($query) {
+   return true;
+  } else {
+   return false;
   }
  }
-
-
-
 
  public function totalSpent()
  {
@@ -140,8 +124,6 @@ class Ride
   }
  }
 
-
-
  public function rideRequestAdmin()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_ride where status='1'");
@@ -150,8 +132,6 @@ class Ride
    return $query;
   }
  }
-
-
 
  public function confirmRide($rideID)
  {
@@ -163,8 +143,6 @@ class Ride
   }
  }
 
-
-
  public function cancelRide($rideID)
  {
   $query = mysqli_query($this->conn, "UPDATE tbl_ride SET status='0' WHERE ride_id='$rideID'");
@@ -175,8 +153,6 @@ class Ride
   }
  }
 
-
-
  public function pastRide()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_ride where status='2' AND is_deleted='0'");
@@ -185,8 +161,6 @@ class Ride
    return $query;
   }
  }
-
-
 
  public function canceledRide()
  {
@@ -197,8 +171,6 @@ class Ride
   }
  }
 
-
-
  public function allRides()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_ride where is_deleted='0'");
@@ -207,8 +179,6 @@ class Ride
    return $query;
   }
  }
-
-
 
  public function deleteRide($rideID)
  {
@@ -219,8 +189,6 @@ class Ride
    return false;
   }
  }
-
-
 
  public function invoice()
  {
@@ -233,8 +201,6 @@ class Ride
   }
  }
 
-
-
  public function fetchInvoiceDetail($rideid)
  {
   $query  = mysqli_query($this->conn, "select * from tbl_ride where ride_id='$rideid'");
@@ -246,8 +212,6 @@ class Ride
   }
  }
 
-
-
  public function sortInvoice($status, $sort, $action)
  {
   $query  = mysqli_query($this->conn, "SELECT * FROM `tbl_ride` WHERE `status`='" . $status . "' AND is_deleted='0'  ORDER BY CAST(`$action` AS SIGNED)  $sort");
@@ -258,8 +222,6 @@ class Ride
    return false;
   }
  }
-
- 
 
  public function rideChart()
  {

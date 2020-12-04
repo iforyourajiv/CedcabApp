@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
 						<i class="fa fa-mobile"></i>
 					</span>
 				</div>
-				<input type="text" id="mobile" class="form-control" name="mobile" placeholder="Mobile Number" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
+				<input type="text" id="mobile" class="form-control" name="mobile" maxlength="10" placeholder="Mobile Number" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
 			</div>
         </div>
 		<div class="form-group">
@@ -129,7 +129,7 @@ if (isset($_POST['submit'])) {
 
 
 </div>
-<footer class="page-footer font-small bg-white">
+<footer class="bg-white">
             <div class="row">
                 <div class="col-sm-4 text-center py-3">
                     <a href="#" class="fa fa-facebook"></a>
@@ -139,7 +139,7 @@ if (isset($_POST['submit'])) {
                 <div class="col-sm-4">
                     <div class="footer-copyright text-center py-3">
                         © 2020 Copyright:
-                        <a href="#">CedCabs</a>
+                        <a href="index.php">CedCabs</a>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@ if (isset($_POST['submit'])) {
 					}
 				});
 
-			
+
 				$("#mobile").keydown(function(event) {
 				var num = event.keyCode;
 				if ((num > 95 && num < 106) || (num > 36 && num < 41) || num == 9) {

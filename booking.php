@@ -61,97 +61,107 @@ if (time() - $_SESSION['user_start'] > 60) {
                                                             <tbody>
                                                                <tr>
                                                                   <td>Name:</td>
-                                                                  <td class="alignright"> <?php echo $_SESSION['username'] ?></td>
+                                                                  <td class="alignright">
+                                                                     <?php echo $_SESSION['username'] ?></td>
                                                                </tr>
                                                                <tr>
                                                                   <td>From</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['from'] ?></td>
+                                                                  <td class="alignright"><?php echo $_SESSION['from'] ?>
+                                                                  </td>
                                                                </tr>
                                                                <tr>
                                                                   <td>To</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['to'] ?></td>
+                                                                  <td class="alignright"><?php echo $_SESSION['to'] ?>
+                                                                  </td>
                                                                </tr>
                                                                <tr>
                                                                   <td>Total Distance</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['totalDistance'] ?>KM</td>
+                                                                  <td class="alignright">
+                                                                     <?php echo $_SESSION['totalDistance'] ?>KM</td>
                                                                </tr>
                                                                <tr>
                                                                   <td>Cab Type</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['cabtype'] ?></td>
+                                                                  <td class="alignright">
+                                                                     <?php echo $_SESSION['cabtype'] ?></td>
                                                                </tr>
                                                                <tr>
                                                                   <td>Luggage</td>
-                                                                  <td class="alignright"><?php echo $_SESSION['luggage'] ?>Kg</td>
+                                                                  <td class="alignright">
+                                                                     <?php echo $_SESSION['luggage'] ?>Kg</td>
                                                                </tr>
                                                                <tr class="total">
                                                                   <td class="alignright" width="80%">Total Fare</td>
-                                                                  <td class="alignright">&#x20B9;<?php echo $_SESSION['fare'] ?></td>
+                                                                  <td class="alignright">
+                                                                     &#x20B9;<?php echo $_SESSION['fare'] ?></td>
                                                                </tr>
                                                             </tbody>
                                                          </table>
                                                          <form method="post" action="booking.php">
-                                                            <input class="btn btn-block mt-2" id="bookingbtn" type="button" value="Confirm Booking" >
-                                                            <input type="submit" name="cancel" class="btn-danger btn-block p-2" id="cancelbookingbtn" value="Cancel Booking"></input>
+                                                            <input class="btn btn-block mt-2" id="bookingbtn"
+                                                               type="button" value="Confirm Booking">
+                                                            <input type="submit" name="cancel"
+                                                               class="btn-danger btn-block p-2" id="cancelbookingbtn"
+                                                               value="Cancel Booking"></input>
                                                          </form>
                                                       </td>
                                                    </tr>
-                                                   </tbody>
-                                                </table>
-                                             </td>
-                                          </tr>
                                        </tbody>
                                     </table>
                                  </td>
                               </tr>
                            </tbody>
                         </table>
-                     </div>
                   </td>
-                  <td></td>
                </tr>
             </tbody>
          </table>
       </div>
+      </td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+   </div>
    </div>
 </section>
 <?php include_once './footer.php' ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-   $(document).ready(function(){
-       $("#bookingbtn").click(function(){
-           let user="<?php echo $_SESSION['user_id'] ?>";
-           let from="<?php echo $_SESSION['from'] ?>";
-           let to="<?php echo $_SESSION['to'] ?>";
-           let distance="<?php echo $_SESSION['totalDistance'] ?>";
-           let cabtype="<?php echo $_SESSION['cabtype'] ?>";
-           let luggage="<?php echo $_SESSION['luggage'] ?>";
-           let fare="<?php echo $_SESSION['fare'] ?>";
-           let status="1";
-           if(user=="" || from=="" || to=="" || distance=="" || cabtype=="" ||luggage=="" || fare=="") {
-               alert("Please Book Your Cab First");
-           } else {
-               $.ajax({
-                   method: "POST",
-                   url: "confirm_booking.php",
-                   data: {
-                       user: user,
-                       from: from,
-                       to: to,
-                       distance:distance,
-                       cabtype:cabtype,
-                       luggage: luggage,
-                       fare:fare,
-                       status:status
-                   },
-               }).done(function(data) {
-                  $("#display").html("");
-                  $("#display").html("<h2 style='color:white'><center>"+data+"</center></h2>");
-               });
-           }
+   $(document).ready(function () {
+      $("#bookingbtn").click(function () {
+         let user = "<?php echo $_SESSION['user_id'] ?>";
+         let from = "<?php echo $_SESSION['from'] ?>";
+         let to = "<?php echo $_SESSION['to'] ?>";
+         let distance = "<?php echo $_SESSION['totalDistance'] ?>";
+         let cabtype = "<?php echo $_SESSION['cabtype'] ?>";
+         let luggage = "<?php echo $_SESSION['luggage'] ?>";
+         let fare = "<?php echo $_SESSION['fare'] ?>";
+         let status = "1";
+         if (user == "" || from == "" || to == "" || distance == "" || cabtype == "" || luggage == "" || fare == "") {
+            alert("Please Book Your Cab First");
+         } else {
+            $.ajax({
+               method: "POST",
+               url: "confirm_booking.php",
+               data: {
+                  user: user,
+                  from: from,
+                  to: to,
+                  distance: distance,
+                  cabtype: cabtype,
+                  luggage: luggage,
+                  fare: fare,
+                  status: status
+               },
+            }).done(function (data) {
+               $("#display").html("");
+               $("#display").html("<h2 style='color:white'><center>" + data + "</center></h2>");
+            });
+         }
 
 
 
-       })
+      })
    })
 
 </script>

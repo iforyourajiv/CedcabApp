@@ -8,18 +8,17 @@ if (!isset($_SESSION['username'])) {
  header('location:index.php');
 }
 
-if(isset($_GET['cancel'])){
-    $id=$_GET['cancel'];
-    $delete_ride=new Ride();
-    $check=$delete_ride->ridedelete($id);
-    if($check){
-        header('location:pendingRideRecords.php');
-    } else {
-        echo "<script>alert('Something Went Wrong ,Ride Not cancelled, Please Contact To Admin')</script>";
-    }
+if (isset($_GET['cancel'])) {
+ $id          = $_GET['cancel'];
+ $delete_ride = new Ride();
+ $check       = $delete_ride->ridedelete($id);
+ if ($check) {
+  header('location:pendingRideRecords.php');
+ } else {
+  echo "<script>alert('Something Went Wrong ,Ride Not cancelled, Please Contact To Admin')</script>";
+ }
 
 }
-
 
 ?>
 
@@ -36,15 +35,33 @@ if(isset($_GET['cancel'])){
     <form method="post" action="pendingRideRecords.php">
     <div class="row mb-1">
        <div class="col-md-6 col-lg-6 col-sm-6">
+       <div class="form-group">
             <lable>Start Date:</lable><input type="date" name="startDate">
             <lable>End Date :</lable><input type="date" name="endDate">
             <input type="submit" name="filterdate" value="Filter By Date">
+       </div>
          </div>
 
-         <div class="col-md-6 col-lg-6 col-sm-6">
-         <lable>Week :</lable><input type="week" name="weekSelected">
+         <div  class="col-md-4 col-lg-4 col-sm-4">
+         <div class="form-group">
+        <input  type="week" name="weekSelected">
          <input type="submit" name="filterweek" value="Filter By Week">
+</div>
          </div>
+    <div  class="col-md-2 col-lg-2 col-sm-2">
+    <div class="form-group">
+        <select id="cab" name="cabtype" class="form-control">
+            <option value="">Select Cab Type</option>
+            <option value="CedMicro">CedMicro</option>
+            <option value="CedMini">CedMini</option>
+            <option value="CedRoyal">CedRoyal</option>
+            <option value="CedSUV">CedSUV</option>
+        </select>
+        <span class="select-arrow"></span>
+        <input type="submit" name="filtercab" value="Filter By Cab">
+    </div>
+</div>
+
     </div>
     </form>
 
@@ -105,7 +122,7 @@ if (isset($_GET['status'])) {
   $html .= "<td>$luggage</td>";
   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
   $html .= "<td>$currentStatus</td>";
-  $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+  $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -144,7 +161,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
-   $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -184,7 +201,47 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
-   $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "</tr>";
+   echo $html;
+  }} else {
+  echo "<h2>No Record Found</h2>";
+ }
+
+} elseif (isset($_POST['filtercab'])) {
+ $filtercab = new User();
+ $cab       = $_POST['cabtype'];
+ $data      = $filtercab->filterPendingUsercab($cab);
+ if ($data) {
+  foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
+   $fromLocation  = $element['fromLocation'];
+   $toLocation    = $element['toLocation'];
+   $rideDate      = $element['ride_date'];
+   $cabType       = $element['cabtype'];
+   $distance      = $element['total_distance'];
+   $luggage       = $element['luggage'];
+   $fare          = $element['total_fare'];
+   $status        = $element['status'];
+   $currentStatus = "";
+   if ($status == 1) {
+    $currentStatus = "Pending";
+   } elseif ($status == 2) {
+    $currentStatus = "Completed";
+   } elseif ($status == 0) {
+    $currentStatus = "Cancelled";
+   }
+
+   $html = "<tr>";
+   $html .= "<td>$fromLocation</td>";
+   $html .= "<td>$toLocation</td>";
+   $html .= "<td>$rideDate</td>";
+   $html .= "<td>$cabType</td>";
+   $html .= "<td>$distance</td>";
+   $html .= "<td>$luggage</td>";
+   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
+   $html .= "<td>$currentStatus</td>";
+   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -222,7 +279,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
-   $html .="<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }

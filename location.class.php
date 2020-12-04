@@ -14,8 +14,6 @@ class Location
   }
  }
 
-
-
  public function fetchLocation()
  {
   $location = mysqli_query($this->conn, "select * from tbl_location where is_available='1'");
@@ -25,8 +23,6 @@ class Location
   }
  }
 
-
-
  public function displayLocationAdmin()
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_location");
@@ -35,8 +31,6 @@ class Location
    return $query;
   }
  }
-
-
 
  public function addLocation($locationName, $locationDistance, $isavailbale)
  {
@@ -53,8 +47,6 @@ class Location
   }
  }
 
-
-
  public function fetchLocationDetail($id)
  {
   $query  = mysqli_query($this->conn, "SELECT *FROM tbl_location WHERE id='$id'");
@@ -65,8 +57,6 @@ class Location
    }
   }
  }
-
-
 
  public function updateLocation($id, $locationName, $locationDistance, $isavailable)
  {
@@ -79,8 +69,6 @@ class Location
   }
  }
 
-
- 
  public function deleteLocation($locationID)
  {
   $query = mysqli_query($this->conn, "DELETE FROM tbl_location  WHERE id='$locationID'");
@@ -89,5 +77,17 @@ class Location
   } else {
    return false;
   }
+ }
+
+ public function sortLocation($sort, $action)
+ {
+  $query  = mysqli_query($this->conn, "SELECT * FROM `tbl_location` ORDER BY cast(`$action` AS unsigned) $sort");
+  $result = $query->num_rows;
+  if ($result > 0) {
+   return $query;
+  } else {
+   return false;
+  }
+
  }
 }
