@@ -72,7 +72,7 @@ if (isset($_GET['sort'])) {
 
    $html = "<tr>";
    $html .= "<td class='text-dark'>$locationName</td>";
-   $html .= "<td class='text-dark'>$distance</td>";
+   $html .= "<td class='text-dark'>$distance KM</td>";
    $html .= "<td class='text-dark'>$currentStatus</td>";
    $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
                <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
@@ -100,7 +100,7 @@ if (isset($_GET['sort'])) {
 
    $html = "<tr>";
    $html .= "<td class='text-dark'>$locationName</td>";
-   $html .= "<td class='text-dark'>$distance</td>";
+   $html .= "<td class='text-dark'>$distance KM</td>";
    $html .= "<td class='text-dark'>$currentStatus</td>";
    $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
                                    <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";

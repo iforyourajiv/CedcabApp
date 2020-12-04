@@ -97,7 +97,7 @@ if (isset($_GET['status'])) {
   $html .= "<td>$toLocation</td>";
   $html .= "<td>$rideDate</td>";
   $html .= "<td>$cabType</td>";
-  $html .= "<td>$distance</td>";
+  $html .= "<td>$distance KM</td>";
   $html .= "<td>$luggage</td>";
   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
   $html .= "<td>$currentStatus</td>";
@@ -134,7 +134,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$toLocation</td>";
    $html .= "<td>$rideDate</td>";
    $html .= "<td>$cabType</td>";
-   $html .= "<td>$distance</td>";
+   $html .= "<td>$distance KM</td>";
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
@@ -171,7 +171,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$toLocation</td>";
    $html .= "<td>$rideDate</td>";
    $html .= "<td>$cabType</td>";
-   $html .= "<td>$distance</td>";
+   $html .= "<td>$distance KM</td>";
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
@@ -209,7 +209,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$toLocation</td>";
    $html .= "<td>$rideDate</td>";
    $html .= "<td>$cabType</td>";
-   $html .= "<td>$distance</td>";
+   $html .= "<td>$distance KM</td>";
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
@@ -247,7 +247,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$toLocation</td>";
    $html .= "<td>$rideDate</td>";
    $html .= "<td>$cabType</td>";
-   $html .= "<td>$distance</td>";
+   $html .= "<td>$distance KM</td>";
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";

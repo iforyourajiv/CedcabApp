@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
  if ($isDone) {
   header("location:manageLocation.php");
  } else {
-  echo "<script>alert('Something Went Wrong,Location Not Updated ')</script>";
+  echo "<script>alert('Location Not Updated ')</script>";
  }
 }
 

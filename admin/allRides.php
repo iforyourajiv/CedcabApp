@@ -74,9 +74,9 @@ if ($data) {
   $html .= "<td class='text-purple'>$toLocation</td>";
   $html .= "<td class='text-purple'>$rideDate</td>";
   $html .= "<td class='text-purple'>$cabType</td>";
-  $html .= "<td class='text-purple'>$distance</td>";
-  $html .= "<td class='text-purple'>$luggage</td>";
-  $html .= "<td class='text-purple'>$fare</td>";
+  $html .= "<td class='text-purple'>$distance KM</td>";
+  $html .= "<td class='text-purple'>$luggage KG</td>";
+  $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
   $html .= "<td><a href='allRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
   $html .= "</tr>";
   echo $html;
