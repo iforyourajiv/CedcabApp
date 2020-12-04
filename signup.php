@@ -3,7 +3,7 @@ include_once './user.class.php';
 $user = new User();
 if (isset($_POST['submit'])) {
  $username  = $_POST['username'];
- $fullname  = $_POST['fullname'];
+ $fullname  = trim(preg_replace('/\s+/',' ', $_POST['fullname']));
  $email     = $_POST['email'];
  $mobile    = $_POST['mobile'];
  $password  = $_POST['password'];

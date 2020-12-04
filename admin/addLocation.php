@@ -17,8 +17,8 @@ if (isset($_SESSION['username'])) {
 }
 
 if (isset($_POST['submit'])) {
- $locationName     = $_POST['locationName'];
- $locationDistance = $_POST['locationDistance'];
+ $locationName     = trim(preg_replace('/\s+/',' ', $_POST['locationName']));
+ $locationDistance = trim($_POST['locationDistance']) ;
  $isavailable      = $_POST['availiblity'];
  $isDone           = $location->addLocation($locationName, $locationDistance, $isavailable);
  if ($isDone) {

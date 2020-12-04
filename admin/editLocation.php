@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['submit'])) {
  $id               = $_POST['id'];
- $locationName     = $_POST['locationName'];
+ $locationName     = trim(preg_replace('/\s+/',' ', $_POST['locationName']));
  $locationDistance = $_POST['locationDistance'];
  $isavailable      = $_POST['availiblity'];
  $isDone           = $location->updateLocation($id, $locationName, $locationDistance, $isavailable);
