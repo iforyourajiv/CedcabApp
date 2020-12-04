@@ -75,7 +75,7 @@ foreach ($data as $element) {
                             </div>
                             <div class="form-group">
                                 <span class="form-label">Luggage (Kg)</span>
-                                <input class="form-control" id="luggage" type="text" value="0" name="weight" placeholder="Enter Weight in KG" />
+                                <input class="form-control" id="luggage" type="text" value="0" maxlength="4" name="weight" placeholder="Enter Weight in KG" />
                             </div>
                             <h4 id="calculatedPrice"></h4>
                             <div class="row my-3">

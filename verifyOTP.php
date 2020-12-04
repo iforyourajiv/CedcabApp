@@ -32,7 +32,8 @@ if ($action == 'verify') {
   if ($VerificationStatus == 'OTP Matched') {
    $check = $result->mobileVarificationSave();
    if ($check) {
-    echo "<script type='text/javascript'>alert('Congratulations ,Your Mobile Number is Verified. Check Your Manage Profile Page');  window.location('manageProfile.php');  </script>";
+    echo "<script type='text/javascript'>alert('Congratulations ,Your Mobile Number is Verified. Check Your Manage Profile Page');  </script>";
+    echo "<script>window.location.href='manageProfile.php';</script>";
     die();
    } else {
     echo "Status is Not Updated On Database";

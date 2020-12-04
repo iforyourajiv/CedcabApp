@@ -139,7 +139,8 @@ class User
   $check         = mysqli_query($this->conn, "SELECT mobile FROM tbl_user WHERE user_id='$this->user_id' AND mobile='$mobile'");
   $result        = $check->num_rows;
   if ($result > 0) {
-   echo "<script>alert('New Mobile Number is Similar to Old Mobile')</script>";
+    $updatewithoutphone = mysqli_query($this->conn, "UPDATE tbl_user SET name='$fullname',email='$email' WHERE user_id='$this->user_id'");
+    return $updatewithoutphone ;
   } else {
    $query              = mysqli_query($this->conn, "UPDATE tbl_user SET name='$fullname',email='$email',mobile='$mobile' WHERE user_id='$this->user_id'");
    $updatevarification = mysqli_query($this->conn, "UPDATE verification SET isMobileverified='0' WHERE user_id='$this->user_id'");

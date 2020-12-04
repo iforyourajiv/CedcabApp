@@ -170,41 +170,44 @@ if (isset($_GET['status'])) {
 } elseif (isset($_POST['filterweek'])) {
  $filterWeek   = new User();
  $weekSelected = $_POST['weekSelected'];
+ if ($weekSelected) {
+  $data = $filterWeek->filterPendingUserRideWeek($weekSelected);
+  if ($data) {
+   foreach ($data as $element) {
+    $ride_id       = $element['ride_id'];
+    $fromLocation  = $element['fromLocation'];
+    $toLocation    = $element['toLocation'];
+    $rideDate      = $element['ride_date'];
+    $cabType       = $element['cabtype'];
+    $distance      = $element['total_distance'];
+    $luggage       = $element['luggage'];
+    $fare          = $element['total_fare'];
+    $status        = $element['status'];
+    $currentStatus = "";
+    if ($status == 1) {
+     $currentStatus = "Pending";
+    } elseif ($status == 2) {
+     $currentStatus = "Completed";
+    } elseif ($status == 0) {
+     $currentStatus = "Cancelled";
+    }
 
- $data = $filterWeek->filterPendingUserRideWeek($weekSelected);
- if ($data) {
-  foreach ($data as $element) {
-   $ride_id       = $element['ride_id'];
-   $fromLocation  = $element['fromLocation'];
-   $toLocation    = $element['toLocation'];
-   $rideDate      = $element['ride_date'];
-   $cabType       = $element['cabtype'];
-   $distance      = $element['total_distance'];
-   $luggage       = $element['luggage'];
-   $fare          = $element['total_fare'];
-   $status        = $element['status'];
-   $currentStatus = "";
-   if ($status == 1) {
-    $currentStatus = "Pending";
-   } elseif ($status == 2) {
-    $currentStatus = "Completed";
-   } elseif ($status == 0) {
-    $currentStatus = "Cancelled";
-   }
-
-   $html = "<tr>";
-   $html .= "<td>$fromLocation</td>";
-   $html .= "<td>$toLocation</td>";
-   $html .= "<td>$rideDate</td>";
-   $html .= "<td>$cabType</td>";
-   $html .= "<td>$distance KM</td>";
-   $html .= "<td>$luggage</td>";
-   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
-   $html .= "<td>$currentStatus</td>";
-   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
-   $html .= "</tr>";
-   echo $html;
-  }} else {
+    $html = "<tr>";
+    $html .= "<td>$fromLocation</td>";
+    $html .= "<td>$toLocation</td>";
+    $html .= "<td>$rideDate</td>";
+    $html .= "<td>$cabType</td>";
+    $html .= "<td>$distance KM</td>";
+    $html .= "<td>$luggage</td>";
+    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
+    $html .= "<td>$currentStatus</td>";
+    $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+    $html .= "</tr>";
+    echo $html;
+   }} else {
+   echo "<h2>No Record Found</h2>";
+  }
+ } else {
   echo "<h2>No Record Found</h2>";
  }
 

@@ -17,12 +17,12 @@ if (isset($_POST['submit'])) {
  $fullname = $_POST['fullname'];
  $email    = $_POST['email'];
  $mobile   = $_POST['mobile'];
- $signup   = $userData->updateData($id, $fullname, $email, $mobile);
- if ($signup) {
+ $update   = $userData->updateData($id, $fullname, $email, $mobile);
+ if ($update) {
   echo "<script>alert('Profile Updated Successfully')</script>";
-  header("loction:index.php");
+  echo "<script>window.location.href='manageProfile.php';</script>";
  } else {
-  echo "<script>alert('Profile Not Updated')</script>";
+  echo "<script>alert('Profile Not Updated')  </script>";
  }
 }
 

@@ -43,7 +43,6 @@ $(document).ready(function () {
     let check = $("#luggage").val();
     if (isNaN(check) == true) {
       alert("Interger Value Needed");
-      event.preventDefault();
       $("#luggage").val("");
     }
   });
