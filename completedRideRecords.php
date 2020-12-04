@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
                 <link rel="stylesheet" href="./assets/styles/riderecords.css">
                 <h1>
         Completed Rides
-    </h1>
+    </h1> 
     <form method="post" action="completedRideRecords.php">
     <div class="row mb-1">
        <div class="col-md-6 col-lg-6 col-sm-6">
@@ -24,14 +24,16 @@ if (!isset($_SESSION['username'])) {
             <lable>Start Date:</lable><input type="date" name="startDate">
             <lable>End Date :</lable><input type="date" name="endDate">
             <input type="submit" name="filterdate" value="Filter By Date">
+            
        </div>
+      
          </div>
-
-         <div  class="col-md-4 col-lg-4 col-sm-4">
+         <div  class="col-md-3 col-lg-4 col-sm-4">
          <div class="form-group">
         <input  type="week" name="weekSelected">
          <input type="submit" name="filterweek" value="Filter By Week">
-</div>
+</div> 
+
          </div>
     <div  class="col-md-2 col-lg-2 col-sm-2">
     <div class="form-group">
@@ -45,7 +47,10 @@ if (!isset($_SESSION['username'])) {
         <span class="select-arrow"></span>
         <input type="submit" name="filtercab" value="Filter By Cab">
     </div>
+    <a class="btn-sm btn-danger" href="completedRideRecords.php">Clear Filter</a>
 </div>
+
+
 
     </div>
     </form>
@@ -141,7 +146,7 @@ if (isset($_GET['status'])) {
    $html .= "</tr>";
    echo $html;
   }} else {
-  echo "<h2>No Record Found</h2>";
+  echo "<h3>No Record Found</h3>";
  }
 } elseif (isset($_POST['filterweek'])) {
  $filterWeek   = new User();
@@ -179,11 +184,11 @@ if (isset($_GET['status'])) {
     $html .= "</tr>";
     echo $html;
    }} else {
-   echo "<h2>No Record Found</h2>";
+   echo "<h3>No Record Found</h3>";
   }
 
  } else {
-  echo "<h2>No Record Found</h2>";
+  echo "<h3>No Record Found</h3>";
  }
 
 } elseif (isset($_POST['filtercab'])) {
@@ -217,11 +222,11 @@ if (isset($_GET['status'])) {
    $html .= "<td>$distance KM</td>";
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
-   $html .= "<td>$currentStatus</td>";
+   $html .= "<h3>No Record Found</h3>";
    $html .= "</tr>";
    echo $html;
   }} else {
-  echo "<h2>No Record Found</h2>";
+  echo "<h3>No Record Found</h3>";
  }
 
 } else {

@@ -41,9 +41,11 @@ $(document).ready(function () {
 
   $("#luggage").keyup(function (event) {
     let check = $("#luggage").val();
-    if (isNaN(check) == true) {
+    if (isNaN(check)==true) {
       alert("Interger Value Needed");
       $("#luggage").val("");
+    
+     
     }
   });
 });

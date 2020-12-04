@@ -26,6 +26,8 @@ $data  = new Ride();
 $count = $data->ridePendingRecordscount();
 if ($count) {
  echo "<h1 class='card-text text-center text-success font-20'>$count</h1>";
+} else {
+   echo "<h1 class='card-text text-center text-success font-20'>0</h1>";
 }
 ?>
                      </p>
@@ -44,6 +46,8 @@ $data  = new Ride();
 $count = $data->rideCompletedRecordscount();
 if ($count) {
  echo "<h1 class='card-text text-center text-warning font-20'>$count</h1>";
+}else {
+   echo "<h1 class='card-text text-center text-success font-20'>0</h1>";
 }
 ?>
                      </p>
@@ -62,6 +66,8 @@ $totalSpent = new Ride();
 $count      = $totalSpent->rideCancelledRecordscount();
 if ($count) {
  echo "<h1 class='card-text text-center text-danger font-20'>$count</h1>";
+}else {
+   echo "<h1 class='card-text text-center text-success font-20'>0</h1>";
 }
 ?>
                      </p>
@@ -96,12 +102,12 @@ if (!$data) {
          <td>
             <canvas id="bar_canvas" class="text-primary"></canvas>
             <br>
-            <b>Bar chart</b>
          </td>
       </tr>
     </table>
+    <h2 class="text-center text-dark">Spent Chart</h2>
     </div>
-
+    
 </div>
 
       </div>

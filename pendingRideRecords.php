@@ -60,6 +60,7 @@ if (isset($_GET['cancel'])) {
         <span class="select-arrow"></span>
         <input type="submit" name="filtercab" value="Filter By Cab">
     </div>
+    <a class="btn-sm btn-danger" href="pendingRideRecords.php">Clear Filter</a>
 </div>
 
     </div>
@@ -165,7 +166,7 @@ if (isset($_GET['status'])) {
    $html .= "</tr>";
    echo $html;
   }} else {
-  echo "<h2>No Record Found</h2>";
+  echo "<h3>No Record Found</h3>";
  }
 } elseif (isset($_POST['filterweek'])) {
  $filterWeek   = new User();
@@ -205,10 +206,10 @@ if (isset($_GET['status'])) {
     $html .= "</tr>";
     echo $html;
    }} else {
-   echo "<h2>No Record Found</h2>";
+   echo "<h3>No Record Found</h3>";
   }
  } else {
-  echo "<h2>No Record Found</h2>";
+  echo "<h3>No Record Found</h3>";
  }
 
 } elseif (isset($_POST['filtercab'])) {
@@ -248,7 +249,7 @@ if (isset($_GET['status'])) {
    $html .= "</tr>";
    echo $html;
   }} else {
-  echo "<h2>No Record Found</h2>";
+  echo "<h3>No Record Found</h3>";
  }
 
 } else {
