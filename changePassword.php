@@ -20,7 +20,8 @@ if (isset($_POST['submit'])) {
   if ($data['password'] == $oldPassword) {
    $change = $userData->updatePassword($newPassword);
    if ($change) {
-    echo "<h3 class='text-center text-success'>Password Changed Successfully</h3>";
+    echo "<script>alert('Password Changed Successfully')</script>";
+    echo "<script>window.location.href='logout.php';</script>";
    } else {
     echo "<script>alert('Password not Changed')</script>";
    }

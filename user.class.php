@@ -41,11 +41,11 @@ class User
   $data         = mysqli_fetch_assoc($query);
   $result       = $query->num_rows;
   if ($result == 1) {
-   $user_id = $data['user_id'];
-   $user    = $data['username'];
-   $fullname= $data['name'];
-   $isblock = $data['isblock'];
-   $isadmin = $data['is_admin'];
+   $user_id  = $data['user_id'];
+   $user     = $data['username'];
+   $fullname = $data['name'];
+   $isblock  = $data['isblock'];
+   $isadmin  = $data['is_admin'];
    if ($isadmin == 0) {
     if ($isblock == "1") {
      echo "<script>alert('You Are Blocked  !!! Please Wait For Approval')</script>";
@@ -53,7 +53,7 @@ class User
      $_SESSION['usertype'] = "user";
      $_SESSION['username'] = $user;
      $_SESSION['user_id']  = $user_id;
-     $_SESSION['fullname'] =$fullname;
+     $_SESSION['fullname'] = $fullname;
      if ($remember) {
       setcookie("user", $user, time() + (86400 * 30), "/");
       setcookie("checked", "remember", time() + (86400 * 30), "/");
@@ -140,8 +140,8 @@ class User
   $check         = mysqli_query($this->conn, "SELECT mobile FROM tbl_user WHERE user_id='$this->user_id' AND mobile='$mobile'");
   $result        = $check->num_rows;
   if ($result > 0) {
-    $updatewithoutphone = mysqli_query($this->conn, "UPDATE tbl_user SET name='$fullname',email='$email' WHERE user_id='$this->user_id'");
-    return $updatewithoutphone ;
+   $updatewithoutphone = mysqli_query($this->conn, "UPDATE tbl_user SET name='$fullname',email='$email' WHERE user_id='$this->user_id'");
+   return $updatewithoutphone;
   } else {
    $query              = mysqli_query($this->conn, "UPDATE tbl_user SET name='$fullname',email='$email',mobile='$mobile' WHERE user_id='$this->user_id'");
    $updatevarification = mysqli_query($this->conn, "UPDATE verification SET isMobileverified='0' WHERE user_id='$this->user_id'");
@@ -362,12 +362,12 @@ class User
 
  public function userdelete($id)
  {
-  $query  = mysqli_query($this->conn, "DELETE  FROM `tbl_user` WHERE user_id='$id'");
-  if($query){
-      return true;
+  $query = mysqli_query($this->conn, "DELETE  FROM `tbl_user` WHERE user_id='$id'");
+  if ($query) {
+   return true;
 
   } else {
-      return false;
+   return false;
   }
  }
 

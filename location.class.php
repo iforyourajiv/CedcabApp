@@ -60,18 +60,13 @@ class Location
 
  public function updateLocation($id, $locationName, $locationDistance, $isavailable)
  {
-//   $find   = mysqli_query($this->conn, "SELECT name FROM tbl_location WHERE name='$locationName' OR distance=' $locationDistance' ");
-//   $result = $find->num_rows;
-//   if ($result > 0) {
-//    echo "<script>alert('Location Already Exist')</script>";
-//   } else {
-   $query = mysqli_query($this->conn, "UPDATE tbl_location SET name='$locationName',
+  $query = mysqli_query($this->conn, "UPDATE tbl_location SET name='$locationName',
                  distance='$locationDistance',is_available='$isavailable' WHERE id='$id'");
-   if ($query) {
-    return true;
-   } else {
-    return false;
-   }
+  if ($query) {
+   return true;
+  } else {
+   return false;
+  }
 //   }
 
  }

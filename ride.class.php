@@ -101,7 +101,7 @@ class Ride
 
  public function ridedelete($id)
  {
-  $query = mysqli_query($this->conn, "DELETE from tbl_ride where customer_user_id='$this->user_id' AND ride_id='$id'");
+  $query = mysqli_query($this->conn, "UPDATE tbl_ride SET status='0' WHERE ride_id='$id'");
   if ($query) {
    return true;
   } else {
