@@ -49,7 +49,9 @@ if (time() - $_SESSION['user_start'] > 60) {
                                        <tbody>
                                           <tr>
                                              <td class="content-block">
-                                                <h2>Thanks for Riding With Cedcabs !!! Happy Journey</h2>
+                                             <img src="./assets/images/logo.png" height="60%" width="25%" />
+                                                <h3 class="text-primary">Thanks for Riding With Cedcabs !!! Happy Journey</h3>
+                                             <h3 class="text-dark">INVOICE</h3>
                                              </td>
                                           </tr>
                                           <tr>
@@ -96,6 +98,7 @@ if (time() - $_SESSION['user_start'] > 60) {
                                                                </tr>
                                                             </tbody>
                                                          </table>
+                                                         
                                                          <form method="post" action="booking.php">
                                                             <input class="btn btn-block mt-2" id="bookingbtn"
                                                                type="button" value="Confirm Booking">

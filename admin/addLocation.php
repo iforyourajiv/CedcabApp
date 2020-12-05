@@ -17,8 +17,8 @@ if (isset($_SESSION['username'])) {
 }
 
 if (isset($_POST['submit'])) {
- $locationName     = trim(preg_replace('/\s+/',' ', $_POST['locationName']));
- $locationDistance = trim($_POST['locationDistance']) ;
+ $locationName     = trim(preg_replace('/\s+/', ' ', $_POST['locationName']));
+ $locationDistance = trim($_POST['locationDistance']);
  $isavailable      = $_POST['availiblity'];
  $isDone           = $location->addLocation($locationName, $locationDistance, $isavailable);
  if ($isDone) {
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 ?>
 <?php include_once './sidebar.php' ?>
 <div class="container-fluid">
-   <h2 class="text-center">Add Location</h2>
+   <h2 class="ml-4">Add Location</h2>
    <div class="col-lg-8 col-xlg-9 col-md-12">
       <div class="card">
          <div class="card-body card-body-dark">
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
                   <label class="col-md-12 p-0">Location Name</label>
                   <div class="col-md-12 border-bottom p-0">
                      <input type="text" id="locationName" name="locationName" placeholder="Enter Location Name"
-                        class="form-control p-0 border-0" pattern="[a-zA-Z]+[a-zA-Z0-9\s]*" required>
+                        class="form-control p-0 border-0" title="1st Character Cant be space, Enter AlphaNumeric Only"  pattern="[a-zA-Z]+[a-zA-Z0-9\s]*" required>
                   </div>
                </div>
                <div class="form-group mb-4">

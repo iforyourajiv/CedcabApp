@@ -78,7 +78,7 @@ $dropData   = new fetchDistance();
 $pickupDistance = $pickupData->pickupdistance();
 $dropDistance   = $dropData->dropdistance();
 
-//Calaculating Total Distance
+//Calculation Total Distance
 $totalDistance             = abs($dropDistance - $pickupDistance);
 $_SESSION['totalDistance'] = $totalDistance;
 

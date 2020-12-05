@@ -13,7 +13,8 @@ if (isset($_GET['cancel'])) {
  $delete_ride = new Ride();
  $check       = $delete_ride->ridedelete($id);
  if ($check) {
-  header('location:pendingRideRecords.php');
+    echo "<script type='text/javascript'>alert('Your Ride has been Cancelled');  </script>";
+    echo "<script>window.location.href='pendingRideRecords.php';</script>";
  } else {
   echo "<script>alert('Something Went Wrong ,Ride Not cancelled, Please Contact To Admin')</script>";
  }

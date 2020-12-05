@@ -2,9 +2,10 @@ $(document).ready(function () {
   $("select#cab").change(function () {
     var type = $(this).children("option:selected").val();
     if (type == "CedMicro") {
-      $("#luggage").val("0");
+      $("#luggage").val("Luggage Is Not Allowed");
       $("#luggage").attr("disabled", "disabled");
     } else {
+      $("#luggage").val("0");
       $("#luggage").removeAttr("disabled");
     }
   });

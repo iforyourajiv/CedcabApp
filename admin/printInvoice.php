@@ -56,7 +56,8 @@ if (isset($_GET['rideid'])) {
                                     <tbody>
                                        <tr>
                                           <td class="content-block">
-                                             <h1>INVOICE</h1>
+                                             <img src="../assets/images/logo.png" height="60%" width="25%" />
+                                             <h3 class="mt-3">INVOICE</h3>
                                           </td>
                                        </tr>
                                        <tr>

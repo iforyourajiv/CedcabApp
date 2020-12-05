@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
 						<span class="fa fa-user"></span>
 					</span>
 				</div>
-				<input type="text" id="user" class="form-control" name="username" title="Space Not Allowed" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" placeholder="Username" required>
+				<input type="text" id="user" class="form-control" name="username" title="Space Not Allowed" pattern="^[a-zA-Z]+[@]{0,1}[a-zA-Z0-9-_\.]{1,20}$" placeholder="Username" required>
 			</div>
         </div>
         <div class="form-group">
@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
 						<i class="fa fa-mobile"></i>
 					</span>
 				</div>
-				<input type="text" id="mobile" class="form-control" name="mobile" maxlength="10" placeholder="Mobile Number (10 Digits Only)" title="Enter Valid Number" pattern="[1-9]{1}[0-9]{9}" required="required">
+				<input type="text" id="mobile" class="form-control" name="mobile" maxlength="10" placeholder="Mobile Number (10 Digits Only)" title="Phone number with 6-9 and remaing 9 digit with 0-9" pattern="[6789][0-9]{9}" required="required">
 			</div>
         </div>
 		<div class="form-group">

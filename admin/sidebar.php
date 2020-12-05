@@ -113,6 +113,14 @@
                      <span class="hide-menu font-18 text-dark">Invoice</span>
                      </a>
                   </li>
+
+                  <li class="sidebar-item">
+                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="changePassword.php"
+                        aria-expanded="false">
+                     <i class="fa fa-key" aria-hidden="true"></i>
+                     <span class="hide-menu font-18 text-dark">Change Password</span>
+                     </a>
+                  </li>
                   <li class="text-center p-20 upgrade-btn">
                      <a href="../logout.php"
                         class="btn btn-block btn-danger text-white">
