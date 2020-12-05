@@ -203,13 +203,24 @@ class Ride
 
  public function fetchInvoiceDetail($rideid)
  {
-  $query  = mysqli_query($this->conn, "select * from tbl_ride where ride_id='$rideid'");
+  $query  = mysqli_query($this->conn, "SELECT * from tbl_ride where ride_id='$rideid'");
   $result = $query->num_rows;
   if ($result > 0) {
    return $query;
   } else {
    return false;
   }
+ }
+
+ public function fetchInvoiceusername($rideid)
+ {
+  $query       = mysqli_query($this->conn, "SELECT customer_user_id from tbl_ride where ride_id='$rideid'");
+  $row         = mysqli_fetch_assoc($query);
+  $dataforid   = $row['customer_user_id'];
+  $fetchname   = mysqli_query($this->conn, "SELECT name from tbl_user where user_id='$dataforid'");
+  $data        = mysqli_fetch_assoc($fetchname);
+  $dataforName = $data['name'];
+  return $dataforName;
  }
 
  public function sortInvoice($status, $sort, $action)

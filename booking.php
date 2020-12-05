@@ -62,7 +62,7 @@ if (time() - $_SESSION['user_start'] > 60) {
                                                                <tr>
                                                                   <td>Name:</td>
                                                                   <td class="alignright">
-                                                                     <?php echo $_SESSION['username'] ?></td>
+                                                                     <?php echo $_SESSION['fullname'] ?></td>
                                                                </tr>
                                                                <tr>
                                                                   <td>From</td>

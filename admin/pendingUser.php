@@ -99,7 +99,7 @@ if (isset($_GET['status'])) {
   $html .= "<td class='text-danger'>$fullname</td>";
   $html .= "<td class='text-danger'>$email</td>";
   $html .= "<td class='text-danger'>$mobile</td>";
-  $html .= "<td><a href='pendingUser.php?unblock=$userID&email=$email' class='btn btn-success'>APPROVE</a></td>";
+  $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Approval');\" href='pendingUser.php?unblock=$userID&email=$email' class='btn btn-success'>APPROVE</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -121,7 +121,7 @@ if (isset($_GET['status'])) {
    $html .= "<td class='text-danger'>$fullname</td>";
    $html .= "<td class='text-danger'>$email</td>";
    $html .= "<td class='text-danger'>$mobile</td>";
-   $html .= "<td><a href='pendingUser.php?unblock=$userID&email=$email' class='btn btn-success'>APPROVE</a></td>";
+   $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Approval');\" href='pendingUser.php?unblock=$userID&email=$email' class='btn btn-success'>APPROVE</a></td>";
    $html .= "</tr>";
    echo $html;
   }

@@ -123,7 +123,7 @@ if (isset($_GET['status'])) {
   $html .= "<td>$luggage</td>";
   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
   $html .= "<td>$currentStatus</td>";
-  $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+  $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Cancelation');\"  href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -162,7 +162,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
-   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Cancelation');\" href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -202,7 +202,7 @@ if (isset($_GET['status'])) {
     $html .= "<td>$luggage</td>";
     $html .= "<td>&#x20B9;&nbsp;$fare</td>";
     $html .= "<td>$currentStatus</td>";
-    $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+    $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Cancelation');\"  href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
     $html .= "</tr>";
     echo $html;
    }} else {
@@ -245,7 +245,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
-   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Cancelation');\"  href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -283,7 +283,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
-   $html .= "<td><a href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
+   $html .= "<td><a onClick=\"javascript: return confirm('Please confirm Cancelation');\"  href='pendingRideRecords.php?cancel=$ride_id'>Cancel Ride</a></td>";
    $html .= "</tr>";
    echo $html;
   }

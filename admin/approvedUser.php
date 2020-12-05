@@ -80,7 +80,7 @@ if (isset($_GET['status'])) {
   $html .= "<td class='text-dark'>$fullname</td>";
   $html .= "<td class='text-dark'>$email</td>";
   $html .= "<td class='text-dark'>$mobile</td>";
-  $html .= "<td><a href='approvedUser.php?block=$userID' class='btn btn-danger'>BLOCK</a></td>";
+  $html .= "<td><a onClick=\"javascript: return confirm('Are You Sure Want To Block?');\" href='approvedUser.php?block=$userID' class='btn btn-danger'>BLOCK</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -103,7 +103,7 @@ if (isset($_GET['status'])) {
    $html .= "<td class='text-dark'>$fullname</td>";
    $html .= "<td class='text-dark'>$email</td>";
    $html .= "<td class='text-dark'>$mobile</td>";
-   $html .= "<td><a href='approvedUser.php?block=$userID' class='btn btn-danger'>BLOCK</a></td>";
+   $html .= "<td><a onClick=\"javascript: return confirm('Are You Sure Want To Block?');\" href='approvedUser.php?block=$userID' class='btn btn-danger'>BLOCK</a></td>";
    $html .= "</tr>";
    echo $html;
   }

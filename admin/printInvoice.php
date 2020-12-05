@@ -18,6 +18,7 @@ if (isset($_SESSION['username'])) {
 if (isset($_GET['rideid'])) {
  $rideid = $_GET['rideid'];
  $isDone = $rideRequest->fetchInvoiceDetail($rideid);
+ $username=$rideRequest->fetchInvoiceusername($rideid);
  foreach ($isDone as $element) {
   $rideID       = $element['ride_id'];
   $fromLocation = $element['fromLocation'];
@@ -72,6 +73,10 @@ if (isset($_GET['rideid'])) {
                                                             <tr>
                                                                <td>Ride Id:</td>
                                                                <td class="alignright"> <?php echo $rideID ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td>Customer Name:</td>
+                                                               <td class="alignright"> <?php echo $username ?></td>
                                                             </tr>
                                                             <tr>
                                                                <td>From</td>

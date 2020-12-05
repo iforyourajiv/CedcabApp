@@ -77,7 +77,7 @@ if ($data) {
   $html .= "<td class='text-purple'>$distance KM</td>";
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
-  $html .= "<td><a href='pastRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
+  $html .= "<td><a onClick=\"javascript: return confirm('Please confirm deletion');\" href='pastRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
   $html .= "</tr>";
   echo $html;
  }

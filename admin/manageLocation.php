@@ -46,7 +46,11 @@ if (isset($_GET['del_id'])) {
                    <a href="manageLocation.php?sort=DESC&for=distance">
                    <i class="fa fa-caret-up" aria-hidden="true"></i>  </a>
                    </th>
-               <th class="border-top-0">Is Available</th>
+               <th class="border-top-0">Is Available<a href="manageLocation.php?sort=ASC&for=is_available">
+                   <i class="fa fa-caret-down" aria-hidden="true"></i>  </a>
+                   <a href="manageLocation.php?sort=DESC&for=is_available">
+                   <i class="fa fa-caret-up" aria-hidden="true"></i>  </a>
+                  </th>
                <th class="border-top-0">Action</th>
             </tr>
          </thead>
@@ -75,7 +79,7 @@ if (isset($_GET['sort'])) {
    $html .= "<td class='text-dark'>$distance KM</td>";
    $html .= "<td class='text-dark'>$currentStatus</td>";
    $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
-               <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
+               <a onClick=\"javascript: return confirm('Are You Sure Want to delete Location');\" href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
    $html .= "</tr>";
    echo $html;
   }
@@ -103,7 +107,7 @@ if (isset($_GET['sort'])) {
    $html .= "<td class='text-dark'>$distance KM</td>";
    $html .= "<td class='text-dark'>$currentStatus</td>";
    $html .= "<td><a href='editLocation.php?id=$locationID' class='btn btn-warning'>EDIT</a>
-                                   <a href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
+                                   <a onClick=\"javascript: return confirm('Are You Sure Want to delete Location');\" href='manageLocation.php?del_id=$locationID' class='btn btn-danger'>DELETE</a></td>";
    $html .= "</tr>";
    echo $html;
   }

@@ -43,6 +43,7 @@ class User
   if ($result == 1) {
    $user_id = $data['user_id'];
    $user    = $data['username'];
+   $fullname= $data['name'];
    $isblock = $data['isblock'];
    $isadmin = $data['is_admin'];
    if ($isadmin == 0) {
@@ -52,7 +53,7 @@ class User
      $_SESSION['usertype'] = "user";
      $_SESSION['username'] = $user;
      $_SESSION['user_id']  = $user_id;
-
+     $_SESSION['fullname'] =$fullname;
      if ($remember) {
       setcookie("user", $user, time() + (86400 * 30), "/");
       setcookie("checked", "remember", time() + (86400 * 30), "/");

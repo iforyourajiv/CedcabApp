@@ -89,7 +89,7 @@ if (isset($_GET['sort'])) {
   $html .= "<td class='text-dark'>$fullname</td>";
   $html .= "<td class='text-dark'>$email</td>";
   $html .= "<td class='text-dark'>$mobile</td>";
-  $html .= "<td><a class='btn btn-danger' href='allUser.php?del=$userID'>Delete Permanently</a></td>";
+  $html .= "<td><a class='btn btn-danger' onClick=\"javascript: return confirm('Please confirm deletion');\" href='allUser.php?del=$userID'>Delete Permanently</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -111,7 +111,7 @@ if (isset($_GET['sort'])) {
    $html .= "<td class='text-dark'>$fullname</td>";
    $html .= "<td class='text-dark'>$email</td>";
    $html .= "<td class='text-dark'>$mobile</td>";
-   $html .= "<td><a class='btn btn-danger' href='allUser.php?del=$userID'>Delete Permanently</a></td>";
+   $html .= "<td><a class='btn btn-danger' onClick=\"javascript: return confirm('Please confirm deletion');\" href='allUser.php?del=$userID'>Delete Permanently</a></td>";
    $html .= "</tr>";
    echo $html;
   }

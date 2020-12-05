@@ -27,7 +27,7 @@ if ($type == 'date_asc' && $action == 'pending') {
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
   $html .= "<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                            <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
+                            <a onClick=\"javascript: return confirm('Please confirm Cancelation');\" href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -54,7 +54,7 @@ if ($type == 'date_asc' && $action == 'pending') {
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
   $html .= "<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                        <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
+                        <a onClick=\"javascript: return confirm('Please confirm Cancelation');\" href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -80,7 +80,7 @@ if ($type == 'date_asc' && $action == 'pending') {
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
   $html .= "<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                        <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
+                        <a onClick=\"javascript: return confirm('Please confirm Cancelation');\" href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -105,7 +105,7 @@ if ($type == 'date_asc' && $action == 'pending') {
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
   $html .= "<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                        <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
+                        <a onClick=\"javascript: return confirm('Please confirm Cancelation');\" href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -130,7 +130,7 @@ if ($type == 'date_asc' && $action == 'pending') {
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
   $html .= "<td><a href='rideRequest.php?c_id=$rideID' class='btn btn-success'>APPROVE</a>
-                        <a href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
+                        <a onClick=\"javascript: return confirm('Please confirm Cancelation');\" href='rideRequest.php?del_id=$rideID' class='btn btn-danger'>Cancel</a></td>";
   $html .= "</tr>";
   echo $html;
  }
