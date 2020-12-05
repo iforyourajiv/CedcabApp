@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
    if ($change) {
     echo "<h3 class='text-center text-success'>Password Changed Successfully</h3>";
    } else {
-    echo "<script>alert('Something Went Wrong ,Password not Changed')</script>";
+    echo "<script>alert('Password not Changed')</script>";
    }
   } else {
    echo "<script>alert('Old Password Is Incorrect')</script>";

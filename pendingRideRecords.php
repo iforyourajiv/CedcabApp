@@ -50,12 +50,12 @@ if (isset($_GET['cancel'])) {
          </div>
     <div  class="col-md-2 col-lg-2 col-sm-2">
     <div class="form-group">
-        <select id="cab" name="cabtype" class="form-control">
+        <select id="cab" name="cabtype" class="form-control" required>
             <option value="">Select Cab Type</option>
-            <option value="CedMicro">CedMicro</option>
-            <option value="CedMini">CedMini</option>
-            <option value="CedRoyal">CedRoyal</option>
-            <option value="CedSUV">CedSUV</option>
+            <option value="CedMicro"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMicro')) {echo "selected";} ?>>CedMicro</option>
+            <option value="CedMini"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMini')) {echo "selected";} ?>>CedMini</option>
+            <option value="CedRoyal"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedRoyal')) {echo "selected";} ?>>CedRoyal</option>
+            <option value="CedSUV"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedSUV')) {echo "selected";} ?>>CedSUV</option>
         </select>
         <span class="select-arrow"></span>
         <input type="submit" name="filtercab" value="Filter By Cab">

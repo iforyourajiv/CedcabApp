@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
                 <link rel="stylesheet" href="./assets/styles/riderecords.css">
                 <h1>
         Completed Rides
-    </h1> 
+    </h1>
     <form method="post" action="completedRideRecords.php">
     <div class="row mb-1">
        <div class="col-md-6 col-lg-6 col-sm-6">
@@ -24,25 +24,25 @@ if (!isset($_SESSION['username'])) {
             <lable>Start Date:</lable><input type="date" name="startDate">
             <lable>End Date :</lable><input type="date" name="endDate">
             <input type="submit" name="filterdate" value="Filter By Date">
-            
+
        </div>
-      
+
          </div>
          <div  class="col-md-3 col-lg-4 col-sm-4">
          <div class="form-group">
         <input  type="week" name="weekSelected">
          <input type="submit" name="filterweek" value="Filter By Week">
-</div> 
+</div>
 
          </div>
     <div  class="col-md-2 col-lg-2 col-sm-2">
     <div class="form-group">
-        <select id="cab" name="cabtype" class="form-control">
+        <select id="cab" name="cabtype"  class="form-control" required>
             <option value="">Select Cab Type</option>
-            <option value="CedMicro">CedMicro</option>
-            <option value="CedMini">CedMini</option>
-            <option value="CedRoyal">CedRoyal</option>
-            <option value="CedSUV">CedSUV</option>
+            <option value="CedMicro"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMicro')) {echo "selected";} ?>>CedMicro</option>
+            <option value="CedMini"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMini')) {echo "selected";} ?>>CedMini</option>
+            <option value="CedRoyal"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedRoyal')) {echo "selected";} ?>>CedRoyal</option>
+            <option value="CedSUV"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedSUV')) {echo "selected";} ?>>CedSUV</option>
         </select>
         <span class="select-arrow"></span>
         <input type="submit" name="filtercab" value="Filter By Cab">
@@ -222,7 +222,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$distance KM</td>";
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
-   $html .= "<h3>No Record Found</h3>";
+   $html .= "<td>$currentStatus</td>";
    $html .= "</tr>";
    echo $html;
   }} else {
