@@ -3,17 +3,14 @@ body {
   bottom: 0;
 }
 
-/* .navbar-light .navbar-nav {
-    top: -28px;
-} */
 
 .navbar-light .navbar-nav .nav-item {
   text-decoration: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
   text-align: center;
-  margin-left: 5px;
   margin-bottom: 3px;
+  margin-left: 1px;
   color: black;
   border-radius: 25px;
   padding-top: 10px;
@@ -32,19 +29,14 @@ body {
   color: black;
   background-color: white;
   border: none;
-  padding: 10px;
-  overflow: hidden;
+  padding: 5px;
 }
 
-.navbar-light .navbar-nav .dropdown-menu .dropdown-item:hover {
-  color: black;
-  border: none;
-}
+
 
 .navbar-light .navbar-nav .nav-item:hover {
   color: white;
   background: #2195e2;
-  border-radius: 5px;
 }
 
 #main .bg-overlay {

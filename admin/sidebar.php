@@ -27,28 +27,28 @@
                      <i class="fa fa-car" aria-hidden="true"></i>
                      <span class="hide-menu font-18 text-dark">Rides</span>
                      </a>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="rideRequest.php"
                         aria-expanded="false">
                      <i class="fa fa-list-ul" aria-hidden="true"></i>
                      <span class="hide-menu">Pending Rides</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="pastRides.php"
                         aria-expanded="false">
                      <i class="fa fa-check" aria-hidden="true"></i>
                      <span class="hide-menu">Completed Rides</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="canceledRides.php"
                         aria-expanded="false">
                      <i class="fa fa-window-close" aria-hidden="true"></i>
                      <span class="hide-menu">Cancelled Rides</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="allRides.php"
                         aria-expanded="false">
                      <i class="fa fa-globe" aria-hidden="true"></i>
@@ -63,14 +63,14 @@
                      <span class="hide-menu font-18 text-dark">Manage Location</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="manageLocation.php"
                         aria-expanded="false">
                      <i class="fa fa-compass" aria-hidden="true"></i>
                      <span class="hide-menu">Location List</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="addLocation.php"
                         aria-expanded="false">
                      <i class="fa fa-plus" aria-hidden="true"></i>
@@ -85,21 +85,21 @@
                      </span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="pendingUser.php"
                         aria-expanded="false">
                      <i class="fa fa-user-times" aria-hidden="true"></i>
                      <span class="hide-menu">Pending User request</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="approvedUser.php"
                         aria-expanded="false">
                      <i class="fa fa-user" aria-hidden="true"></i>
                      <span class="hide-menu">Approved User Request</span>
                      </a>
                   </li>
-                  <li class="sidebar-item ml-3">
+                  <li class="sidebar-item ml-1">
                      <a class="sidebar-link" href="allUser.php"
                         aria-expanded="false">
                      <i class="fa fa-users" aria-hidden="true"></i>

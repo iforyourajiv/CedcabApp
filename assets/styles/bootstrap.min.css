@@ -14658,12 +14658,12 @@ ul.list-style-none li a:hover {
 }
 
 .sidebar-nav ul .sidebar-item .sidebar-link:hover {
-  background: rgba(0, 0, 0, 0.07);
+  font-size:18px;
 }
 
 .sidebar-nav ul .sidebar-item .sidebar-link.active {
   font-weight: 500;
-  border-left: 3px solid #41b3f9;
+  border-left: 2px solid #41b3f9;
 }
 
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link {

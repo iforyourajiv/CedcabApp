@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) {
                  <a class='nav-item dropdown-item' href='booking.php'>Recent Booking</a>
                  <a class='nav-item dropdown-item' href='pendingRideRecords.php'>Pending Rides</a>
                  <a class='nav-item dropdown-item' href='completedRideRecords.php'>Completed Rides</a>
-                <a class='nav-item dropdown-item' href='canceledRideRecord.php'>Canceled Rides</a>
+                 <a class='nav-item dropdown-item' href='canceledRideRecord.php'>Canceled Rides</a>
                 </div>
                 </li>";
  $html .= "<li class='nav-item dropdown'>
