@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 
 ?>
 <?php include_once './sidebar.php' ?>
-<div class="container-fluid">
+<div class="container">
    <h2 class="text-center">Edit Location</h2>
    <div class="col-lg-8 col-xlg-9 col-md-12">
       <div class="card">

@@ -28,7 +28,7 @@ if (isset($_GET['block'])) {
 
 ?>
 <?php include_once './sidebar.php' ?>
-<div class="container-fluid">
+<div class="container">
    <h2 class="text-center text-success">Approved Users</h2>
    <div class="table-responsive">
       <table class="table no-wrap">

@@ -28,6 +28,9 @@ if (isset($_GET['rideid'])) {
  if (!$isDone) {
   echo "<script>alert('Something Went Wrong,Cant Generate Invoice')</script>";
  }
+} else{
+   echo "<script>alert('No data Available,Cant Generate Invoice')</script>";
+   echo "<script>window.location.href='completedRideRecords.php';</script>";
 }
 
 ?>

@@ -16,7 +16,7 @@ if (isset($_SESSION['username'])) {
 include_once './tiles.class.php';
 ?>
 <?php include_once './sidebar.php' ?>
-<div class="container-fluid">
+<div class="container">
    <div class="row justify-content-center">
       <a href="rideRequest.php" class="text-purple">
          <div class="col-lg-4 col-sm-6 col-xs-12">

@@ -49,7 +49,7 @@ if (isset($_GET['unblock'])) {
 ?>
 <?php include_once './sidebar.php' ?>
 
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="text-center text-danger">Blocked Users</h2>
                             <div class="table-responsive">
                                 <table class="table no-wrap">

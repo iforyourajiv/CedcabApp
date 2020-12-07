@@ -30,15 +30,17 @@ if (isset($_GET['rideid'])) {
   $fare         = $element['total_fare'];
 
  }
-
  if (!$isDone) {
   echo "<script>alert('Something Went Wrong,Cant Generate Invoice')</script>";
  }
+} else {
+   echo "<script>alert('No data Available,Cant Generate Invoice')</script>";
+   echo "<script>window.location.href='invoiceTable.php';</script>";
 }
 
 ?>
 <?php include_once './sidebar.php' ?>
-<div class="container-fluid">
+<div class="container">
    <link rel="stylesheet" href="../assets/styles/invoice.css">
    <!-- Invoice -->
    <div id="display" class="container">
