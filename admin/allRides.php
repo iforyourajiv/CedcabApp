@@ -49,6 +49,7 @@ if (isset($_GET['del_id'])) {
                <th class="border-top-0">Distance</th>
                <th class="border-top-0">Luggage</th>
                <th class="border-top-0">Fare</th>
+               <th class="border-top-0">Status</th>
                <th class="border-top-0">Action</th>
             </tr>
          </thead>
@@ -57,17 +58,23 @@ if (isset($_GET['del_id'])) {
 $data = $rideRequest->allRides();
 if ($data) {
  foreach ($data as $element) {
-  $rideID       = $element['ride_id'];
-  $fromLocation = $element['fromLocation'];
-  $toLocation   = $element['toLocation'];
-  $rideDate     = $element['ride_date'];
-  $cabType      = $element['cabtype'];
-  $distance     = $element['total_distance'];
-  $luggage      = $element['luggage'];
-  $fare         = $element['total_fare'];
-  // $status=$data['status'];
-  // $currentStatus="";
-
+  $rideID        = $element['ride_id'];
+  $fromLocation  = $element['fromLocation'];
+  $toLocation    = $element['toLocation'];
+  $rideDate      = $element['ride_date'];
+  $cabType       = $element['cabtype'];
+  $distance      = $element['total_distance'];
+  $luggage       = $element['luggage'];
+  $fare          = $element['total_fare'];
+  $status        = $element['status'];
+  $currentStatus = "";
+  if ($status == 1) {
+   $currentStatus = "<h4 class='text-warning'>Pending</h4>";
+  } elseif ($status == 2) {
+   $currentStatus = "<h4 class='text-success'>Completed </h4>";
+  } elseif ($status == 0) {
+   $currentStatus = "<h4 class='text-danger'>Cancelled</h4>";
+  }
   $html = "<tr>";
   $html .= "<td class='text-purple'>$rideID</td>";
   $html .= "<td class='text-purple'>$fromLocation</td>";
@@ -77,6 +84,7 @@ if ($data) {
   $html .= "<td class='text-purple'>$distance KM</td>";
   $html .= "<td class='text-purple'>$luggage KG</td>";
   $html .= "<td class='text-purple'>&#x20B9;$fare</td>";
+  $html .= "<td class='text-purple'>$currentStatus</td>";
   $html .= "<td><a onClick=\"javascript: return confirm('Are You Sure Want to delete Ride ');\" href='allRides.php?del_id=$rideID' class='btn btn-danger'>DELETE RIDE</a></td>";
   $html .= "</tr>";
   echo $html;

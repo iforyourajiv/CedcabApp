@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
          </div>
     <div  class="col-md-2 col-lg-2 col-sm-2">
     <div class="form-group">
-        <select id="cab" name="cabtype"  class="form-control" required>
+        <select id="cab" name="cabtype"  class="form-control">
             <option value="">Select Cab Type</option>
             <option value="CedMicro"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMicro')) {echo "selected";} ?>>CedMicro</option>
             <option value="CedMini"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMini')) {echo "selected";} ?>>CedMini</option>
@@ -66,6 +66,7 @@ if (!isset($_SESSION['username'])) {
         <th>Fare<a href="completedRideRecords.php?status=2&sort=ASC&for=total_fare"><i class="fa fa-caret-down" style="color:black" aria-hidden="true"></i>  </a>
         <a href="completedRideRecords.php?status=2&sort=DESC&for=total_fare"><i class="fa fa-caret-up" style="color:black" aria-hidden="true"></i>  </a></th>
         <th>Status</th>
+        <th>Action</th>
         <tbody>
             <?php
 include_once './ride.class.php';
@@ -80,6 +81,7 @@ if (isset($_GET['status'])) {
 
  $data = $recordSort->sortUserRides($status, $sort, $action);
  foreach ($data as $element) {
+  $ride_id       = $element['ride_id'];
   $fromLocation  = $element['fromLocation'];
   $toLocation    = $element['toLocation'];
   $rideDate      = $element['ride_date'];
@@ -106,6 +108,7 @@ if (isset($_GET['status'])) {
   $html .= "<td>$luggage</td>";
   $html .= "<td>&#x20B9;&nbsp;$fare</td>";
   $html .= "<td>$currentStatus</td>";
+  $html .= "<td><a class='btn-sm btn-primary' href='printInvoice.php?rideid=$ride_id'>Print Invoice</a></td>";
   $html .= "</tr>";
   echo $html;
  }
@@ -117,6 +120,7 @@ if (isset($_GET['status'])) {
  $data       = $filterDate->filterCompletedUserRideDate($startDate, $endDate);
  if ($data) {
   foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
    $fromLocation  = $element['fromLocation'];
    $toLocation    = $element['toLocation'];
    $rideDate      = $element['ride_date'];
@@ -143,6 +147,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
+   $html .= "<td><a class='btn-sm btn-primary' href='printInvoice.php?rideid=$ride_id'>Print Invoice</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -155,6 +160,7 @@ if (isset($_GET['status'])) {
   $data = $filterWeek->filterCompletedUserRideWeek($weekSelected);
   if ($data) {
    foreach ($data as $element) {
+    $ride_id       = $element['ride_id'];
     $fromLocation  = $element['fromLocation'];
     $toLocation    = $element['toLocation'];
     $rideDate      = $element['ride_date'];
@@ -181,6 +187,7 @@ if (isset($_GET['status'])) {
     $html .= "<td>$luggage</td>";
     $html .= "<td>&#x20B9;&nbsp;$fare</td>";
     $html .= "<td>$currentStatus</td>";
+    $html .= "<td><a class='btn-sm btn-primary' href='printInvoice.php?rideid=$ride_id'>Print Invoice</a></td>";
     $html .= "</tr>";
     echo $html;
    }} else {
@@ -197,6 +204,7 @@ if (isset($_GET['status'])) {
  $data      = $filtercab->filterCompletedUsercab($cab);
  if ($data) {
   foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
    $fromLocation  = $element['fromLocation'];
    $toLocation    = $element['toLocation'];
    $rideDate      = $element['ride_date'];
@@ -223,6 +231,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
+   $html .= "<td><a class='btn-sm btn-primary' href='printInvoice.php?rideid=$ride_id'>Print Invoice</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {
@@ -233,6 +242,7 @@ if (isset($_GET['status'])) {
  $data = $record->rideCompletedRecords();
  if ($data) {
   foreach ($data as $element) {
+   $ride_id       = $element['ride_id'];
    $fromLocation  = $element['fromLocation'];
    $toLocation    = $element['toLocation'];
    $rideDate      = $element['ride_date'];
@@ -259,6 +269,7 @@ if (isset($_GET['status'])) {
    $html .= "<td>$luggage</td>";
    $html .= "<td>&#x20B9;&nbsp;$fare</td>";
    $html .= "<td>$currentStatus</td>";
+   $html .= "<td><a class='btn-sm btn-primary' href='printInvoice.php?rideid=$ride_id'>Print Invoice</a></td>";
    $html .= "</tr>";
    echo $html;
   }} else {

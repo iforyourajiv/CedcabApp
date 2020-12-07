@@ -98,8 +98,7 @@ if (time() - $_SESSION['user_start'] > 60) {
                                                                </tr>
                                                             </tbody>
                                                          </table>
-                                                         
-                                                         <form method="post" action="booking.php">
+                                                                                                                  <form method="post" action="booking.php">
                                                             <input class="btn btn-block mt-2" id="bookingbtn"
                                                                type="button" value="Confirm Booking">
                                                             <input type="submit" name="cancel"

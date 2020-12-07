@@ -35,7 +35,7 @@ if (!isset($_SESSION['username'])) {
          </div>
     <div  class="col-md-2 col-lg-2 col-sm-2">
     <div class="form-group">
-        <select id="cab" name="cabtype" class="form-control" required>
+        <select id="cab" name="cabtype" class="form-control">
             <option value="">Select Cab Type</option>
             <option value="CedMicro"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMicro')) {echo "selected";} ?>>CedMicro</option>
             <option value="CedMini"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMini')) {echo "selected";} ?>>CedMini</option>

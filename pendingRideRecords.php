@@ -13,8 +13,8 @@ if (isset($_GET['cancel'])) {
  $delete_ride = new Ride();
  $check       = $delete_ride->ridedelete($id);
  if ($check) {
-    echo "<script type='text/javascript'>alert('Your Ride has been Cancelled');  </script>";
-    echo "<script>window.location.href='pendingRideRecords.php';</script>";
+  echo "<script type='text/javascript'>alert('Your Ride has been Cancelled');  </script>";
+  echo "<script>window.location.href='pendingRideRecords.php';</script>";
  } else {
   echo "<script>alert('Something Went Wrong ,Ride Not cancelled, Please Contact To Admin')</script>";
  }
@@ -51,7 +51,7 @@ if (isset($_GET['cancel'])) {
          </div>
     <div  class="col-md-2 col-lg-2 col-sm-2">
     <div class="form-group">
-        <select id="cab" name="cabtype" class="form-control" required>
+        <select id="cab" name="cabtype" class="form-control">
             <option value="">Select Cab Type</option>
             <option value="CedMicro"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMicro')) {echo "selected";} ?>>CedMicro</option>
             <option value="CedMini"<?php if (isset($_POST['cabtype']) && ($_POST['cabtype'] == 'CedMini')) {echo "selected";} ?>>CedMini</option>
