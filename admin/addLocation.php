@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
 </div>
 </div>
 </div>
-<footer class="footer text-center"> 2020 © Admin Panel | Cedcab.com
+<footer class="footer text-center fixed-bottom"> 2020 © Admin Panel | Cedcab.com
 </footer>
 </div>
 </div>

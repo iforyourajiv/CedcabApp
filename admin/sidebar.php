@@ -126,6 +126,8 @@
                         class="btn btn-block btn-danger text-white">
                      Logout</a>
                   </li>
+                  <li class="text-center p-20 upgrade-btn">
+                  </li>
                </ul>
             </nav>
          </div>
